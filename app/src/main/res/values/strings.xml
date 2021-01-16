@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Capstone</string>
+    <string name="tab0_name">따끈따끈 금융</string>
+    <string name="tab1_name">교육</string>
+    <string name="tab2_name">Q/A</string>
+    <string name="tab3_name">알림</string>
+    <string name="tab4_name">검색</string>
+    <!--fcm_default_channel-->
+</resources>
