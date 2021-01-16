@@ -49,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<DataItem> content;
 
-    MyAdapter(ArrayList<DataItem> content) {
+    public MyAdapter(ArrayList<DataItem> content) {
 
         this.content = content;
     }

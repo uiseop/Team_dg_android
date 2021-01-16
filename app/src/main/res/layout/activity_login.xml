@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toTopOf="@+id/login_id"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/gamst"/>
 
 
     <Button
