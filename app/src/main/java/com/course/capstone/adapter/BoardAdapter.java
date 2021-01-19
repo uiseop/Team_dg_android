@@ -2,32 +2,30 @@ package com.course.capstone.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.course.capstone.models.Board;
-import com.course.capstone.BoardActivity;
-import com.course.capstone.ContestActivity;
-import com.course.capstone.HOTActivity;
+import com.course.capstone.BoardDetailActivity;
+import com.course.capstone.models.Qna;
 import com.course.capstone.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
     static final String TAG = "BoardAdapter";
     Context context;
-    ArrayList<Board> items = new ArrayList<>();
+    List<Qna> items = new ArrayList<>();
 
-    public BoardAdapter(Context mContext,ArrayList<Board> items) {
+    public BoardAdapter(Context mContext,List<Qna>items) {
         this.context = mContext;
-        addItems(items);
+        this.items=items;
+        //addItems(items);
     }
     @Override
     public long getItemId(int position) {
@@ -39,12 +37,12 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         return position;
     }
     //아이템을 추가해주고싶을때 이거쓰면됨
-    public void addItem(Board item) {
+    public void addItem(Qna item) {
         items.add(item);
     }
 
     //한꺼번에 추가해주고싶을떄
-    public void addItems(ArrayList<Board> items) {
+    public void addItems(List<Qna> items) {
         this.items = items;
     }
 
@@ -61,40 +59,14 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BoardViewHolder boardViewHolder, int i) {
-       final Board model = items.get(i);
-        if((model!=null)){
-            boardViewHolder.boardNameTextView.setText(items.get(i).getId());
-            boardViewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent;
+    public void onBindViewHolder( BoardViewHolder holder, int position) {
+        holder.id.setText(items.get(position).getId());
+        holder.content.setText(items.get(position).getContent());
+        holder.date.setText(items.get(position).getDate());
+        holder.title.setText(items.get(position).getTitle());
+        holder.like.setText(String.valueOf(items.get(position).getLikeCount()));
+        holder.count.setText(String.valueOf(items.get(position).getCommentCount()));
 
-
-                   if (model.getId().equals("HOT게시판")) {
-                        intent = new Intent(context, HOTActivity.class);
-
-                    }
-                    else if (model.getId().equals("자유게시판")){
-                        intent = new Intent(context, BoardActivity.class);
-
-                    }
-                    else {
-                        intent = new Intent(context, ContestActivity.class);
-
-                    }
-
-                    intent.putExtra("board", model.getId());
-                    Log.d(TAG, "전달된 채팅방 이름: "+model.getId());
-
-                    context.startActivity(intent);
-
-
-                }
-            });
-        }else{
-            Log.d(TAG, "onBindViewHolder model null");
-        }
     }
 
     @Override
@@ -107,14 +79,36 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     }
 
     public class BoardViewHolder extends RecyclerView.ViewHolder {
-        TextView boardNameTextView;
-        LinearLayout linearLayout;
+      /*  TextView boardNameTextView;
+        LinearLayout linearLayout;*/
+      TextView content, id, title, date, no, like, count;
 
         public BoardViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    System.out.println(getPosition());
+                    //어댑터에서는 this를 쓸 수 없으므로 context를 쓴다. context는 이 레이아웃의 변수들?
+                    Intent intent = new Intent(context , BoardDetailActivity.class);
+                    //변수를 해당 activity로 넘긴다.
+                  /*  intent.putExtra("title", items.get(getAdapterPosition()).getT_title());
+                    intent.putExtra("pwd", items.get(getAdapterPosition()).getT_pwd());
+                    intent.putExtra("id", items.get(getAdapterPosition()).getT_user_id());
+                    intent.putExtra("date", items.get(getAdapterPosition()).getT_write_date());
+                    intent.putExtra("content", items.get(getAdapterPosition()).getT_content());
+                    intent.putExtra("no", items.get(getAdapterPosition()).getT_no());
+                    intent.putExtra("like", items.get(getAdapterPosition()).getT_like());*/
+                    context.startActivity(intent);
+                }
+            });
 
-            boardNameTextView = itemView.findViewById(R.id.board_tv_boardname);
-            linearLayout = itemView.findViewById(R.id.board_item_linear);
+            title = itemView.findViewById(R.id.tv_text_title);
+            content = itemView.findViewById(R.id.tv_text_content);
+            id = itemView.findViewById(R.id.tv_text_id);
+            date = itemView.findViewById(R.id.tv_text_date);
+            like = itemView.findViewById(R.id.tv_text_like);
+            count = itemView.findViewById(R.id.tv_text_view);
         }
     }
 }

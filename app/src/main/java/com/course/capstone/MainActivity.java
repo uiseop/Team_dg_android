@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         //툴바  정의
         mypageImageButton = findViewById(R.id.toolbar_mypage);
-        mToolbarLeftTitle = findViewById(R.id.toolbar_leftTitle);
+        mToolbarLeftTitle = findViewById(R.id.toolbartext);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

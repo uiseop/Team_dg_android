@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.course.capstone.MainActivity;
 import com.course.capstone.R;
+import com.course.capstone.models.DataManager;
 import com.course.capstone.models.User;
 import com.course.capstone.models.UserInterface;
 
@@ -77,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
                     User user = response.body();
+                    DataManager dataManager=DataManager.getInstance();
+                    dataManager.setUser(user);
 
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
