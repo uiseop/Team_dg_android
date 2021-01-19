@@ -3,11 +3,11 @@
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/menu7"
-        android:title="Recent" />
+        android:title="Home" />
     <item android:id="@+id/action_settings"
-        android:title="Favorite"
+        android:title="게시판"
         android:icon="@drawable/menu8"/>
     <item android:id="@+id/action_navigation"
-        android:title="Nearby"
+        android:title="교육"
         android:icon="@drawable/menu9"/>
 </menu>

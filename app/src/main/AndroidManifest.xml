@@ -16,14 +16,15 @@
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".MypageActivity" />
-        <activity android:name=".MainActivity"/>
+<!--        <activity android:name=".MainActivity"/>-->
         <activity android:name=".activities.RegisterActivity" />
 
             <activity android:name=".activities.SelectConcernActivity"/>
             <activity android:name=".activities.SelectBankActivity" />
 
 
-        <activity android:name=".activities.LoginActivity">
+<!--        <activity android:name=".activities.LoginActivity">-->
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
