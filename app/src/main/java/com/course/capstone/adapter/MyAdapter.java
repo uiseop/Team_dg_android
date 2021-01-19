@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.activities.SelectBankActivity;
+import com.course.capstone.activities.SelectConcernActivity;
 import com.course.capstone.models.DataItem;
 import com.course.capstone.MainActivity;
 import com.course.capstone.MainActivity2;
@@ -108,7 +110,14 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Intent intent = new Intent(context, MainActivity3.class);
                         context.startActivity(intent);
                     }
-
+                    else if(content.get(position).getTitle()=="은행 선택"){
+                        Intent intent = new Intent(context, SelectBankActivity.class);
+                        context.startActivity(intent);
+                    }
+                    else if(content.get(position).getTitle()=="관심사 선택"){
+                        Intent intent = new Intent(context, SelectConcernActivity.class);
+                        context.startActivity(intent);
+                    }
                 }
 
 

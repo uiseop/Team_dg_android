@@ -9,25 +9,34 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.course.capstone.adapter.ListViewAdapter;
+import com.course.capstone.MypageActivity;
+import com.course.capstone.adapter.BankAdapter;
 import com.course.capstone.R;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SelectBankActivity extends AppCompatActivity {
 
     private ListView listView;
-    private Button btn1,btn2;
+    private Button btn;
+
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_bank);
 
-        btn1 = (Button)findViewById(R.id.button);
-        btn2 = (Button)findViewById(R.id.select_pre);
+        btn = (Button)findViewById(R.id.bank_complete);
 
-        ListViewAdapter adapter;
+        BankAdapter adapter;
 
-        adapter = new ListViewAdapter();
+        adapter = new BankAdapter();
 
         listView = (ListView)findViewById(R.id.bank_lv);
         listView.setAdapter(adapter);
@@ -38,17 +47,10 @@ public class SelectBankActivity extends AppCompatActivity {
         adapter.addItem(ContextCompat.getDrawable(this,R.drawable.woori),"우리은행");
         adapter.addItem(ContextCompat.getDrawable(this,R.drawable.ibk),"기업은행");
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectBankActivity.this,SelectConcernActivity.class);
-                startActivity(intent);
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SelectBankActivity.this,LoginActivity.class);
+                Intent intent = new Intent(SelectBankActivity.this, MypageActivity.class);
                 startActivity(intent);
             }
         });

@@ -8,36 +8,38 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.course.capstone.MypageActivity;
 import com.course.capstone.adapter.ConcernAdapter;
 import com.course.capstone.R;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SelectConcernActivity extends AppCompatActivity {
 
     private ListView listView;
-    private Button btn_next, btn_pre;
+    private Button btn;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_concern);
 
-        btn_next = findViewById(R.id.button2);
-        btn_pre = findViewById(R.id.button3);
+        btn = findViewById(R.id.concern_complete);
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectConcernActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(SelectConcernActivity.this, MypageActivity.class);
                 startActivity(intent);
             }
         });
 
-        btn_pre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SelectConcernActivity.this, SelectBankActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ConcernAdapter adapter;
         adapter = new ConcernAdapter();

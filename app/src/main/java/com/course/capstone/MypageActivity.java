@@ -39,6 +39,9 @@ public class MypageActivity extends AppCompatActivity {
         id.add(new DataItem("회원정보 변경",0));
         id.add(new DataItem("회원 탈퇴",0));
         id.add(new DataItem("로그아웃",0));
+        id.add(new DataItem("나의 소비패턴",0));
+        id.add(new DataItem("은행 선택",0));
+        id.add(new DataItem("관심사 선택",0));
         context.add(new DataItem("내가 쓴글",1));
         context.add(new DataItem("댓글 단 글",1));
         context.add(new DataItem("스크랩",1));

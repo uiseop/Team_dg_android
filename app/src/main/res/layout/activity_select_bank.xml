@@ -21,18 +21,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/select_pre"
+            android:id="@+id/bank_complete"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="이전" />
+            android:text="완료" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="다음" />
 
     </LinearLayout>
 
