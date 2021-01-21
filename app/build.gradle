@@ -47,6 +47,10 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
     implementation 'com.android.support:design:28.0.0'
 
+    //[출처] 안드로이드 - 원형,막대 차트, 그래프 구현하기|작성자 조길상
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

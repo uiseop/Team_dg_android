@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.activities.PaymentPattern;
 import com.course.capstone.activities.SelectBankActivity;
 import com.course.capstone.activities.SelectConcernActivity;
 import com.course.capstone.models.DataItem;
@@ -118,6 +119,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Intent intent = new Intent(context, SelectConcernActivity.class);
                         context.startActivity(intent);
                     }
+                    else if(content.get(position).getTitle()=="나의 소비패턴"){
+                        Intent intent = new Intent(context, PaymentPattern.class);
+                        context.startActivity(intent);
+                    }
+
                 }
 
 

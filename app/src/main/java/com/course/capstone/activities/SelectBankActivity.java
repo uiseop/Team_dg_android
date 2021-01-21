@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class SelectBankActivity extends AppCompatActivity {
 
     private ListView listView;
     private Button btn;
+    private EditText acc;
 
 
     Retrofit retrofit = new Retrofit.Builder()
@@ -33,6 +35,7 @@ public class SelectBankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_bank);
 
         btn = (Button)findViewById(R.id.bank_complete);
+        acc = (EditText)findViewById(R.id.account);
 
         BankAdapter adapter;
 
@@ -41,11 +44,11 @@ public class SelectBankActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.bank_lv);
         listView.setAdapter(adapter);
 
-        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.kakao),"카카오뱅크");
-        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.nh),"농협은행");
-        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.shinhan),"신한은행");
-        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.woori),"우리은행");
-        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.ibk),"기업은행");
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.kakao),"카카오뱅크","123");
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.nh),"농협은행","456");
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.shinhan),"신한은행","234");
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.woori),"우리은행","567");
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.ibk),"기업은행","678");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
