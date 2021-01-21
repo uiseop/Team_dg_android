@@ -15,8 +15,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.course.capstone.adapter.BoardAdapter;
+import com.course.capstone.models.Comment;
+import com.course.capstone.models.CommentInterface;
+import com.course.capstone.models.DataManager;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,15 +58,17 @@ public class BoardDetailActivity extends AppCompatActivity {
     String date;
     String id;
     String qid;
-
+    DataManager dataManager=DataManager.getInstance();
+    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+    Date date1=new Date();
+    String time2 = format1.format(date1);
     private String root_talk_no;
     private String string_like;
     private EditText input_r_id;
     private EditText input_r_content;
     RecyclerView recyclerView;
-
-    /*    ReplyTalkAdapter adapter;
-      CommunityTalkAdapter adapter_talk_list;*/
+    ReplyTalkAdapter adapter;
+   // CommunityTalkAdapter adapter_talk_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +94,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         initialize();
         //댓글버튼 클릭시! alert창
-      /*  btn_r_write.setOnClickListener(new View.OnClickListener() {
+       /*btn_r_write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
@@ -92,8 +102,9 @@ public class BoardDetailActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.d("-------제발!!후후루루루-성공!", root_talk_no.toString());
-                                post();
+
+                                Comment comment=new Comment(dataManager.getUser().getName(),  input_r_content.getText().toString(),time2, qid);
+                                post(comment);
 //                                index();
                             }
                         }).setNegativeButton("취소",
@@ -132,7 +143,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
         //좋아요 버튼 클릭시
-    /*   btn_like.setOnClickListener(new View.OnClickListener() {
+     /* btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
@@ -156,11 +167,75 @@ public class BoardDetailActivity extends AppCompatActivity {
                 AlertDialog alert = alert_confirm.create();
                 alert.show();
             }
-        });*/
+        });
+
+      */
 
 
     }
     //수정
+
+    //댓글쓰기
+    //서버 연결 후 어댑터 연결
+  /*  public void commentinfo(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        CommentInterface retrofitService = retrofit.create(CommentInterface.class);
+        Call<List<Qna>> call = retrofitService.getAll();
+
+        call.enqueue(new Callback<List<Qna>>() {
+            @Override
+            public void onResponse(Call<List<Qna>> call, Response<List<Qna>> response) {
+                if (response.isSuccessful()){
+                    List<Qna> qna=response.body();
+                    mBoardAdapter = new BoardAdapter(getActivity(), qna);
+                    mBoardRecyclerView.setAdapter(mBoardAdapter);
+                }
+                else{
+                    Log.d(TAG, "onResponse1: Something Wrong");
+                }
+            }
+    public void post(Comment comment) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+      CommentInterface retrofitService = retrofit.create(CommentInterface.class);
+        Call<Comment> call = retrofitService.addComment(comment);
+
+        call.enqueue(new Callback<Comment>() {
+            @Override
+            public void onResponse(Call<Comment> call, Response<Comment> response) {
+                if (response.isSuccessful()){
+                    Log.d("--------------성공!", response.body().toString());
+                    setResult(RESULT_OK);
+                    finish();
+
+                }
+                else{
+                    Log.d(TAG, "onResponse1: Something Wrong");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Comment> call, Throwable t) {
+                Log.e("왜 안되는건데...?", t.getMessage());
+            }
+        });
+
+
+
+
+
+        input_r_content.setText(""); //글쓰고 나서 텍스트 창 초기화
+    }
+*/
+    //댓글
+
 
     //게시글 삭제하는 함수
     public void delete() {
@@ -193,7 +268,38 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
     }
+    //좋아요 업데이트
+    /*public  void update_like() {
+        like += 1;
+        final TextView txt_like = (TextView) findViewById(R.id.txt_like);
+        string_like = String.valueOf(like);
 
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+
+        APIservice retrofitService = retrofit.create(APIservice.class);
+        Call<Post_CallBackItem> call = retrofitService.updateLike(no, like);
+
+        call.enqueue(new Callback<Post_CallBackItem>() {
+            @Override
+            public void onResponse(Call<Post_CallBackItem> call, Response<Post_CallBackItem> response) {
+                Log.d("좋아요 기능 성공!", string_like.toString());
+                Toast.makeText(getApplicationContext(),  "감사합니다.", Toast.LENGTH_LONG).show();
+                txt_like.setText(string_like);
+                setResult(RESULT_OK);
+            }
+
+            @Override
+            public void onFailure(Call<Post_CallBackItem> call, Throwable t) {
+                Log.e("좋아요 기능 실패ㅠㅠ", t.getMessage());
+            }
+
+        });
+    }
+*/
     public void initialize() {
 
        txt_name = (TextView) findViewById(R.id.txt_name);
