@@ -29,4 +29,5 @@ public interface UserInterface {
     @POST("api/v1/user/login")
     Call<User> loginUser(@Body HashMap<String, Object> parameters);
 
+
 }

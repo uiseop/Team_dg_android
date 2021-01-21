@@ -6,19 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".activities.PaymentPattern">
 
-    <org.eazegraph.lib.charts.PieChart
+    <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/graph"
-        android:layout_width="224dp"
-        android:layout_height="224dp"
+        android:layout_width="268dp"
+        android:layout_height="283dp"
         android:layout_marginTop="59dp"
         android:padding="10dp"
-        app:egBarWidth="20dp"
-        app:egEnableScroll="true"
-        app:egFixedBarWidth="true"
-        app:egLegendHeight="40dp"
-        app:egShowDecimal="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="374dp"
+        android:layout_marginBottom="13dp"
+        android:text="이번달 지출 내역"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/expandable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_totalamount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/graph" />
+
+    <ExpandableListView
+        android:id="@+id/expandable"
+        android:layout_width="413dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView_totalamount"
+        app:layout_constraintStart_toStartOf="@+id/textView_totalamount"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

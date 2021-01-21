@@ -36,7 +36,8 @@ public class SelectBankActivity extends AppCompatActivity {
 
         btn = (Button)findViewById(R.id.bank_complete);
         acc = (EditText)findViewById(R.id.account);
-
+        String account = acc.getText().toString();
+        //이 account를 db에 저장해주기
         BankAdapter adapter;
 
         adapter = new BankAdapter();
