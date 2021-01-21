@@ -1,8 +1,8 @@
 package com.course.capstone.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +22,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     static final String TAG = "BoardAdapter";
     Activity context;
     List<Qna> items = new ArrayList<>();
+
 
     public BoardAdapter(Activity mContext, List<Qna>items) {
         this.context = mContext;
@@ -61,7 +62,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
     @Override
     public void onBindViewHolder( BoardViewHolder holder, int position) {
-        holder.id.setText(items.get(position).getId());
+        holder.name.setText(items.get(position).getQ_username());
         holder.content.setText(items.get(position).getContent());
         holder.date.setText(items.get(position).getDate());
         holder.title.setText(items.get(position).getTitle());
@@ -82,7 +83,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     public class BoardViewHolder extends RecyclerView.ViewHolder {
       /*  TextView boardNameTextView;
         LinearLayout linearLayout;*/
-      TextView content, id, title, date, no, like, count;
+      TextView content, name, title, date,like, count;
 
         public BoardViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,18 +95,21 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     Intent intent = new Intent(context , BoardDetailActivity.class);
                     //변수를 해당 activity로 넘긴다.
                    intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
-                    intent.putExtra("id", items.get(getAdapterPosition()).getId());
+                    intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
                     intent.putExtra("date", items.get(getAdapterPosition()).getDate());
                     intent.putExtra("content", items.get(getAdapterPosition()).getContent());
-
                     intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
+                    intent.putExtra("id", items.get(getAdapterPosition()).getId());
+                    intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());
+
+                    Log.d(items.get(getAdapterPosition()).getId(),"id");
                     context.startActivity(intent);
                 }
             });
 
             title = itemView.findViewById(R.id.tv_text_title);
             content = itemView.findViewById(R.id.tv_text_content);
-            id = itemView.findViewById(R.id.tv_text_id);
+            name = itemView.findViewById(R.id.tv_text_name);
             date = itemView.findViewById(R.id.tv_text_date);
             like = itemView.findViewById(R.id.tv_text_like);
             count = itemView.findViewById(R.id.tv_text_view);

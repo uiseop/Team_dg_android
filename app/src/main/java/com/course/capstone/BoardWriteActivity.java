@@ -18,6 +18,9 @@ import com.course.capstone.models.DataManager;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,6 +42,10 @@ public class BoardWriteActivity extends AppCompatActivity {
     DataManager dataManager=DataManager.getInstance();
     TextView tv_title;
     ImageButton btn_write;
+    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+    Date date=new Date();
+    String time1 = format1.format(date);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +58,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(false);
-        input_id = findViewById(R.id.input_id);
-        input_pwd = findViewById(R.id.input_pwd);
+
         input_title = findViewById(R.id.input_title);
         input_content = findViewById(R.id.input_content);
         btn_write = (ImageButton) findViewById(R.id.btn_delete);
@@ -66,8 +72,9 @@ public class BoardWriteActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Qna qna=new Qna( dataManager.getUser().getName(),input_title.getText().toString(),input_content.getText().toString(),null,0,0);
+                                Qna qna=new Qna(dataManager.getUser().getName(),dataManager.getUser().getId(),input_title.getText().toString(), input_content.getText().toString(),time1,0,0);
                                 post(qna);
+                                Log.d(dataManager.getUser().getName(),"이름");
                             }
                         }).setNegativeButton("취소",
                         new DialogInterface.OnClickListener() {

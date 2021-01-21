@@ -33,7 +33,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     TextView txt_title;
     TextView txt_content;
     TextView txt_date;
-    TextView txt_id;
+    TextView txt_name;
     TextView txt_like;
     TextView txt_view;
     TextView tv_title;
@@ -45,10 +45,12 @@ public class BoardDetailActivity extends AppCompatActivity {
     int view;
     String title;
     String content;
-    String id;
-    String pwd;
+    String name;
+
     String date;
-    String id_confirm;
+    String id;
+    String qid;
+
     private String root_talk_no;
     private String string_like;
     private EditText input_r_id;
@@ -110,17 +112,10 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
-                final EditText input_id = new EditText(BoardDetailActivity.this); //입력하는 비밀번호
-
-                alert_confirm.setView(input_id);
-                alert_confirm.setMessage("글을 삭제하시겠습니까? 비밀번호를 입력해 주세요.").setCancelable(false).setPositiveButton("확인",
+                alert_confirm.setMessage("글을 삭제하겠습니까?").setCancelable(false).setPositiveButton("확인",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                id_confirm = input_id.getText().toString();
-
-                                Log.d("-------제발!!후후루루루-성공!", id_confirm.toString());
-                                Log.d("-------제발!!후후루루루-성공!", pwd.toString());
 
                                 delete();
                             }
@@ -136,13 +131,8 @@ public class BoardDetailActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         //좋아요 버튼 클릭시
-      /*  btn_like.setOnClickListener(new View.OnClickListener() {
+    /*   btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
@@ -166,8 +156,8 @@ public class BoardDetailActivity extends AppCompatActivity {
                 AlertDialog alert = alert_confirm.create();
                 alert.show();
             }
-        });
-*/
+        });*/
+
 
     }
     //수정
@@ -179,13 +169,12 @@ public class BoardDetailActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         QnaInterface qnainterface = retrofit.create(QnaInterface.class);
-        Call<Void>  call = qnainterface.removeQna(id);
+        Call<Void>  call = qnainterface.removeQna(qid);
 
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void>  call, Response<Void>  response) {
                 if (response.isSuccessful()) {
-                    Log.d("--------------성공!", response.body().toString());
 
                     setResult(RESULT_OK);
                     finish();
@@ -204,13 +193,12 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
     }
+
     public void initialize() {
 
-       txt_id = (TextView) findViewById(R.id.txt_id);
+       txt_name = (TextView) findViewById(R.id.txt_name);
        txt_date = (TextView) findViewById(R.id.txt_date);
-      // TextView txt_title;
         txt_title=  (TextView)findViewById(R.id.txt_title);
-       // TextView txt_content ;
         txt_content=  (TextView) findViewById(R.id.txt_content);
         TextView txt_like = (TextView) findViewById(R.id.txt_like);
         txt_view = (TextView) findViewById(R.id.txt_view);
@@ -227,13 +215,16 @@ public class BoardDetailActivity extends AppCompatActivity {
         like=getIntent().getIntExtra("like",3);
         string_like = String.valueOf(like); //인트형의 좋아요 수를 스트링 형으로 변환한 것
 
-        pwd = getIntent().getStringExtra("pwd");
-        id = getIntent().getStringExtra("id");
+
+        name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
+        id = getIntent().getStringExtra("id");
+        qid = getIntent().getStringExtra("qnaid");
 
-        txt_id.setText(id);
+
+        txt_name.setText(name);
         txt_date.setText(date);
         txt_title.setText(title);
         txt_content.setText(content);
@@ -242,7 +233,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
 
 
-        Log.d("-------------제발!!-성공!", id.toString());
+        Log.d(name,"-------------제발!!-성공!");
     }
 
 
