@@ -1,5 +1,6 @@
 package com.course.capstone.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,10 +20,10 @@ import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
     static final String TAG = "BoardAdapter";
-    Context context;
+    Activity context;
     List<Qna> items = new ArrayList<>();
 
-    public BoardAdapter(Context mContext,List<Qna>items) {
+    public BoardAdapter(Activity mContext, List<Qna>items) {
         this.context = mContext;
         this.items=items;
         //addItems(items);

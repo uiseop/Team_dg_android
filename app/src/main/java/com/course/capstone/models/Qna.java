@@ -15,26 +15,18 @@ public class Qna {
         String Date;
         String commentCount;
         String LikeCount;
-        String category;
 
 
-        public Qna(String id, String title, String content, String date, String commentCount, String likeCount, String category) {
+        public Qna(String id, String title, String content, String date, String commentCount, String likeCount) {
             this.id = id;
             this.Title = title;
             this.Content = content;
             this.Date = date;
             this.commentCount = commentCount;
             this.LikeCount = likeCount;
-            this.category = category;
+
         }
 
-        public String getCategory() {
-            return category;
-        }
-
-        public void setCategory(String category) {
-            this.category = category;
-        }
 
         public String getId() {
             return id;
