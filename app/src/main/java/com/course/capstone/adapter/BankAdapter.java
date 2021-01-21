@@ -14,11 +14,11 @@ import com.course.capstone.models.Bank;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter {
+public class BankAdapter extends BaseAdapter {
     private ArrayList<Bank> listViewItemList = new ArrayList<Bank>() ;
 
     // ListViewAdapter의 생성자
-    public ListViewAdapter() {
+    public BankAdapter() {
 
     }
 
@@ -67,11 +67,12 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable icon, String text) {
+    public void addItem(Drawable icon, String text,String account) {
         Bank item = new Bank();
 
         item.setIcon(icon);
         item.setText(text);
+        item.setAccount(account);
 
         listViewItemList.add(item);
     }
