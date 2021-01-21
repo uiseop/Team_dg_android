@@ -93,13 +93,12 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     //어댑터에서는 this를 쓸 수 없으므로 context를 쓴다. context는 이 레이아웃의 변수들?
                     Intent intent = new Intent(context , BoardDetailActivity.class);
                     //변수를 해당 activity로 넘긴다.
-                  /*  intent.putExtra("title", items.get(getAdapterPosition()).getT_title());
-                    intent.putExtra("pwd", items.get(getAdapterPosition()).getT_pwd());
-                    intent.putExtra("id", items.get(getAdapterPosition()).getT_user_id());
-                    intent.putExtra("date", items.get(getAdapterPosition()).getT_write_date());
-                    intent.putExtra("content", items.get(getAdapterPosition()).getT_content());
-                    intent.putExtra("no", items.get(getAdapterPosition()).getT_no());
-                    intent.putExtra("like", items.get(getAdapterPosition()).getT_like());*/
+                   intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
+                    intent.putExtra("id", items.get(getAdapterPosition()).getId());
+                    intent.putExtra("date", items.get(getAdapterPosition()).getDate());
+                    intent.putExtra("content", items.get(getAdapterPosition()).getContent());
+
+                    intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
                     context.startActivity(intent);
                 }
             });

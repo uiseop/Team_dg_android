@@ -7,24 +7,16 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.DataManager;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
-import com.course.capstone.models.User;
-
-import java.util.List;
-
-import javax.xml.namespace.QName;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,7 +55,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         input_pwd = findViewById(R.id.input_pwd);
         input_title = findViewById(R.id.input_title);
         input_content = findViewById(R.id.input_content);
-        btn_write = (ImageButton) findViewById(R.id.btn_write);
+        btn_write = (ImageButton) findViewById(R.id.btn_delete);
 
         //공유버튼 클릭시 alert창
         btn_write.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +66,7 @@ public class BoardWriteActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Qna qna=new Qna( dataManager.getUser().getName(),input_title.getText().toString(),input_content.getText().toString(),null,null,null);
+                                Qna qna=new Qna( dataManager.getUser().getName(),input_title.getText().toString(),input_content.getText().toString(),null,0,0);
                                 post(qna);
                             }
                         }).setNegativeButton("취소",
