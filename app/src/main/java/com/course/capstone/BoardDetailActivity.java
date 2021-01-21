@@ -61,7 +61,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_detail);
-        setContentView(R.layout.activity_board_write);
+
         toolbarText = findViewById(R.id.toolbartext);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +77,8 @@ public class BoardDetailActivity extends AppCompatActivity {
         btn_like = (ImageButton) findViewById(R.id.btn_like);
         btn_delete = (ImageButton) findViewById(R.id.btn_delete);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
+
 
         initialize();
         //댓글버튼 클릭시! alert창
@@ -135,6 +137,10 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
 
+
+
+
+
         //좋아요 버튼 클릭시
       /*  btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,6 +170,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 */
 
     }
+    //수정
 
     //게시글 삭제하는 함수
     public void delete() {
@@ -199,17 +206,21 @@ public class BoardDetailActivity extends AppCompatActivity {
     }
     public void initialize() {
 
-        TextView txt_id = (TextView) findViewById(R.id.txt_id);
-        TextView txt_date = (TextView) findViewById(R.id.txt_date);
-        TextView txt_title = (TextView) findViewById(R.id.txt_title);
-        TextView txt_content = (TextView) findViewById(R.id.txt_content);
+       txt_id = (TextView) findViewById(R.id.txt_id);
+       txt_date = (TextView) findViewById(R.id.txt_date);
+      // TextView txt_title;
+        txt_title=  (TextView)findViewById(R.id.txt_title);
+       // TextView txt_content ;
+        txt_content=  (TextView) findViewById(R.id.txt_content);
         TextView txt_like = (TextView) findViewById(R.id.txt_like);
         txt_view = (TextView) findViewById(R.id.txt_view);
 
-        /*txt_title.setFocusable(false);
+
+        txt_title.setFocusable(false);
         txt_title.setClickable(false);
         txt_content.setFocusable(false);
-        txt_content.setClickable(false);*/
+        txt_content.setClickable(false);
+
 
         no=getIntent().getIntExtra("no",1);
         root_talk_no =  String.valueOf(no); //인트형의 글 번호를 스트링 형으로 변환한 것
@@ -227,6 +238,9 @@ public class BoardDetailActivity extends AppCompatActivity {
         txt_title.setText(title);
         txt_content.setText(content);
         txt_like.setText(string_like);
+
+
+
 
         Log.d("-------------제발!!-성공!", id.toString());
     }
