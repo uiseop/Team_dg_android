@@ -4,34 +4,54 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.course.capstone.models.DataManager;
-import com.course.capstone.models.User;
+import com.course.capstone.models.Qna;
+import com.course.capstone.models.QnaInterface;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class BoardWriteActivity extends AppCompatActivity {
-    private EditText titleEditText;
-    private EditText contentsEditText;
-    private Spinner board_spinner;
-    private int currentPosition;
-    private boolean rewrite;
-    private String postKey;
-    private Post postModel;
+
+
+
     private ActionBar actionBar;
     private TextView toolbarText;
+    private EditText input_id;
+    private EditText input_pwd;
+    private EditText input_title;
+    private EditText input_content;
+    DataManager dataManager=DataManager.getInstance();
+    TextView tv_title;
+    ImageButton btn_write;
+    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+    Date date=new Date();
+    String time1 = format1.format(date);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_write);
-       /* toolbarText = findViewById(R.id.toolbartext);
+        toolbarText = findViewById(R.id.toolbartext);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -39,82 +59,69 @@ public class BoardWriteActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(false);
 
-       /* currentPosition = getIntent().getExtras().getInt("CURRENT_BOARD_TAB");
-        String reWriteTitle = getIntent().getExtras().getString("BOARD_TITLE");
-        String reWriteContents = getIntent().getExtras().getString("BOARD_CONTENTS");
-        postKey = getIntent().getExtras().getString("CORRECT_POST_KEY");*/
+        input_title = findViewById(R.id.input_title);
+        input_content = findViewById(R.id.input_content);
+        btn_write = (ImageButton) findViewById(R.id.btn_delete);
 
-        titleEditText = (EditText) findViewById(R.id.board_write_title_edit_text);
-        contentsEditText = (EditText) findViewById(R.id.board_write_content_edit_text);
-        ImageButton writeButton = (ImageButton) findViewById(R.id.board_write_finish);
-        ImageButton closeButton = (ImageButton) findViewById(R.id.board_write_close_button);
-       /* board_spinner = (Spinner) findViewById(R.id.board_spinner);
-        board_spinner.post(new Runnable() {
+        //공유버튼 클릭시 alert창
+        btn_write.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                board_spinner.setSelection(currentPosition);
+            public void onClick(View view) {
+                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardWriteActivity.this);
+                alert_confirm.setMessage("글을 게시하겠습니까?").setCancelable(false).setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Qna qna=new Qna(dataManager.getUser().getName(),dataManager.getUser().getId(),input_title.getText().toString(), input_content.getText().toString(),time1,0,0);
+                                post(qna);
+                                Log.d(dataManager.getUser().getName(),"이름");
+                            }
+                        }).setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                AlertDialog alert = alert_confirm.create();
+                alert.show();
+
             }
         });
-
-        if (reWriteContents != null && reWriteTitle != null) {
-            titleEditText.setText(reWriteTitle);
-            contentsEditText.setText(reWriteContents);
-            board_spinner.setVisibility(View.GONE);
-            rewrite = true;
-
-        } */
-      /*  writeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isTextInputError())
-                    return;
-                String userName = getPostAuthorName();
-                sendPost(userName);
-                finish();
-            }
-        });
-
-
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
     }
+        public void post(Qna qna) {
 
-    private boolean isTextInputError() {
-        if (TextUtils.isEmpty(titleEditText.getText().toString())) {
-            titleEditText.requestFocus();
-            titleEditText.setError("제목을 입력해주세요\n");
-            return true;
-        } else if (TextUtils.isEmpty(contentsEditText.getText().toString())) {
-            contentsEditText.setError("내용을 입력해주세요\n");
-            contentsEditText.requestFocus();
-            return true;
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+            Call<Qna> call = qnainterface.addqna(qna);
+
+            call.enqueue(new Callback<Qna>() {
+                @Override
+                public void onResponse(Call<Qna> call, Response<Qna> response) {
+                    if (response.isSuccessful()){
+                        Log.d("--------------성공!", response.body().toString());
+
+                        setResult(RESULT_OK);
+                        finish();
+
+                    }
+                    else{
+                        Log.d(TAG, "onResponse1: Something Wrong");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Qna>call, Throwable t) {
+                    Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.",Toast.LENGTH_LONG).show();;
+                    Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
+                }
+            });
+        }
         }
 
-        return false;
-    }
 
-    public void sendPost(String userName) {
-        if (rewrite) {
-            int commentCount = getIntent().getExtras().getInt("COMMENT_COUNT");
-            postModel.correctPost((String) board_spinner.getSelectedItem(), userName, titleEditText.getText().toString(), contentsEditText.getText().toString(), postKey, commentCount);
-
-        } else
-            postModel.writePost((String) board_spinner.getSelectedItem(), userName, titleEditText.getText().toString(), contentsEditText.getText().toString());
-
-        Toast.makeText(getApplicationContext(), "작성이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-    }
-
-    private String getPostAuthorName() {
-        DataManager dataManager=DataManager.getInstance();
-
-        String authorName = board_spinner.getSelectedItemPosition() == 2 ? "익명" :    dataManager.getUser().getName();
-        return authorName;
-    }*/
-    }
-}
 

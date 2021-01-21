@@ -3,6 +3,7 @@ package com.course.capstone.models;
 public class DataManager {
     private User user;
     private Payment payment;
+    private Qna qna;
     private DataManager() {
 
     }
@@ -22,12 +23,19 @@ public class DataManager {
     public void setUser(User user) {
         this.user = user;
     }
-
     public Payment getPayment() {
         return payment;
     }
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Qna getQna() {
+        return qna;
+    }
+
+    public void setQna(Qna qna) {
+        this.qna = qna;
     }
 }

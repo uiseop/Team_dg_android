@@ -49,17 +49,12 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_common_board, container, false);
         mBoardRecyclerView = (RecyclerView) rootView.findViewById(R.id.board_recycler_view);
         mBoardRecyclerView.setHasFixedSize(true);
-        /*final String[] boards = getResources().getStringArray(R.array.boards); //게시판 제목들
-        for (String boardName : boards) {
-            mBoardArrayList.add(new Board(boardName));
-        }*/
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mBoardRecyclerView.setLayoutManager(layoutManager);
         mBoardRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         boardinfo();
-        /*  mBoardAdapter = new BoardAdapter(getActivity(), mBoardArrayList);
-        mBoardRecyclerView.setAdapter(mBoardAdapter);
-       */
+
         FloatingActionButton onButtonClickedInputRecord1 = (FloatingActionButton) rootView.findViewById(R.id.board_fab);
         onButtonClickedInputRecord1.setOnClickListener(this);
         FloatingActionButton onButtonClickedInputRecord2 = (FloatingActionButton) rootView.findViewById(R.id.board_search_fab);
@@ -103,10 +98,8 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
             public void onResponse(Call<List<Qna>> call, Response<List<Qna>> response) {
                 if (response.isSuccessful()){
                     List<Qna> qna=response.body();
-
-
                     mBoardAdapter = new BoardAdapter(getActivity(), qna);
-                  mBoardRecyclerView.setAdapter(mBoardAdapter);
+                    mBoardRecyclerView.setAdapter(mBoardAdapter);
                 }
                 else{
                     Log.d(TAG, "onResponse1: Something Wrong");

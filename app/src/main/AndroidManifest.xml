@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.PaymentPattern"></activity>
-        <activity android:name=".BoardWriteActivity" />
+        <activity android:name=".BoardWriteActivity">
+        </activity>
+        <activity android:name=".BoardDetailActivity" />
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".MypageActivity" >
@@ -25,8 +26,11 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.SelectConcernActivity" />
-        <activity android:name=".activities.SelectBankActivity" />
+
+            <activity android:name=".activities.SelectConcernActivity"/>
+            <activity android:name=".activities.SelectBankActivity" />
+
+
         <activity android:name=".activities.LoginActivity">
 
         </activity>

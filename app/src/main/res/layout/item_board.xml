@@ -58,7 +58,7 @@
                 android:textColor="#8f8f8f"
                 android:text="42분 전"/>
             <TextView
-                android:id="@+id/tv_text_id"
+                android:id="@+id/tv_text_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="8sp"

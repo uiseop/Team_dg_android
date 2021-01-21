@@ -9,33 +9,68 @@ import java.util.ArrayList;
 
 public class Qna {
 
-        String id;
-        String Title;
-        String Content;
-        String Date;
-        String commentCount;
-        String LikeCount;
-        String category;
+
+    @SerializedName("qnapeople")
+    @Expose
+    private String q_username;
+
+    @SerializedName("parentid")
+    @Expose
+    private String id;
+
+    @SerializedName("qnatitle")
+    @Expose
+    private String Title;
+
+    @SerializedName("qnacontent")
+    @Expose
+    private  String Content;
+
+    @SerializedName("qnadate")
+    @Expose
+    private String Date;
+
+    @SerializedName("qnarate")
+    @Expose
+    private  int commentCount;
+
+    @SerializedName("likerate")
+    @Expose
+    private int LikeCount;
 
 
-        public Qna(String id, String title, String content, String date, String commentCount, String likeCount, String category) {
-            this.id = id;
+    @SerializedName("id")
+    @Expose
+    private String qnaid;
+
+
+        public Qna(String q_username, String id,String title, String content, String date, int commentCount, int likeCount) {
+
+            this.q_username=q_username;
+            this.id=id;
             this.Title = title;
             this.Content = content;
             this.Date = date;
             this.commentCount = commentCount;
             this.LikeCount = likeCount;
-            this.category = category;
-        }
 
-        public String getCategory() {
-            return category;
         }
+    public String getQnaid() {
+        return qnaid;
+    }
 
-        public void setCategory(String category) {
-            this.category = category;
-        }
+    public void setQnaid(String qnaid) {
+        this.qnaid = qnaid;
+    }
 
+        public String getQ_username() {
+            System.out.println(q_username);
+            return q_username;
+    }
+
+    public void setQ_username(String q_username) {
+        this.q_username = q_username;
+    }
         public String getId() {
             return id;
         }
@@ -68,19 +103,19 @@ public class Qna {
             this.Date = date;
         }
 
-        public String getCommentCount() {
+        public int getCommentCount() {
             return commentCount;
         }
 
-        public void setCommentCount(String commentCount) {
+        public void setCommentCount(int commentCount) {
             this.commentCount = commentCount;
         }
 
-        public String getLikeCount() {
+        public int getLikeCount() {
             return LikeCount;
         }
 
-        public void setLikeCount(String likeCount) {
+        public void setLikeCount(int likeCount) {
             this.LikeCount = likeCount;
         }
 
