@@ -2,17 +2,15 @@ package com.course.capstone.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.course.capstone.R;
-import com.course.capstone.models.Payment;
+import com.course.capstone.models.Child;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,17 +20,18 @@ public class PaymentAdapter extends BaseExpandableListAdapter{
 
     private Context context;
     private List<String> parentData;
-    private HashMap<String, List<String>> childData;
+    private ArrayList<Child> mChildList;
+    private HashMap<String, ArrayList<Child>> mChildHashMap;
 
-    public PaymentAdapter(Context context, List<String> parentData, HashMap<String, List<String>> childData){
+    public PaymentAdapter(Context context, List<String> parentData, HashMap<String, ArrayList<Child>> childData){
         this.context = context;
         this.parentData = parentData;
-        this.childData = childData;
+        this.mChildHashMap = childData;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.childData.get(this.parentData.get(groupPosition)).get(childPosition);
+        return this.mChildHashMap.get(this.parentData.get(groupPosition)).get(childPosition);
     }
 
     @Override
@@ -42,23 +41,26 @@ public class PaymentAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final String childText = (String) getChild(groupPosition,childPosition);
-
+//        final String childText = (String) getChild(groupPosition,childPosition);
+        Child childData = (Child)getChild(groupPosition, childPosition);
         if (convertView == null){
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.child, null);
         }
         TextView childname = (TextView)convertView.findViewById(R.id.childtext);
-        TextView childamount = (TextView)convertView.findViewById(R.id.textView4);
+        TextView childamount = (TextView)convertView.findViewById(R.id.childamount);
 
-        childname.setText(childText);
+        childname.setText(childData.getShop());
+        Log.d("shop",childData.getShop());
+        childamount.setText(Integer.toString(childData.getCost()));
+        Log.d("amount",Integer.toString(childData.getCost()));
         return convertView;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.childData.get(this.parentData.get(groupPosition)).size();
+        return this.mChildHashMap.get(this.parentData.get(groupPosition)).size();
     }
 
     @Override

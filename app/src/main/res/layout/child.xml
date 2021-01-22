@@ -16,7 +16,7 @@
         android:textColor="#88000000"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/childamount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/childtext"
