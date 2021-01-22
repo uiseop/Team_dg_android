@@ -16,8 +16,14 @@ public interface CommentInterface {
     @GET( "api/v1/comment/{id}")
     Call <Comment> getById(@Path("id") String id);
 
+
+    @GET( "api/v1/comment/parentid/{parentid}")
+    Call <List<Comment>>  getByQid(@Path("parentid") String qid);
+
+
     @POST("api/v1/comment/create")
     Call<Comment> addComment(@Body Comment comment);
+
 
 
     @DELETE("api/v1/comment/delete/{id}")

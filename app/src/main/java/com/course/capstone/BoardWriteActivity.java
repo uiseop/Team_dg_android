@@ -72,7 +72,7 @@ public class BoardWriteActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Qna qna=new Qna(dataManager.getUser().getName(),dataManager.getUser().getId(),input_title.getText().toString(), input_content.getText().toString(),time1,0,0);
+                                Qna qna=new Qna(dataManager.getUser().getUserid(),dataManager.getUser().getId(),input_title.getText().toString(), input_content.getText().toString(),time1,0,0);
                                 post(qna);
                                 Log.d(dataManager.getUser().getName(),"이름");
                             }

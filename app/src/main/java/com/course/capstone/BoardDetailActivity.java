@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,7 +49,9 @@ public class BoardDetailActivity extends AppCompatActivity {
     TextView tv_title;
     ImageButton btn_r_write; //댓글 보내는 버튼
     ImageButton btn_like; //좋아요 버튼
-    ImageButton btn_delete; //글 삭제 버튼
+    private  ImageButton btn_rewrite;
+    ImageButton btn_delete;//글 삭제 버튼
+
     int no;
     int like;
     int view;
@@ -57,7 +60,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     String name;
 
     String date;
-    String id;
+    String personid;
     String qid;
     DataManager dataManager=DataManager.getInstance();
     SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
@@ -89,10 +92,15 @@ public class BoardDetailActivity extends AppCompatActivity {
         btn_r_write = (ImageButton) findViewById(R.id.btn_r_write); //댓글 쓰는 버튼
         btn_like = (ImageButton) findViewById(R.id.btn_like);
         btn_delete = (ImageButton) findViewById(R.id.btn_delete);
+        btn_rewrite =  findViewById(R.id.btn_rewrite);
+
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
 
 
         initialize();
+
+
         //댓글버튼 클릭시! alert창
         btn_r_write.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +111,10 @@ public class BoardDetailActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                Comment comment = new Comment(dataManager.getUser().getName(), input_r_content.getText().toString(), time2, qid);
+                                Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
+
                                 post(comment);
+
 
                             }
                         }).setNegativeButton("취소",
@@ -141,33 +151,66 @@ public class BoardDetailActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+        btn_rewrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
+                alert_confirm.setMessage("글을 수정하겠습니까?").setCancelable(false).setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                rewrite();
+                            }
+                        }).setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                AlertDialog alert = alert_confirm.create();
+                alert.show();
+            }
+        });
         setRecyclerView();
-        commentinfo();
+        commentinfo(qid);
+        if((dataManager.getUser().getId()).equals(personid)){
+            btn_rewrite.setVisibility(ImageButton.VISIBLE);
+            btn_delete.setVisibility(ImageButton.VISIBLE);
+        }
+        else{
+            btn_rewrite.setVisibility(ImageButton.GONE);
+            btn_delete.setVisibility(ImageButton.GONE);
+        }
+
     }
 
 
-    //수정
+
 
     //댓글쓰기
     //서버 연결 후 어댑터 연결
-   public void commentinfo() {
+   public void commentinfo(String qid) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CommentInterface retrofitService = retrofit.create(CommentInterface.class);
-        Call<List<Comment>> call = retrofitService.getAll();
+        Call<List<Comment>> call = retrofitService.getByQid(qid);
 
         call.enqueue(new Callback<List<Comment>>() {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 if (response.isSuccessful()) {
                     List<Comment> comment = response.body();
-                    adapter =  new ReplyTalkAdapter(getApplicationContext(),  comment);
+                    adapter =  new ReplyTalkAdapter(getApplicationContext(),  comment,personid);
                     recyclerView.setAdapter(adapter);
+
                     view=adapter.items.size();
 
                     Log.e("데이터 읽어오기 성공", String.valueOf(view));
+
 
                     txt_view.setText(String.valueOf(view));
                 } else {
@@ -196,6 +239,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                     public void onResponse(Call<Comment> call, Response<Comment> response) {
                         if (response.isSuccessful()) {
                             Log.d("--------------성공!", response.body().toString());
+
                             setResult(RESULT_OK);
                             finish();
 
@@ -214,7 +258,6 @@ public class BoardDetailActivity extends AppCompatActivity {
                 input_r_content.setText(""); //글쓰고 나서 텍스트 창 초기화
             }
 
-            //댓글
 
 
             //게시글 삭제하는 함수
@@ -248,14 +291,51 @@ public class BoardDetailActivity extends AppCompatActivity {
                 });
 
             }
-    void setRecyclerView(){
+            //수정
+            public void rewrite() {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+                Call<Qna> call = qnainterface.updateQna(qid);
+
+                call.enqueue(new Callback<Qna>() {
+                    @Override
+                    public void onResponse(Call<Qna> call, Response<Qna> response) {
+                        if (response.isSuccessful()) {
+                            Intent intent = new Intent( BoardDetailActivity.this,BoardWriteActivity.class);
+                            //변수를 해당 activity로 넘긴다.
+                            /*intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
+                            intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
+                            intent.putExtra("content", items.get(getAdapterPosition()).getContent());
+                            intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
+                            intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());*/
+
+                        } else {
+                            Log.d(TAG, "onResponse1: Something Wrong");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Qna> call, Throwable t) {
+                        Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                        ;
+                        Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
+                    }
+                });
+
+            }
+
+
+    public void setRecyclerView(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         //adapter = new CommunityTalkAdapter(getApplicationContext(), item);
         //recyclerView.setAdapter(adapter);
     }
-            public void initialize() {
+    public void initialize() {
 
                 txt_name = (TextView) findViewById(R.id.txt_name);
                 txt_date = (TextView) findViewById(R.id.txt_date);
@@ -281,7 +361,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 date = getIntent().getStringExtra("date");
                 title = getIntent().getStringExtra("title");
                 content = getIntent().getStringExtra("content");
-                id = getIntent().getStringExtra("id");
+                personid= getIntent().getStringExtra("id");
                 qid = getIntent().getStringExtra("qnaid");
 
 
