@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.CardPage;
 import com.course.capstone.activities.LoginActivity;
 import com.course.capstone.activities.PaymentPattern;
 import com.course.capstone.activities.SelectBankActivity;
@@ -132,7 +133,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Intent intent = new Intent(context, PaymentPattern.class);
                         context.startActivity(intent);
                     }
-
+                    else if(content.get(position).getTitle()=="카드추천"){
+                        Intent intent = new Intent(context, CardPage.class);
+                        context.startActivity(intent);
                 }
 
 
