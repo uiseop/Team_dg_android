@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.course.capstone.models.Comment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.ViewHolder> {
     Context context;
-    ArrayList<Comment> items;
-    public ReplyTalkAdapter(Context context, ArrayList<Comment> items) {
+    List<Comment> items;
+    public ReplyTalkAdapter(Context context, List<Comment> items) {
         this.context = context;
         this.items = items;
     }
