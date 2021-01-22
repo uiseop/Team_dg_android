@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.course.capstone.adapter.MyAdapter;
 import com.course.capstone.models.DataItem;
+import com.course.capstone.models.DataManager;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ public class MypageActivity extends AppCompatActivity {
     private RecyclerView myIdentity,myContext;
 
     private RecyclerView.LayoutManager IManager,CManger;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
