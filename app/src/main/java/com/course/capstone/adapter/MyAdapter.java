@@ -92,17 +92,16 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 public void onClick(View v) {
                     Context context = v.getContext();
 
-                    if(content.get(position).getTitle()=="내정보"){
+                    if (content.get(position).getTitle() == "내정보") {
                         Intent intent = new Intent(context, MainActivity2.class);
                         context.startActivity(intent);
-                    }
-                    else if(content.get(position).getTitle()=="로그아웃"){
+                    } else if (content.get(position).getTitle() == "로그아웃") {
                         new AlertDialog.Builder(context)
                                 .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
                                 .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         Intent i = new Intent(context, LoginActivity.class);
-                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                         User user1 = new User();
                                         dataManager.setUser(user1);
 //                                        i.putExtra("KILL",true);
@@ -116,28 +115,23 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                     }
                                 })
                                 .show();
-                    }
-                    else if(content.get(position).getTitle()=="회원정보 변경"){
+                    } else if (content.get(position).getTitle() == "회원정보 변경") {
                         Intent intent = new Intent(context, MainActivity3.class);
                         context.startActivity(intent);
-                    }
-                    else if(content.get(position).getTitle()=="은행 선택"){
+                    } else if (content.get(position).getTitle() == "은행 선택") {
                         Intent intent = new Intent(context, SelectBankActivity.class);
                         context.startActivity(intent);
-                    }
-                    else if(content.get(position).getTitle()=="관심사 선택"){
+                    } else if (content.get(position).getTitle() == "관심사 선택") {
                         Intent intent = new Intent(context, SelectConcernActivity.class);
                         context.startActivity(intent);
-                    }
-                    else if(content.get(position).getTitle()=="나의 소비패턴"){
+                    } else if (content.get(position).getTitle() == "나의 소비패턴") {
                         Intent intent = new Intent(context, PaymentPattern.class);
                         context.startActivity(intent);
-                    }
-                    else if(content.get(position).getTitle()=="카드추천"){
+                    } else if (content.get(position).getTitle() == "카드추천") {
                         Intent intent = new Intent(context, CardPage.class);
                         context.startActivity(intent);
+                    }
                 }
-
 
             });
 
