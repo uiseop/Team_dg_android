@@ -3,12 +3,15 @@ package com.course.capstone.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.course.capstone.R;
+import com.course.capstone.adapter.PaymentAdapter;
 import com.course.capstone.models.Payment;
 import com.course.capstone.models.PaymentInterface;
 import com.course.capstone.models.RetrofitInterface;
@@ -34,6 +37,11 @@ public class PaymentPattern extends AppCompatActivity {
 
     PieChart graph;
     TextView total_amount;
+
+    PaymentAdapter paymentAdapter;
+    ExpandableListView expandableListView;
+    List<String> parentData;
+    HashMap<String, List<String>> childData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,5 +125,59 @@ public class PaymentPattern extends AppCompatActivity {
             }
         });
 
+        expandableListView = (ExpandableListView)findViewById(R.id.expandable);
+        prepareListData();
+
+        paymentAdapter = new PaymentAdapter(this, parentData, childData);
+        expandableListView.setAdapter(paymentAdapter);
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                return false;
+            }
+        });
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        parentData.get(groupPosition) + " Expanded",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        parentData.get(groupPosition) + " Collapsed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                return false;
+            }
+        });
+
+    }
+    private void prepareListData(){
+        parentData = new ArrayList<String>();
+        childData = new HashMap<String, List<String>>();
+
+        parentData.add("카테고리1");
+        parentData.add("카테고리2");
+
+        List<String> category1 = new ArrayList<String>();
+        category1.add("item1");
+        category1.add("item2");
+        category1.add("item3");
+
+        List<String> category2 = new ArrayList<String>();
+        category2.add("item1");
+        category2.add("item2");
+        category2.add("item3");
+
+        childData.put(parentData.get(0),category1);
+        childData.put(parentData.get(1),category2);
     }
 }

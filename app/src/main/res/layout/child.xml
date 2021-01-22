@@ -14,4 +14,15 @@
         android:padding="5dp"
         android:text="Child TextView"
         android:textColor="#88000000"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/childtext"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:text="TextView" />
+
 </RelativeLayout>
