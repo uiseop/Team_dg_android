@@ -127,7 +127,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (content.get(position).getTitle() == "나의 소비패턴") {
                         Intent intent = new Intent(context, PaymentPattern.class);
                         context.startActivity(intent);
-                    } else if (content.get(position).getTitle() == "카드추천") {
+                    } else if (content.get(position).getTitle() == "카드 추천") {
                         Intent intent = new Intent(context, CardPage.class);
                         context.startActivity(intent);
                     }
