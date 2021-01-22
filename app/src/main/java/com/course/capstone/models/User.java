@@ -23,6 +23,9 @@ public class User {
     @Expose
     private String id;
 
+    public User() {
+    }
+
     public User(String name, String userid, String password, String birthdate, String emailaddress) {
         this.name = name;
         this.userid = userid;

@@ -23,6 +23,7 @@ public class DataManager {
     public void setUser(User user) {
         this.user = user;
     }
+
     public Payment getPayment() {
         return payment;
     }

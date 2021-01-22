@@ -3,15 +3,21 @@ package com.course.capstone.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.course.capstone.R;
+import com.course.capstone.adapter.PaymentAdapter;
+import com.course.capstone.models.Child;
 import com.course.capstone.models.Payment;
 import com.course.capstone.models.PaymentInterface;
 import com.course.capstone.models.RetrofitInterface;
+
+
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -34,6 +40,17 @@ public class PaymentPattern extends AppCompatActivity {
 
     PieChart graph;
     TextView total_amount;
+
+    PaymentAdapter paymentAdapter;
+    ExpandableListView expandableListView;
+    List<String> parentData;
+    HashMap<String, ArrayList<Child>> childData;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +60,7 @@ public class PaymentPattern extends AppCompatActivity {
         apc.put("편의점",0);
         apc.put("외식",0);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+
         final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
         PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
         Call<List<Payment>> call = paymentInterface.getPaymentList();
@@ -117,5 +131,87 @@ public class PaymentPattern extends AppCompatActivity {
             }
         });
 
+        expandableListView = (ExpandableListView)findViewById(R.id.expandable);
+        prepareListData();
+
+        paymentAdapter = new PaymentAdapter(this, parentData, childData);
+        expandableListView.setAdapter(paymentAdapter);
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                return false;
+            }
+        });
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        parentData.get(groupPosition) + " Expanded",
+//                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        parentData.get(groupPosition) + " Collapsed",
+//                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                return false;
+            }
+        });
+
+    }
+    private void prepareListData(){
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        parentData = new ArrayList<String>();
+        childData = new HashMap<String, ArrayList<Child>>();
+
+        ArrayList<Child> restaurant = new ArrayList<Child>();
+        ArrayList<Child> convenience_store = new ArrayList<Child>();
+
+        final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
+        PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
+        Call<List<Payment>> call = paymentInterface.getPaymentList();
+
+        call.enqueue(new Callback<List<Payment>>() {
+            @Override
+            public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
+                List<Payment> payment = response.body();
+
+                for (int i=0; i<payment.size(); i++){
+                    if ( parentData.contains( payment.get(i).getCategory())){
+                        if (payment.get(i).getCategory().equals("편의점")){
+                            convenience_store.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
+                        }
+                        else if(payment.get(i).getCategory().equals("외식")){
+                            restaurant.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
+                        }
+                    }
+                    else{
+                        parentData.add(payment.get(i).getCategory());
+                        if (payment.get(i).getCategory().equals("편의점")){
+                            convenience_store.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
+                        }
+                        else if(payment.get(i).getCategory().equals("외식")){
+                            restaurant.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
+                        }
+                    }
+                }
+
+                childData.put("외식",restaurant);
+                childData.put("편의점",convenience_store);
+            }
+
+            @Override
+            public void onFailure(Call<List<Payment>> call, Throwable t) {
+                Log.d("fail","prepareListData FAILED");
+            }
+        });
     }
 }

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.activities.LoginActivity;
 import com.course.capstone.activities.PaymentPattern;
 import com.course.capstone.activities.SelectBankActivity;
 import com.course.capstone.activities.SelectConcernActivity;
@@ -19,6 +21,8 @@ import com.course.capstone.MainActivity;
 import com.course.capstone.MainActivity2;
 import com.course.capstone.MainActivity3;
 import com.course.capstone.R;
+import com.course.capstone.models.DataManager;
+import com.course.capstone.models.User;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_HEADER2 = 1;
+    DataManager dataManager=DataManager.getInstance();
 
     public class idHolder extends RecyclerView.ViewHolder{
         TextView myText;
@@ -95,9 +100,13 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
                                 .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                        Intent i = new Intent(context, MainActivity.class);
+                                        Intent i = new Intent(context, LoginActivity.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                        User user1 = new User();
+                                        dataManager.setUser(user1);
+//                                        i.putExtra("KILL",true);
                                         context.startActivity(i);
+//                                        Log.d("정보",dataManager.getUser().toString());
                                     }
                                 })
                                 .setNegativeButton("취소", new DialogInterface.OnClickListener() {
