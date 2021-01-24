@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Qna {
@@ -45,7 +46,8 @@ public class Qna {
 
     @SerializedName("likepeople")
     @Expose
-    private List<String> likepeople =new ArrayList<>();
+    private List<String> likepeople;
+
 
     public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid, List<String> likepeople) {
         this.q_username = q_username;
@@ -88,7 +90,7 @@ public class Qna {
         return likepeople;
     }
 
-    public void setLikepeople(List<String> likepeople) {
+    public void setLikepeople(ArrayList<String> likepeople) {
         this.likepeople = likepeople;
     }
 

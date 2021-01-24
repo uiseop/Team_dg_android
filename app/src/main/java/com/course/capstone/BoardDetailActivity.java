@@ -62,7 +62,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     String title;
     String content;
     String name;
-    List<String> likepeoplelist=new ArrayList<>();
+    List<String> likepeoplelist;
 
     String date;
     String personid;
@@ -198,31 +198,36 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
         //좋아요 버튼 클릭시
+
         btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
+                System.out.println(likepeoplelist.contains(dataManager.getUser().getUserid()));
+            if (likepeoplelist.contains(dataManager.getUser().getUserid()) == false) {
+                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
 
-                alert_confirm.setMessage("이 댓글을 좋아요 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
+                    alert_confirm.setMessage("이 댓글을 좋아요 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
 
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Log.d("-------제발!!후후루루루-성공!", string_like.toString() );
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.d("-------제발!!후후루루루-성공!", string_like.toString());
+                                    likepeoplelist.add(dataManager.getUser().getUserid());
+                                    System.out.println(likepeoplelist);
+                                    update_like();
 
-                                update_like();
 
-
-                            }
-                        }).setNegativeButton("취소",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                return;
-                            }
-                        });
-                AlertDialog alert = alert_confirm.create();
-                alert.show();
+                                }
+                            }).setNegativeButton("취소",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    return;
+                                }
+                            });
+                    AlertDialog alert = alert_confirm.create();
+                    alert.show();
+                }
             }
         });
         setRecyclerView();
@@ -347,7 +352,7 @@ public class BoardDetailActivity extends AppCompatActivity {
    // 좋아요 기능
    public  void update_like() {
        likecount += 1;
-       likepeoplelist.add(dataManager.getUser().getUserid());
+     //  likepeoplelist.add(dataManager.getUser().getUserid());
        Qna qna=new Qna(name, personid, title, content, date, 0, likecount, qid,likepeoplelist);
 
        final TextView txt_like = (TextView) findViewById(R.id.txt_like);
@@ -417,6 +422,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         content = getIntent().getStringExtra("content");
         personid = getIntent().getStringExtra("id");
         qid = getIntent().getStringExtra("qnaid");
+        likepeoplelist=getIntent().getStringArrayListExtra("likepeople");
 
 
         txt_name.setText(name);

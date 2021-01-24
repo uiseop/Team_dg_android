@@ -16,6 +16,7 @@ import com.course.capstone.models.Qna;
 import com.course.capstone.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
@@ -93,7 +94,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     System.out.println(getPosition());
                     //어댑터에서는 this를 쓸 수 없으므로 context를 쓴다. context는 이 레이아웃의 변수들?
                     Intent intent = new Intent(context , BoardDetailActivity.class);
-                    //변수를 해당 activity로 넘긴다.
+
                    intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
                     intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
                     intent.putExtra("date", items.get(getAdapterPosition()).getDate());
@@ -101,6 +102,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
                     intent.putExtra("id", items.get(getAdapterPosition()).getId());
                     intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());
+
+                   // intent.putExtra("likepeople", items.get(getAdapterPosition()).getLikepeople());
+
 
                     Log.d(items.get(getAdapterPosition()).getId(),"id");
                     context.startActivityForResult(intent,Activity.RESULT_OK);
