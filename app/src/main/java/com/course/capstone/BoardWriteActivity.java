@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,10 +28,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.view.View.inflate;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class BoardWriteActivity extends AppCompatActivity {
-
 
 
     private ActionBar actionBar;
@@ -39,14 +40,20 @@ public class BoardWriteActivity extends AppCompatActivity {
     private EditText input_pwd;
     private EditText input_title;
     private EditText input_content;
-    DataManager dataManager=DataManager.getInstance();
+    DataManager dataManager = DataManager.getInstance();
     TextView tv_title;
     ImageButton btn_write;
-    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-    Date date=new Date();
+    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date = new Date();
     String time1 = format1.format(date);
-
-
+    String retitle;
+    String recontent;
+    String reqid;
+    String rename;
+    String redate;
+    String repersonid;
+    int edit;
+    boolean rewrite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +70,22 @@ public class BoardWriteActivity extends AppCompatActivity {
         input_content = findViewById(R.id.input_content);
         btn_write = (ImageButton) findViewById(R.id.btn_delete);
 
+        retitle = getIntent().getStringExtra("title");
+        input_title.setText(retitle);
+        recontent = getIntent().getStringExtra("content");
+        input_content.setText(recontent);
+        reqid = getIntent().getStringExtra("qnaid");
+        rename = getIntent().getStringExtra("name");
+
+        repersonid = getIntent().getStringExtra("personid");
+        edit= getIntent().getIntExtra("edit",0);
+        System.out.println(edit);
+
+
         //공유버튼 클릭시 alert창
+
         btn_write.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardWriteActivity.this);
@@ -72,9 +93,20 @@ public class BoardWriteActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Qna qna=new Qna(dataManager.getUser().getUserid(),dataManager.getUser().getId(),input_title.getText().toString(), input_content.getText().toString(),time1,0,0);
-                                post(qna);
-                                Log.d(dataManager.getUser().getName(),"이름");
+
+                                if(edit==1){
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0, reqid);
+                                    rewrite(re_qna);
+                                }
+                                else{
+                                Qna first_qna = new Qna(dataManager.getUser().getUserid(), dataManager.getUser().getId(), input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0);
+                                post(first_qna);
+                                Log.d(dataManager.getUser().getName(), "이름");}
+
+
+
+                                Intent intent = new Intent(BoardWriteActivity.this, CommonBoardFragment.class);
+                                startActivity(intent);
                             }
                         }).setNegativeButton("취소",
                         new DialogInterface.OnClickListener() {
@@ -87,41 +119,75 @@ public class BoardWriteActivity extends AppCompatActivity {
                 alert.show();
 
             }
+        });}
+
+
+
+
+
+
+    public void post(Qna qna) {
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+        Call<Qna> call = qnainterface.addqna(qna);
+
+        call.enqueue(new Callback<Qna>() {
+            @Override
+            public void onResponse(Call<Qna> call, Response<Qna> response) {
+                if (response.isSuccessful()) {
+                    Log.d("--------------성공!", response.body().toString());
+
+                    setResult(RESULT_OK);
+                    finish();
+
+                } else {
+                    Log.d(TAG, "onResponse1: Something Wrong");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Qna> call, Throwable t) {
+                Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                ;
+                Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
+            }
         });
     }
-        public void post(Qna qna) {
+
+    public void rewrite(Qna qna) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+        Call<Qna> call = qnainterface.updateQna(reqid, qna);
+
+        call.enqueue(new Callback<Qna>() {
+            @Override
+            public void onResponse(Call<Qna> call, Response<Qna> response) {
+                if (response.isSuccessful()) {
 
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            QnaInterface qnainterface = retrofit.create(QnaInterface.class);
-            Call<Qna> call = qnainterface.addqna(qna);
-
-            call.enqueue(new Callback<Qna>() {
-                @Override
-                public void onResponse(Call<Qna> call, Response<Qna> response) {
-                    if (response.isSuccessful()){
-                        Log.d("--------------성공!", response.body().toString());
-
-                        setResult(RESULT_OK);
-                        finish();
-
-                    }
-                    else{
-                        Log.d(TAG, "onResponse1: Something Wrong");
-                    }
+                } else {
+                    Log.d(TAG, "onResponse1: Something Wrong");
                 }
+            }
 
-                @Override
-                public void onFailure(Call<Qna>call, Throwable t) {
-                    Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.",Toast.LENGTH_LONG).show();;
-                    Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
-                }
-            });
-        }
-        }
+            @Override
+            public void onFailure(Call<Qna> call, Throwable t) {
+                Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                ;
+                Log.d(TAG, "onFailure2:수정 왜안돼");
+            }
+        });
+
+    }
+}
 
 
 

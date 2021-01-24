@@ -72,6 +72,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     private EditText input_r_content;
     RecyclerView recyclerView;
     ReplyTalkAdapter adapter;
+    int code=1;
    // CommunityTalkAdapter adapter_talk_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +161,21 @@ public class BoardDetailActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                rewrite();
+                                Intent intent = new Intent( BoardDetailActivity.this,BoardWriteActivity.class);
+                                //변수를 해당 activity로 넘긴다.
+
+                                intent.putExtra("title", title);
+                                intent.putExtra("name", name);
+                                intent.putExtra("content", content);
+                                intent.putExtra("qnaid", qid);
+
+                                intent.putExtra("personid", personid);
+                                intent.putExtra("edit",code);
+
+
+                                 startActivity(intent);
+
+
                             }
                         }).setNegativeButton("취소",
                         new DialogInterface.OnClickListener() {
@@ -284,41 +299,6 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
-                        ;
-                        Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
-                    }
-                });
-
-            }
-            //수정
-            public void rewrite() {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                QnaInterface qnainterface = retrofit.create(QnaInterface.class);
-                Call<Qna> call = qnainterface.updateQna(qid);
-
-                call.enqueue(new Callback<Qna>() {
-                    @Override
-                    public void onResponse(Call<Qna> call, Response<Qna> response) {
-                        if (response.isSuccessful()) {
-                            Intent intent = new Intent( BoardDetailActivity.this,BoardWriteActivity.class);
-                            //변수를 해당 activity로 넘긴다.
-                            /*intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
-                            intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
-                            intent.putExtra("content", items.get(getAdapterPosition()).getContent());
-                            intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
-                            intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());*/
-
-                        } else {
-                            Log.d(TAG, "onResponse1: Something Wrong");
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Qna> call, Throwable t) {
                         Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
                         ;
                         Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
