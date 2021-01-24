@@ -11,13 +11,13 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.CardPage;
 import com.course.capstone.activities.LoginActivity;
 import com.course.capstone.activities.PaymentPattern;
 import com.course.capstone.activities.SelectBankActivity;
 import com.course.capstone.activities.SelectConcernActivity;
 import com.course.capstone.models.DataItem;
-import com.course.capstone.MainActivity2;
-import com.course.capstone.activities.CorrectMyInfo;
+import com.course.capstone.activities.MyInfoActivity;
 import com.course.capstone.R;
 import com.course.capstone.models.DataManager;
 import com.course.capstone.models.User;
@@ -90,7 +90,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     Context context = v.getContext();
 
                     if(content.get(position).getTitle()=="내정보"){
-                        Intent intent = new Intent(context, MainActivity2.class);
+                        Intent intent = new Intent(context, MyInfoActivity.class);
                         context.startActivity(intent);
                     }
                     else if(content.get(position).getTitle()=="로그아웃"){
@@ -114,10 +114,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 })
                                 .show();
                     }
-                    else if(content.get(position).getTitle()=="회원정보 변경"){
-                        Intent intent = new Intent(context, CorrectMyInfo.class);
-                        context.startActivity(intent);
-                    }
                     else if(content.get(position).getTitle()=="은행 선택"){
                         Intent intent = new Intent(context, SelectBankActivity.class);
                         context.startActivity(intent);
@@ -130,9 +126,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         Intent intent = new Intent(context, PaymentPattern.class);
                         context.startActivity(intent);
                     }
-
+                    else if(content.get(position).getTitle()=="카드 추천"){
+                        Intent intent = new Intent(context, CardPage.class);
+                        context.startActivity(intent);
+                    }
                 }
-
 
             });
 

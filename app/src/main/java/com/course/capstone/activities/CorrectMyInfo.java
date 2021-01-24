@@ -38,7 +38,6 @@ public class CorrectMyInfo extends AppCompatActivity {
             .build();
 
     UserInterface userInterface = retrofit.create(UserInterface.class);
-    RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
 
     DataManager dataManager = DataManager.getInstance();
     User user = dataManager.getUser();
@@ -97,7 +96,6 @@ public class CorrectMyInfo extends AppCompatActivity {
                 String birth = correct_birth.getText().toString();
                 String email=  correct_email.getText().toString();
 
-                User newuser = new User(name, ID, pw, birth, email);
                 user.setUserid(ID);
                 user.setName(name);
                 user.setPassword(pw);
