@@ -67,15 +67,16 @@ public class MainActivity extends AppCompatActivity {
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag1()).commit();
                         mToolbarLeftTitle.setText("따끈따끈 금융");
+                        mypageImageButton.setVisibility(ImageButton.VISIBLE);
                         break;
                     case R.id.action_settings:
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag2()).commit();
                         mToolbarLeftTitle.setText("게시판");
                         mypageImageButton.setVisibility(ImageButton.GONE);
-//                        break;
-//                    case R.id.action_navigation:
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
+                        break;
+                    case R.id.action_navigation:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
                         break;
 
                 }

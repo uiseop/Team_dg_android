@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -35,11 +36,9 @@ public class SelectBankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_bank);
 
         btn = (Button)findViewById(R.id.bank_complete);
-        acc = (EditText)findViewById(R.id.account);
-        String account = acc.getText().toString();
-        //이 account를 db에 저장해주기
-        BankAdapter adapter;
+        acc = (EditText) findViewById(R.id.account);
 
+        BankAdapter adapter;
         adapter = new BankAdapter();
 
         listView = (ListView)findViewById(R.id.bank_lv);
@@ -54,6 +53,8 @@ public class SelectBankActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String account = acc.getText().toString();
+                //이 account를 db에 저장해주기
                 Intent intent = new Intent(SelectBankActivity.this, MypageActivity.class);
                 startActivity(intent);
             }

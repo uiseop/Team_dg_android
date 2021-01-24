@@ -1,14 +1,16 @@
-package com.course.capstone;
+package com.course.capstone.activities.education;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity2 extends AppCompatActivity {
+import com.course.capstone.R;
+
+public class EducationBank extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_education_bank);
     }
 }
