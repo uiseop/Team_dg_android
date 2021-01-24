@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface CommentInterface {
@@ -28,4 +29,8 @@ public interface CommentInterface {
 
     @DELETE("api/v1/comment/delete/{id}")
     Call<Void> removeComment(@Path("id") String id);
+
+
+    @PUT("api/v1/comment/update/{id}")
+    Call<Comment> updateComment(@Path("id") String id,@Body Comment comment);
 }

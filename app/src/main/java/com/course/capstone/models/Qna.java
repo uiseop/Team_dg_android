@@ -37,11 +37,22 @@ public class Qna {
     @SerializedName("likerate")
     @Expose
     private int LikeCount;
-
-
     @SerializedName("id")
     @Expose
     private String qnaid;
+
+
+    public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid) {
+        this.q_username = q_username;
+        this.id = id;
+        Title = title;
+        Content = content;
+        Date = date;
+        this.commentCount = commentCount;
+        LikeCount = likeCount;
+        this.qnaid = qnaid;
+    }
+
 
 
         public Qna(String q_username, String id,String title, String content, String date, int commentCount, int likeCount) {

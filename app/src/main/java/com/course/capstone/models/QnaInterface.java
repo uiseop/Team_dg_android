@@ -27,7 +27,7 @@ public interface QnaInterface {
     Call<Void> removeQna(@Path("id") String id);
 
     @PUT("api/v1/qna/update/{id}")
-    Call<Qna> updateQna(@Path("id") String id);
+    Call<Qna> updateQna(@Path("id") String id,@Body Qna qna);
 
 
 }

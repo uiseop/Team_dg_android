@@ -1,6 +1,7 @@
 package com.course.capstone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
 import com.course.capstone.models.DataManager;
+import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
 
 import java.util.ArrayList;
@@ -91,6 +93,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
             btn_r_menu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Comment comment= new Comment(items.get(getAdapterPosition()).getCommentpeople(), items.get(getAdapterPosition()).getCommentcontent(), items.get(getAdapterPosition()).getCommentcontent(), items.get(getAdapterPosition()).getParentid());
                     final PopupMenu popupMenu = new PopupMenu(context, itemView);
                     popupMenu.getMenuInflater().inflate(R.menu.coment_popup, popupMenu.getMenu());
 
@@ -100,12 +103,14 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                             if (menuItem.getItemId() == R.id.action_delete) {
                                 comentdelete( items.get(getAdapterPosition()).getCommentid());
 
-                            }/* else if (menuItem.getItemId() == R.id.action_recommentwrite) {
+                            } else if (menuItem.getItemId() == R.id.action_recommentwrite) {
+                               // Intent intent=new Intent(context,)
+                               // comment_rewrite(comment,items.get(getAdapterPosition()).getCommentid());
 
                             } else {
 
                             }
-*/
+
                             return false;
                         }
 
@@ -152,5 +157,34 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
         });
 
     }
+ /*  public void comment_rewrite(Comment comment,String comment_id){
 
-}
+           Retrofit retrofit = new Retrofit.Builder()
+                   .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                   .addConverterFactory(GsonConverterFactory.create())
+                   .build();
+           CommentInterface commentinterface = retrofit.create(CommentInterface.class);
+           Call<Comment> call = commentinterface.updateComment(comment_id, comment);
+
+           call.enqueue(new Callback<Comment>() {
+               @Override
+               public void onResponse(Call<Comment> call, Response<Comment> response) {
+                   if (response.isSuccessful()) {
+
+
+                   } else {
+                       Log.d(TAG, "onResponse1: Something Wrong");
+                   }
+               }
+
+               @Override
+               public void onFailure(Call<Comment> call, Throwable t) {
+                   Toast.makeText(context, "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                   ;
+                   Log.d(TAG, "onFailure2:수정 왜안돼");
+               }
+           });
+
+       }*/
+   }
+
