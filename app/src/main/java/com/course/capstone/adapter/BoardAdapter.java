@@ -103,7 +103,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());
 
                     Log.d(items.get(getAdapterPosition()).getId(),"id");
-                    context.startActivity(intent);
+                    context.startActivityForResult(intent,Activity.RESULT_OK);
                 }
             });
 
@@ -115,4 +115,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             count = itemView.findViewById(R.id.tv_text_view);
         }
     }
+
+
 }

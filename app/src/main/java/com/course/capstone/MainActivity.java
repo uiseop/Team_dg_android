@@ -1,9 +1,12 @@
 package com.course.capstone;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main_Activity";
+    private static final int REQUESTCODE_REVIEW_WRITE = 1002;
     private BottomNavigationView mBottomNavigationView;
     private ActionBar actionBar;
     private ImageButton mypageImageButton;
@@ -53,24 +57,25 @@ public class MainActivity extends AppCompatActivity {
 
         // 크롤링 시작
 
-        mBottomNavigationView=findViewById(R.id.bottomNavBar);
+        mBottomNavigationView = findViewById(R.id.bottomNavBar);
 
         //첫 화면 띄우기
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_container,new Frag1()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_container, new Frag1()).commit();
         mToolbarLeftTitle.setText("따끈따끈 금융");
         //case 함수를 통해 클릭 받을 때마다 화면 변경하기
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.action_search :
+                switch (item.getItemId()) {
+                    case R.id.action_search:
 
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag1()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag1()).commit();
                         mToolbarLeftTitle.setText("따끈따끈 금융");
+                        mypageImageButton.setVisibility(ImageButton.VISIBLE);
                         break;
                     case R.id.action_settings:
 
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag2()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag2()).commit();
                         mToolbarLeftTitle.setText("게시판");
                         mypageImageButton.setVisibility(ImageButton.GONE);
 //                        break;
@@ -86,7 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onActivityResult(ActivityResultEvent activityResultEvent) {
+        onActivityResult(activityResultEvent.getRequestCode(), activityResultEvent.getResultCode(), activityResultEvent.getData());
+    }
 
 }
+
+
+
+
 
 

@@ -53,7 +53,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     String redate;
     String repersonid;
     int edit;
-    boolean rewrite;
+int relike;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +76,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         input_content.setText(recontent);
         reqid = getIntent().getStringExtra("qnaid");
         rename = getIntent().getStringExtra("name");
-
+        relike=getIntent().getIntExtra("like",0);
         repersonid = getIntent().getStringExtra("personid");
         edit= getIntent().getIntExtra("edit",0);
         System.out.println(edit);
@@ -95,7 +95,7 @@ public class BoardWriteActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 if(edit==1){
-                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0, reqid);
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, 0, relike, reqid);
                                     rewrite(re_qna);
                                 }
                                 else{
@@ -105,8 +105,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
 
 
-                                Intent intent = new Intent(BoardWriteActivity.this, CommonBoardFragment.class);
-                                startActivity(intent);
+
                             }
                         }).setNegativeButton("취소",
                         new DialogInterface.OnClickListener() {
