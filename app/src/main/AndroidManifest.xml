@@ -15,7 +15,7 @@
         <activity android:name=".BoardWriteActivity">
         </activity>
         <activity android:name=".BoardDetailActivity" />
-        <activity android:name=".MainActivity3" />
+        <activity android:name=".activities.CorrectMyInfo" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".CardPage"/>
         <activity android:name=".MypageActivity" >
