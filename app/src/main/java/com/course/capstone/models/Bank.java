@@ -2,16 +2,38 @@ package com.course.capstone.models;
 
 import android.graphics.drawable.Drawable;
 
-public class Bank {
-    private Drawable icon;
-    private String text;
-    private String account;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    public String getAccount() {
+public class Bank {
+
+    private Drawable icon;
+    @SerializedName("bankname")
+    @Expose
+    private String text;
+    @SerializedName("account")
+    @Expose
+    private int account;
+    @SerializedName("parentid")
+    @Expose
+    private String parentid;
+
+    DataManager dataManager = DataManager.getInstance();
+    public void setParentid(){
+        this.parentid = dataManager.getUser().getId();
+    }
+
+    public Bank(String text, int account, String parentid) {
+        this.text = text;
+        this.account = account;
+        this.parentid = parentid;
+    }
+
+    public int getAccount() {
         return account;
     }
 
-    public void setAccount(String account) {
+    public void setAccount(int account) {
         this.account = account;
     }
 
