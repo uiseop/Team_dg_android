@@ -51,11 +51,12 @@ public class BoardWriteActivity extends AppCompatActivity {
     String recontent;
     String reqid;
     String rename;
-int recomment;
+    int recomment;
     String repersonid;
     ArrayList<String> likepeople;
     int edit;
-int relike;
+    int relike;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,11 +79,11 @@ int relike;
         input_content.setText(recontent);
         reqid = getIntent().getStringExtra("qnaid");
         rename = getIntent().getStringExtra("name");
-        relike=getIntent().getIntExtra("like",0);
-        recomment=getIntent().getIntExtra("comment",0);
+        relike = getIntent().getIntExtra("like", 0);
+        recomment = getIntent().getIntExtra("comment", 0);
         repersonid = getIntent().getStringExtra("personid");
-        edit= getIntent().getIntExtra("edit",0);
-        likepeople=getIntent().getStringArrayListExtra("likepeoplelist");
+        edit = getIntent().getIntExtra("edit", 0);
+        likepeople = getIntent().getStringArrayListExtra("likepeoplelist");
         System.out.println(edit);
 
 
@@ -98,16 +99,16 @@ int relike;
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if(edit==1){
-                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, recomment, relike, reqid,likepeople);
+                                if (edit == 1) {
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, recomment, relike, reqid, likepeople);
                                     rewrite(re_qna);
+                                } else {
+                                    Qna first_qna = new Qna(dataManager.getUser().getUserid(), dataManager.getUser().getId(), input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0);
+                                    post(first_qna);
+                                    Log.d(dataManager.getUser().getName(), "이름");
                                 }
-                                else{
-                                Qna first_qna = new Qna(dataManager.getUser().getUserid(), dataManager.getUser().getId(), input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0);
-                                post(first_qna);
-                                Log.d(dataManager.getUser().getName(), "이름");}
-
-
+                                Intent intent=new Intent(BoardWriteActivity.this,CommonBoardFragment.class);
+                                startActivity(intent);
 
 
                             }
@@ -122,11 +123,8 @@ int relike;
                 alert.show();
 
             }
-        });}
-
-
-
-
+        });
+    }
 
 
     public void post(Qna qna) {
@@ -174,7 +172,8 @@ int relike;
             @Override
             public void onResponse(Call<Qna> call, Response<Qna> response) {
                 if (response.isSuccessful()) {
-
+                    setResult(RESULT_OK);
+                    finish();
 
                 } else {
                     Log.d(TAG, "onResponse1: Something Wrong");

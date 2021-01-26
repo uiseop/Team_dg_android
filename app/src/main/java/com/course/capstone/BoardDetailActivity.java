@@ -266,6 +266,8 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
         setRecyclerView();
         commentinfo(qid);
+        Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+        update_like(qna);
         if ((dataManager.getUser().getId()).equals(personid)) {
             btn_rewrite.setVisibility(ImageButton.VISIBLE);
             btn_delete.setVisibility(ImageButton.VISIBLE);
@@ -292,10 +294,12 @@ public class BoardDetailActivity extends AppCompatActivity {
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 if (response.isSuccessful()) {
                     List<Comment> comment = response.body();
+
                     adapter = new ReplyTalkAdapter(getApplicationContext(), comment, personid);
+                    commentcount = adapter.items.size();
                     recyclerView.setAdapter(adapter);
 
-                    commentcount = adapter.items.size();
+
 
                     Log.e("데이터 읽어오기 성공", String.valueOf(commentcount));
 

@@ -35,6 +35,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
     Context context;
     List<Comment> items;
     String personid;
+
     DataManager dataManager=DataManager.getInstance();
     ImageButton btn_r_menu;
 
@@ -43,6 +44,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
         this.context = context;
         this.items = items;
         this.personid=personid;
+
     }
 
     @Override
@@ -101,6 +103,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             if (menuItem.getItemId() == R.id.action_delete) {
+
                                 comentdelete( items.get(getAdapterPosition()).getCommentid());
 
                             } else if (menuItem.getItemId() == R.id.action_recommentwrite) {
@@ -155,6 +158,28 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                 Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
             }
         });
+       /* Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+
+        QnaInterface retrofitService = retrofit.create(QnaInterface.class);
+        Call<Qna> call1 = retrofitService.updateQna(qid,qna);
+
+        call.enqueue(new Callback<Qna>() {
+            @Override
+            public void onResponse(Call<Qna> call, Response<Qna> response) {
+                Log.d("좋아요 기능 성공!", string_like.toString());
+                Toast.makeText(getApplicationContext(),  "감사합니다.", Toast.LENGTH_LONG).show();
+                txt_like.setText(string_like);
+                setResult(RESULT_OK);
+
+            }
+
+            @Override
+            public void onFailure(Call<Qna> call, Throwable t) {
+                Log.e("좋아요 기능 실패ㅠㅠ", t.getMessage());
+            }
+
+        });*/
+
 
     }
  /*  public void comment_rewrite(Comment comment,String comment_id){

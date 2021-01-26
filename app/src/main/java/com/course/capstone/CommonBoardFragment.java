@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Qna;
@@ -40,7 +41,7 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
     private RecyclerView mBoardRecyclerView;
     private ArrayList<Qna> mBoardArrayList;
     private BoardAdapter mBoardAdapter;
-    private FloatingActionButton bFab;
+    SwipeRefreshLayout refreshLayout; //당겨서 새로고침
 
     @Nullable
     @Override
@@ -53,6 +54,7 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mBoardRecyclerView.setLayoutManager(layoutManager);
         mBoardRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
         boardinfo();
 
         FloatingActionButton onButtonClickedInputRecord1 = (FloatingActionButton) rootView.findViewById(R.id.board_fab);
