@@ -61,7 +61,13 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
         onButtonClickedInputRecord1.setOnClickListener(this);
         FloatingActionButton onButtonClickedInputRecord2 = (FloatingActionButton) rootView.findViewById(R.id.board_search_fab);
         onButtonClickedInputRecord2.setOnClickListener(this);
-
+        //새로고침 당겨서 하기 구현
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                boardinfo();
+            }
+        });
 
         return rootView;
     }
@@ -76,7 +82,7 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
                 //버튼 클릭시 아래 구현이 실행된다.
                 System.out.println("InputRecord clicked");
                 getActivity().startActivity(new Intent(getActivity(), BoardWriteActivity.class));
-                
+
                 break;
             case R.id.board_search_fab:
                 //버튼 클릭시 아래 구현이 실행된다.
@@ -104,9 +110,11 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
                     List<Qna> qna = response.body();
                     mBoardAdapter = new BoardAdapter(getActivity(), qna);
                     mBoardRecyclerView.setAdapter(mBoardAdapter);
+                    refreshLayout.setRefreshing(false);
                 } else {
                     Log.d(TAG, "onResponse1: Something Wrong");
                 }
+
             }
 
             @Override

@@ -272,8 +272,10 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
         setRecyclerView();
         commentinfo(qid);
-        Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+      /*  Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
         update_like(qna);
+
+       */
         if ((dataManager.getUser().getId()).equals(personid)) {
             btn_rewrite.setVisibility(ImageButton.VISIBLE);
             btn_delete.setVisibility(ImageButton.VISIBLE);
@@ -358,7 +360,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 Log.e("왜 안되는건데...?", t.getMessage());
             }
         });
-        Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+       Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
         System.out.println(commentcount);
         QnaInterface retrofitService1 = retrofit.create(QnaInterface.class);
         Call<Qna> call2 = retrofitService1.updateQna(qid,qna);
