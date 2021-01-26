@@ -1,13 +1,7 @@
 package com.course.capstone;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,15 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
-import com.course.capstone.models.User;
-import com.course.capstone.models.UserInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,61 +32,30 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class CommonBoardFragment extends Fragment implements View.OnClickListener {
-    ViewGroup rootView;
 
-    private RecyclerView mBoardRecyclerView;
-    private ArrayList<Qna> mBoardArrayList;
-    private BoardAdapter mBoardAdapter;
-    SwipeRefreshLayout refreshLayout; //당겨서 새로고침
+public class Hot_hotFragment extends Fragment {
+    ViewGroup rootView;
+    private RecyclerView HotRecyclerView;
+    private HotAdapter HotAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_common_board, container, false);
-        mBoardRecyclerView = (RecyclerView) rootView.findViewById(R.id.board_recycler_view);
-        mBoardRecyclerView.setHasFixedSize(true);
+        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_hot_hot, container, false);
+        HotRecyclerView = (RecyclerView) rootView.findViewById(R.id.h_recyclerview);
+        HotRecyclerView.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        mBoardRecyclerView.setLayoutManager(layoutManager);
-        mBoardRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
-        boardinfo();
-
-        FloatingActionButton onButtonClickedInputRecord1 = (FloatingActionButton) rootView.findViewById(R.id.board_fab);
-        onButtonClickedInputRecord1.setOnClickListener(this);
-        FloatingActionButton onButtonClickedInputRecord2 = (FloatingActionButton) rootView.findViewById(R.id.board_search_fab);
-        onButtonClickedInputRecord2.setOnClickListener(this);
-
+        HotRecyclerView.setLayoutManager(layoutManager);
+        HotRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+      //  refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
+        hotinfo();
 
         return rootView;
     }
-
-    @Override
-    public void onClick(View v) {
-        FloatingActionButton bFab = (FloatingActionButton) v;
-
-        switch (bFab.getId()) {
-            //id에 따라서 다른 구현을 한다.
-            case R.id.board_fab:
-                //버튼 클릭시 아래 구현이 실행된다.
-                System.out.println("InputRecord clicked");
-                getActivity().startActivity(new Intent(getActivity(), BoardWriteActivity.class));
-                
-                break;
-            case R.id.board_search_fab:
-                //버튼 클릭시 아래 구현이 실행된다.
-                System.out.println("InputRecord clicked");
-                getActivity().startActivity(new Intent(getActivity(), BoardSearchActivity.class));
-                break;
-        }
-
-
-    }
-
     //서버 연결 후 어댑터 연결
-    public void boardinfo() {
+    public void hotinfo() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -102,8 +68,9 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
             public void onResponse(Call<List<Qna>> call, Response<List<Qna>> response) {
                 if (response.isSuccessful()) {
                     List<Qna> qna = response.body();
-                    mBoardAdapter = new BoardAdapter(getActivity(), qna);
-                    mBoardRecyclerView.setAdapter(mBoardAdapter);
+
+                    HotAdapter = new HotAdapter(getActivity(), qna);
+                    HotRecyclerView.setAdapter(HotAdapter);
                 } else {
                     Log.d(TAG, "onResponse1: Something Wrong");
                 }
@@ -137,7 +104,8 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
 
 
 
-    }
+}
+
 
 
 

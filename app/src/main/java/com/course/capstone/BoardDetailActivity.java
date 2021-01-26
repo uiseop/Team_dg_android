@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -78,7 +79,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ReplyTalkAdapter adapter;
     int code = 1;
-
+    SwipeRefreshLayout refreshLayout; //당겨서 새로고침
 
     // CommunityTalkAdapter adapter_talk_list;
     @Override
@@ -122,7 +123,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
 
                                 post(comment);
-
+                                refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
 
                             }
                         }).setNegativeButton("취소",
@@ -266,6 +267,8 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
         setRecyclerView();
         commentinfo(qid);
+        Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+        update_like(qna);
         if ((dataManager.getUser().getId()).equals(personid)) {
             btn_rewrite.setVisibility(ImageButton.VISIBLE);
             btn_delete.setVisibility(ImageButton.VISIBLE);
@@ -292,10 +295,12 @@ public class BoardDetailActivity extends AppCompatActivity {
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 if (response.isSuccessful()) {
                     List<Comment> comment = response.body();
+
                     adapter = new ReplyTalkAdapter(getApplicationContext(), comment, personid);
+                    commentcount = adapter.items.size();
                     recyclerView.setAdapter(adapter);
 
-                    commentcount = adapter.items.size();
+
 
                     Log.e("데이터 읽어오기 성공", String.valueOf(commentcount));
 
@@ -403,7 +408,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
-                ;
+
                 Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
             }
         });
