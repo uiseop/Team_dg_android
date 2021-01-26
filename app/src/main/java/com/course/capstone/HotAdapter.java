@@ -29,6 +29,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotViewHolder> {
         this.context = mContext;
         this.items = items;
         //addItems(items);
+
     }
 
     @Override
@@ -45,6 +46,10 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotViewHolder> {
     public void addItem(Qna item) {
         items.add(item);
     }
+    public void removeItem(Qna item) {
+        items.remove(item);
+    }
+
 
     //한꺼번에 추가해주고싶을떄
     public void addItems(List<Qna> items) {
@@ -72,6 +77,12 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotViewHolder> {
                     return b.getDate().compareTo(a.getDate());
                 }
             };
+        Comparator<Qna> likecomparator = new Comparator<Qna>() {
+            @Override
+            public int compare(Qna a, Qna b) {
+                return b.getLikeCount()-a.getLikeCount();
+            }
+        };
             Collections.sort(items, datecomparator);
 
 
@@ -104,6 +115,7 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotViewHolder> {
 
         public HotViewHolder(@NonNull View itemView) {
             super(itemView);
+
                 itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

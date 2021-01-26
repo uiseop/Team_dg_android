@@ -70,8 +70,15 @@ public class Hot_hotFragment extends Fragment {
                     List<Qna> qna = response.body();
 
                     HotAdapter = new HotAdapter(getActivity(), qna);
+                    for (int i = 0; i < qna.size(); i++) {
+                        if (qna.get(i).getLikeCount() < 10) {
+                            HotAdapter.removeItem(qna.get(i));
+
+                        }
+                    }
                     HotRecyclerView.setAdapter(HotAdapter);
-                } else {
+                }
+                else {
                     Log.d(TAG, "onResponse1: Something Wrong");
                 }
             }

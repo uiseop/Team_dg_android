@@ -78,6 +78,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     private EditText input_r_content;
     RecyclerView recyclerView;
     ReplyTalkAdapter adapter;
+    HotAdapter hotadapter;
     int code = 1;
     SwipeRefreshLayout refreshLayout; //당겨서 새로고침
 
@@ -219,6 +220,10 @@ public class BoardDetailActivity extends AppCompatActivity {
                                     likecount += 1;
                                     Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
                                     update_like(qna);
+                                    /*if(likecount>10){
+                                        hotadapter.addItem(qna);
+
+                                    }*/
 
 
                                 }
@@ -340,6 +345,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                     txt_view.setText(String.valueOf(commentcount));
                     setResult(RESULT_OK);
+
                     System.out.println(commentcount);
 
                 } else {
