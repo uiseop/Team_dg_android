@@ -49,6 +49,7 @@ dependencies {
 
     implementation 'com.github.PhilJay:MpAndroidChart:v3.0.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 
     testImplementation 'junit:junit:4.+'

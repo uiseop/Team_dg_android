@@ -107,8 +107,7 @@ public class BoardWriteActivity extends AppCompatActivity {
                                     post(first_qna);
                                     Log.d(dataManager.getUser().getName(), "이름");
                                 }
-                                Intent intent=new Intent(BoardWriteActivity.this,CommonBoardFragment.class);
-                                startActivity(intent);
+
 
 
                             }
@@ -121,6 +120,8 @@ public class BoardWriteActivity extends AppCompatActivity {
                         });
                 AlertDialog alert = alert_confirm.create();
                 alert.show();
+                //Intent intent=new Intent(BoardWriteActivity.this,CommonBoardFragment.class);
+
 
             }
         });

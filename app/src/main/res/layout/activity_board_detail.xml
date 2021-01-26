@@ -176,18 +176,20 @@
             android:gravity="bottom"
             android:orientation="vertical"
             android:weightSum="10">
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_comment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="8.95">
+                android:layout_weight="8.95"
+                android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
             <View
                 android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Qna {
@@ -85,6 +86,26 @@ public class Qna {
             this.LikeCount = likeCount;
 
         }
+    Comparator<Qna> comparator = new Comparator<Qna>() {
+        @Override
+        public int compare(Qna a, Qna b) {
+            return b.getLikeCount() - a.getLikeCount();
+        }
+    };
+
+    static class SortByDate implements Comparator<Qna> {
+        @Override
+        public int compare(Qna a, Qna b) {
+            return a.Date.compareTo(b.Date);
+        }
+    }
+
+    static class SortByLikecount implements Comparator<Qna> {
+        @Override
+        public int compare(Qna a, Qna b) {
+            return a.LikeCount- b.LikeCount;
+        }
+    }
     public ArrayList<String> getLikepeople() {
         return likepeople;
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -78,7 +79,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ReplyTalkAdapter adapter;
     int code = 1;
-
+    SwipeRefreshLayout refreshLayout; //당겨서 새로고침
 
     // CommunityTalkAdapter adapter_talk_list;
     @Override
@@ -122,7 +123,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
 
                                 post(comment);
-
+                                refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
 
                             }
                         }).setNegativeButton("취소",
@@ -407,7 +408,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
-                ;
+
                 Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
             }
         });

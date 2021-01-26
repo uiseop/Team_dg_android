@@ -106,6 +106,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
 
                                 comentdelete( items.get(getAdapterPosition()).getCommentid());
 
+
                             } else if (menuItem.getItemId() == R.id.action_recommentwrite) {
                                // Intent intent=new Intent(context,)
                                // comment_rewrite(comment,items.get(getAdapterPosition()).getCommentid());
@@ -145,6 +146,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                     Log.d(TAG, "onResponse1: Something");
 
 
+                    Toast.makeText(context, "댓글이 삭제되었습니다", Toast.LENGTH_LONG).show();
 
                 } else {
                     Log.d(TAG, "onResponse1: Something Wrong");
