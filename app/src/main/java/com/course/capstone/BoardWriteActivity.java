@@ -20,6 +20,7 @@ import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -50,8 +51,9 @@ public class BoardWriteActivity extends AppCompatActivity {
     String recontent;
     String reqid;
     String rename;
-    String redate;
+int recomment;
     String repersonid;
+    ArrayList<String> likepeople;
     int edit;
 int relike;
     @Override
@@ -77,8 +79,10 @@ int relike;
         reqid = getIntent().getStringExtra("qnaid");
         rename = getIntent().getStringExtra("name");
         relike=getIntent().getIntExtra("like",0);
+        recomment=getIntent().getIntExtra("comment",0);
         repersonid = getIntent().getStringExtra("personid");
         edit= getIntent().getIntExtra("edit",0);
+        likepeople=getIntent().getStringArrayListExtra("likepeoplelist");
         System.out.println(edit);
 
 
@@ -95,7 +99,7 @@ int relike;
                             public void onClick(DialogInterface dialog, int which) {
 
                                 if(edit==1){
-                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, 0, relike, reqid);
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, recomment, relike, reqid,likepeople);
                                     rewrite(re_qna);
                                 }
                                 else{

@@ -46,10 +46,9 @@ public class Qna {
 
     @SerializedName("likepeople")
     @Expose
-    private List<String> likepeople;
+    private ArrayList<String> likepeople=new ArrayList<>();
 
-
-    public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid, List<String> likepeople) {
+    public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid, ArrayList<String> likepeople) {
         this.q_username = q_username;
         this.id = id;
         Title = title;
@@ -86,7 +85,7 @@ public class Qna {
             this.LikeCount = likeCount;
 
         }
-    public List<String> getLikepeople() {
+    public ArrayList<String> getLikepeople() {
         return likepeople;
     }
 
