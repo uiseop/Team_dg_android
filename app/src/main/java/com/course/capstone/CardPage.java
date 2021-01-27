@@ -123,7 +123,7 @@ public class CardPage extends AppCompatActivity{
                 myAdapter.notifyDataSetChanged();
                 isLoading = false;
             }
-        }, 3000);
+        }, 1500);
 
     }
 
