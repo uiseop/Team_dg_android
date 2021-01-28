@@ -1,10 +1,36 @@
 package com.course.capstone.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Payment {
+    @SerializedName("category")
+    @Expose
     String category;
+
+    @SerializedName("shopname")
+    @Expose
     String shopname;
+
+    @SerializedName("amount")
+    @Expose
     int amount;
+
+    @SerializedName("balance")
+    @Expose
     int balance;
+
+    @SerializedName("parentaccount")
+    @Expose
+    int parentaccount;
+
+    public int getParentaccount() {
+        return parentaccount;
+    }
+
+    public void setParentaccount(int parentaccount) {
+        this.parentaccount = parentaccount;
+    }
 
     public String getCategory() {
         return category;

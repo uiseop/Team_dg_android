@@ -63,7 +63,7 @@ public class PaymentPattern extends AppCompatActivity {
 
         final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
         PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
-        Call<List<Payment>> call = paymentInterface.getPaymentList();
+        Call<List<Payment>> call = paymentInterface.getAll();
 
         call.enqueue(new Callback<List<Payment>>() {
             @Override
@@ -177,7 +177,7 @@ public class PaymentPattern extends AppCompatActivity {
 
         final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
         PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
-        Call<List<Payment>> call = paymentInterface.getPaymentList();
+        Call<List<Payment>> call = paymentInterface.getAll();
 
         call.enqueue(new Callback<List<Payment>>() {
             @Override
