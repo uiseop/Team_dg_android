@@ -19,12 +19,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
-import com.course.capstone.models.User;
-import com.course.capstone.models.UserInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;

@@ -72,6 +72,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date1 = new Date();
     String time2 = format1.format(date1);
+    String predate;
     private String root_talk_no;
     private String string_like;
     private EditText input_r_id;
@@ -183,6 +184,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 intent.putExtra("like",likecount);
                                 intent.putExtra("comment",commentcount);
                                 intent.putExtra("likepeoplelist",likepeoplelist);
+                                intent.putExtra("date",date);
 
                                 startActivity(intent);
 
@@ -220,7 +222,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                     likecount += 1;
                                     Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
                                     update_like(qna);
-                                    /*if(likecount>10){
+                                   /* if(likecount>=10){
                                         hotadapter.addItem(qna);
 
                                     }*/

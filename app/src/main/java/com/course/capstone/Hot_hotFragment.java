@@ -16,10 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +35,7 @@ public class Hot_hotFragment extends Fragment {
     ViewGroup rootView;
     private RecyclerView HotRecyclerView;
     private HotAdapter HotAdapter;
+    SwipeRefreshLayout refreshLayout; //당겨서 새로고침
 
     @Nullable
     @Override
@@ -45,12 +44,19 @@ public class Hot_hotFragment extends Fragment {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_hot_hot, container, false);
         HotRecyclerView = (RecyclerView) rootView.findViewById(R.id.h_recyclerview);
         HotRecyclerView.setHasFixedSize(true);
+        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_hotrefresh);
+        hotinfo();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         HotRecyclerView.setLayoutManager(layoutManager);
         HotRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
       //  refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
-        hotinfo();
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                hotinfo();
+            }
+        });
 
         return rootView;
     }
@@ -68,15 +74,20 @@ public class Hot_hotFragment extends Fragment {
             public void onResponse(Call<List<Qna>> call, Response<List<Qna>> response) {
                 if (response.isSuccessful()) {
                     List<Qna> qna = response.body();
-
-                    HotAdapter = new HotAdapter(getActivity(), qna);
+                     List<Qna> hotqna= new ArrayList<>();
                     for (int i = 0; i < qna.size(); i++) {
-                        if (qna.get(i).getLikeCount() < 10) {
-                            HotAdapter.removeItem(qna.get(i));
+                        if (qna.get(i).getLikeCount() >=10) {
+                            Log.d(qna.get(i).getTitle(), "onResponse1: Something Wrong");
+
+                            hotqna.add(qna.get(i));
+
 
                         }
                     }
+                    HotAdapter = new HotAdapter(getActivity(), hotqna);
                     HotRecyclerView.setAdapter(HotAdapter);
+
+                    refreshLayout.setRefreshing(false);
                 }
                 else {
                     Log.d(TAG, "onResponse1: Something Wrong");
@@ -90,6 +101,7 @@ public class Hot_hotFragment extends Fragment {
                 Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
             }
         });
+
     }
 
 

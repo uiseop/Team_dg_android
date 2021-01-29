@@ -51,6 +51,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     String recontent;
     String reqid;
     String rename;
+    String redate;
     int recomment;
     String repersonid;
     ArrayList<String> likepeople;
@@ -84,6 +85,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         repersonid = getIntent().getStringExtra("personid");
         edit = getIntent().getIntExtra("edit", 0);
         likepeople = getIntent().getStringArrayListExtra("likepeoplelist");
+        redate=getIntent().getStringExtra("date");
         System.out.println(edit);
 
 
@@ -100,7 +102,8 @@ public class BoardWriteActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 if (edit == 1) {
-                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), time1, recomment, relike, reqid, likepeople);
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), redate, recomment, relike, reqid, likepeople);
+                                    System.out.println(redate);
                                     rewrite(re_qna);
                                 } else {
                                     Qna first_qna = new Qna(dataManager.getUser().getUserid(), dataManager.getUser().getId(), input_title.getText().toString(), input_content.getText().toString(), time1, 0, 0);
