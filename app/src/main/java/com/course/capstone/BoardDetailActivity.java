@@ -434,7 +434,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                .addConverterFactory(GsonConverterFactory.create())
                .build();
 
-    QnaInterface retrofitService = retrofit.create(QnaInterface.class);
+    QnaInterface retrofitService = retrofit.create(QnaInterface.class);                                             
        Call<Qna> call = retrofitService.updateQna(qid,qna);
 
        call.enqueue(new Callback<Qna>() {
