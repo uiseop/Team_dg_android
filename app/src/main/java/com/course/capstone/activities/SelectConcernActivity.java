@@ -61,6 +61,29 @@ public class SelectConcernActivity extends AppCompatActivity {
         adapter.addItem("대중교통",parentid);
         adapter.addItem("의료",parentid);
         adapter.addItem("뷰티",parentid);
-        
+        adapter.addItem("대형마트",parentid);
+        adapter.addItem("관리비",parentid);
+        adapter.addItem("통신",parentid);
+        adapter.addItem("육아",parentid);
+        adapter.addItem("레저",parentid);
+        adapter.addItem("항공마일리지",parentid);
+        adapter.addItem("금융",parentid);
+        adapter.addItem("Priority Pass",parentid);
+        adapter.addItem("프리미엄",parentid);
+        adapter.addItem("하이패스",parentid);
+        adapter.addItem("오토",parentid);
+        adapter.addItem("공공",parentid);
+        adapter.addItem("체크카드겸용",parentid);
+        adapter.addItem("포인트/캐시백",parentid);
+        adapter.addItem("바우처",parentid);
+        adapter.addItem("언제나할인",parentid);
+        adapter.addItem("간편결제",parentid);
+        adapter.addItem("렌탈",parentid);
+        adapter.addItem("경차유류환급",parentid);
+        adapter.addItem("연회비지원",parentid);
+        adapter.addItem("아이행복카드",parentid);
+        adapter.addItem("국민행복카드",parentid);
+        adapter.addItem("그린카드",parentid);
+        adapter.addItem("THE CJ 카드",parentid);
     }
 }
