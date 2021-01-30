@@ -80,25 +80,29 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 try {
                     URL url = new URL(mList.get(position).getImageCard());
                     URL url1 = new URL(mList.get(position).getImageReward());
-                    URL url2 = new URL(mList.get(position).getImageReward1());
+                    if(mList.get(position).getImageReward1() != null){
+                        URL url2 = new URL(mList.get(position).getImageReward1());
+                        HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
+                        conn2.setDoInput(true); // 서버로 부터 응답 수신
+                        conn2.connect();
+                        InputStream is2 = conn2.getInputStream(); // InputStream 값 가져오기
+                        bitmap2 = BitmapFactory.decodeStream(is2);} // Bitmap으로 변환
                     // Web에서 이미지를 가져온 뒤
                     // ImageView에 지정할 Bitmap을 만든다
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
-                    HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
+
                     conn.setDoInput(true); // 서버로 부터 응답 수신
                     conn.connect();
                     conn1.setDoInput(true); // 서버로 부터 응답 수신
                     conn1.connect();
-                    conn2.setDoInput(true); // 서버로 부터 응답 수신
-                    conn2.connect();
+
 
                     InputStream is = conn.getInputStream(); // InputStream 값 가져오기
                     bitmap = BitmapFactory.decodeStream(is); // Bitmap으로 변환
                     InputStream is1 = conn1.getInputStream(); // InputStream 값 가져오기
                     bitmap1 = BitmapFactory.decodeStream(is1); // Bitmap으로 변환
-                    InputStream is2 = conn2.getInputStream(); // InputStream 값 가져오기
-                    bitmap2 = BitmapFactory.decodeStream(is2); // Bitmap으로 변환
+
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();

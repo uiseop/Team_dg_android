@@ -31,31 +31,26 @@
 
     <FrameLayout
         android:id="@+id/frame_container"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/bottomNavBar"
-        android:layout_marginTop="62dp"
-        android:layout_marginBottom="62dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
         android:background="@color/design_default_color_primary"
         app:itemIconTint="@color/navigation_item_color"
         app:itemTextColor="@color/navigation_item_color"
+        app:layout_constraintStart_toStartOf="@+id/frame_container"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar"
-        app:layout_goneMarginBottom="0dp"
         app:layout_goneMarginEnd="0dp"
         app:menu="@menu/my_navigation_items">
 

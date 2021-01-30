@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.course.capstone.CardPage;
+import com.course.capstone.CardActivity;
+import com.course.capstone.TotalCardPage;
 import com.course.capstone.activities.LoginActivity;
 import com.course.capstone.activities.PaymentPattern;
 import com.course.capstone.activities.SelectBankActivity;
@@ -127,7 +128,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         context.startActivity(intent);
                     }
                     else if(content.get(position).getTitle()=="카드 추천"){
-                        Intent intent = new Intent(context, CardPage.class);
+                        Intent intent = new Intent(context, CardActivity.class);
                         context.startActivity(intent);
                     }
                 }

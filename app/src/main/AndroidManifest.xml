@@ -20,7 +20,8 @@
         <activity android:name=".BoardDetailActivity" />
         <activity android:name=".activities.CorrectMyInfo" />
         <activity android:name=".activities.MyInfoActivity" />
-        <activity android:name=".CardPage" />
+        <activity android:name=".CardActivity"></activity>
+        <activity android:name=".TotalCardPage" />
         <activity android:name=".MypageActivity" >
 
         </activity>
