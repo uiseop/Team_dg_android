@@ -97,7 +97,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 public void onClick(View v) {
                     System.out.println(getPosition());
                     //어댑터에서는 this를 쓸 수 없으므로 context를 쓴다. context는 이 레이아웃의 변수들?
-                    Intent intent = new Intent(context , BoardDetailActivity.class);
+                    Intent intent = new Intent(v.getContext() , BoardDetailActivity.class);
 
                     intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
                     intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
