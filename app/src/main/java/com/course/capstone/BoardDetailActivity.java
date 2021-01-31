@@ -64,6 +64,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     String content;
     String name;
     ArrayList<String> likepeoplelist;
+    ArrayList<String> commentpeoplelist;
 
     String date;
     String personid;
@@ -121,8 +122,37 @@ public class BoardDetailActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                if(commentpeoplelist.contains(dataManager.getUser().getUserid()) == false || commentpeoplelist == null){
+                                    commentpeoplelist.add(dataManager.getUser().getUserid());
+                                }
                                 Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
+                                Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist, commentpeoplelist);
+                                Retrofit retrofit = new Retrofit.Builder()
+                                        .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                                        .addConverterFactory(GsonConverterFactory.create())
+                                        .build();
+                                QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+                                Call<Qna> call = qnainterface.updateQna(qid, qna);
+
+                                call.enqueue(new Callback<Qna>() {
+                                    @Override
+                                    public void onResponse(Call<Qna> call, Response<Qna> response) {
+                                        if (response.isSuccessful()) {
+                                            setResult(RESULT_OK);
+                                            finish();
+
+                                        } else {
+                                            Log.d(TAG, "onResponse1: Something Wrong");
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Qna> call, Throwable t) {
+                                        Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                                        ;
+                                        Log.d(TAG, "onFailure2:수정 왜안돼");
+                                    }
+                                });
 
                                 post(comment);
                                 refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
@@ -184,6 +214,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 intent.putExtra("like",likecount);
                                 intent.putExtra("comment",commentcount);
                                 intent.putExtra("likepeoplelist",likepeoplelist);
+                                intent.putExtra("commentpeoplelist",commentpeoplelist);
                                 intent.putExtra("date",date);
 
                                 startActivity(intent);
@@ -362,7 +393,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 Log.e("왜 안되는건데...?", t.getMessage());
             }
         });
-       Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+       Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist, commentpeoplelist);
         System.out.println(commentcount);
         QnaInterface retrofitService1 = retrofit.create(QnaInterface.class);
         Call<Qna> call2 = retrofitService1.updateQna(qid,qna);
@@ -496,6 +527,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         personid = getIntent().getStringExtra("id");
         qid = getIntent().getStringExtra("qnaid");
         likepeoplelist=getIntent().getStringArrayListExtra("likepeople");
+        commentpeoplelist=getIntent().getStringArrayListExtra("commentpeople");
 
 
         txt_name.setText(name);

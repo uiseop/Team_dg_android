@@ -114,6 +114,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());
 
                    intent.putExtra("likepeople", items.get(getAdapterPosition()).getLikepeople());
+                    intent.putExtra("commentpeople", items.get(getAdapterPosition()).getCommentpeople());
 
 
                     Log.d(items.get(getAdapterPosition()).getId(),"id");

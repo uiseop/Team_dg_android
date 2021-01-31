@@ -27,7 +27,7 @@ public class Qna {
 
     @SerializedName("qnacontent")
     @Expose
-    private  String Content;
+    private String Content;
 
     @SerializedName("qnadate")
     @Expose
@@ -35,7 +35,7 @@ public class Qna {
 
     @SerializedName("qnarate")
     @Expose
-    private  int commentCount;
+    private int commentCount;
 
     @SerializedName("likerate")
     @Expose
@@ -47,7 +47,25 @@ public class Qna {
 
     @SerializedName("likepeople")
     @Expose
-    private ArrayList<String> likepeople=new ArrayList<>();
+    private ArrayList<String> likepeople = new ArrayList<>();
+
+    @SerializedName("commentpeople")
+    @Expose
+    private ArrayList<String> commentpeople = new ArrayList<>();
+
+    public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid, ArrayList<String> likepeople, ArrayList<String> commentpeople) {
+        this.q_username = q_username;
+        this.id = id;
+        Title = title;
+        Content = content;
+        Date = date;
+        this.commentCount = commentCount;
+        LikeCount = likeCount;
+        this.qnaid = qnaid;
+        this.likepeople = likepeople;
+        this.commentpeople = commentpeople;
+    }
+
 
     public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount, String qnaid, ArrayList<String> likepeople) {
         this.q_username = q_username;
@@ -69,23 +87,23 @@ public class Qna {
         Content = content;
         Date = date;
         this.commentCount = commentCount;
-       this.LikeCount = likeCount;
+        this.LikeCount = likeCount;
         this.qnaid = qnaid;
     }
 
 
+    public Qna(String q_username, String id, String title, String content, String date, int commentCount, int likeCount) {
 
-        public Qna(String q_username, String id,String title, String content, String date, int commentCount, int likeCount) {
+        this.q_username = q_username;
+        this.id = id;
+        this.Title = title;
+        this.Content = content;
+        this.Date = date;
+        this.commentCount = commentCount;
+        this.LikeCount = likeCount;
 
-            this.q_username=q_username;
-            this.id=id;
-            this.Title = title;
-            this.Content = content;
-            this.Date = date;
-            this.commentCount = commentCount;
-            this.LikeCount = likeCount;
+    }
 
-        }
     Comparator<Qna> comparator = new Comparator<Qna>() {
         @Override
         public int compare(Qna a, Qna b) {
@@ -103,15 +121,20 @@ public class Qna {
     static class SortByLikecount implements Comparator<Qna> {
         @Override
         public int compare(Qna a, Qna b) {
-            return a.LikeCount- b.LikeCount;
+            return a.LikeCount - b.LikeCount;
         }
     }
+
     public ArrayList<String> getLikepeople() {
         return likepeople;
     }
 
     public void setLikepeople(ArrayList<String> likepeople) {
         this.likepeople = likepeople;
+    }
+
+    public ArrayList<String> getCommentpeople() {
+        return commentpeople;
     }
 
     public String getQnaid() {
@@ -122,63 +145,64 @@ public class Qna {
         this.qnaid = qnaid;
     }
 
-        public String getQ_username() {
-            System.out.println(q_username);
-            return q_username;
+    public String getQ_username() {
+        System.out.println(q_username);
+        return q_username;
     }
 
     public void setQ_username(String q_username) {
         this.q_username = q_username;
     }
-        public String getId() {
-            return id;
-        }
 
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return Title;
-        }
-
-        public void setTitle(String title) {
-            this.Title = title;
-        }
-
-        public String getContent() {
-            return Content;
-        }
-
-        public void setContent(String content) {
-            this.Content = content;
-        }
-
-        public String getDate() {
-            return Date;
-        }
-
-        public void setDate(String date) {
-            this.Date = date;
-        }
-
-        public int getCommentCount() {
-            return commentCount;
-        }
-
-        public void setCommentCount(int commentCount) {
-            this.commentCount = commentCount;
-        }
-
-        public int getLikeCount() {
-            return LikeCount;
-        }
-
-        public void setLikeCount(int likeCount) {
-            this.LikeCount = likeCount;
-        }
-
-
+    public String getId() {
+        return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        this.Title = title;
+    }
+
+    public String getContent() {
+        return Content;
+    }
+
+    public void setContent(String content) {
+        this.Content = content;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        this.Date = date;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public int getLikeCount() {
+        return LikeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.LikeCount = likeCount;
+    }
+
+
+}
 
 
