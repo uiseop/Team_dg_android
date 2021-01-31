@@ -19,6 +19,7 @@ import com.course.capstone.models.Card;
 import com.course.capstone.models.CardInterface;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,8 +36,12 @@ public class CardActivity extends AppCompatActivity {
     private CardAdapter myAdapter;
     ArrayList<Card> allList;
     ArrayList<Card> list;
+    ArrayList<Card> beneallList;
+    ArrayList<Card> benelist;
     List<Card> cards;
     boolean isLoading = false;
+    int itemPosition;
+    int benePosition;
 
     String[] items = {"전체",
             "신한카드",
@@ -49,7 +54,7 @@ public class CardActivity extends AppCompatActivity {
             "씨티카드",
             "NH농협카드",
             "IBK기업은행"};
-    String[] benefits = {"주유","쇼핑","대형마트","편의점","외식","카페/베이커리","영화","대중교통",
+    String[] benefits = {"전체","주유","쇼핑","대형마트","편의점","외식","카페/베이커리","영화","대중교통",
     "관리비","통신","교육","육아","문화","레저","항공마일리지","Priority Pass","프리미엄","하이패스","오토",
     "오토","의료","뷰티","금융","공공","체크카드겸용","포인트/캐시백","바우처","언제나할인","간편결제",
     "렌탈","경차유류환급","연회비지원","아이행복카드","국민행복카드","그린카드","THE CJ 카드"};
@@ -103,6 +108,7 @@ public class CardActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                itemPosition = position;
                 if (items[position] == "전체"){
                     allList = new ArrayList<>();
                     list = new ArrayList<>();
@@ -168,7 +174,35 @@ public class CardActivity extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(benefits[position] == "전체"){
 
+                }
+                else{
+                    beneallList = new ArrayList<>();
+                    list = new ArrayList<>();
+                    Call<List<Card>> call = cardInterface.getCardinfoByRewardsIn(benefits[position]);
+                    call.enqueue(new Callback<List<Card>>() {
+                        @Override
+                        public void onResponse(Call<List<Card>> call, Response<List<Card>> response) {
+                            if(response.isSuccessful()){
+                                cards = response.body();
+                                // 목록을 어댑터에 연결해 준다.
+                                benefirstData();
+                                initAdapter();
+                            }else {
+                                Log.d(TAG, "onResponse1: Something Wrong");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Card>> call, Throwable t) {
+                            Toast.makeText(getApplicationContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                            ;
+                            Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
+                        }
+                    });
+                    initScrollListener();
+                }
             }
 
             @Override
@@ -184,11 +218,29 @@ public class CardActivity extends AppCompatActivity {
 
     private void firstData() {
         for (Card card : cards) {
-            allList.add(card);
+            if(benefits[benePosition] == "전체"){
+                allList.add(card);
+            }
+            else if(card.getReward().contains(benefits[benePosition])){
+                allList.add(card);
+            }
         }
         for (int i=0; i<10; i++){
             list.add(allList.get(i));
         }
+    }
+    private void benefirstData() {
+        for (Card card : cards) {
+            if(card.getCompanyname().equals(items[itemPosition])){beneallList.add(card);
+            Log.d("cardname",card.getCompanyname());}
+            else if(items[itemPosition] == "전체"){
+                beneallList.add(card);
+            }
+        }
+        if(beneallList.size()>0){
+        for (int i=0; i<beneallList.size(); i++){
+            list.add(beneallList.get(i));
+        }}
     }
 
     private void dataMore() {
