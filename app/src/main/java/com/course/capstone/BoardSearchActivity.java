@@ -110,7 +110,7 @@ public class BoardSearchActivity extends AppCompatActivity {
                     arraylist = new ArrayList<Qna>();
                     arraylist.addAll(qna);
 
-                    adapter = new SearchAdapter( getApplicationContext(),qna);
+                    adapter = new SearchAdapter(getApplicationContext(),qna);
 
                     // 리스트뷰에 아답터를 연결한다.
                     listView.setAdapter(adapter);

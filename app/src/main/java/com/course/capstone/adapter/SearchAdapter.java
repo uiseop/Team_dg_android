@@ -28,11 +28,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     List<Qna> items = new ArrayList<>();
 
 
-    public SearchAdapter(Context mContext, List<Qna>items) {
+    public SearchAdapter(Context mContext, List<Qna> items) {
         this.context = mContext;
-        this.items=items;
+        this.items = items;
         //addItems(items);
     }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -42,6 +43,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public int getItemViewType(int position) {
         return position;
     }
+
     //아이템을 추가해주고싶을때 이거쓰면됨
     public void addItem(Qna item) {
         items.add(item);
@@ -65,7 +67,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
     @Override
-    public void onBindViewHolder( SearchViewHolder holder, int position) {
+    public void onBindViewHolder(SearchViewHolder holder, int position) {
 
         holder.name.setText(items.get(position).getQ_username());
         holder.content.setText(items.get(position).getContent());
@@ -73,57 +75,59 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.title.setText(items.get(position).getTitle());
         holder.like.setText(String.valueOf(items.get(position).getLikeCount()));
         holder.count.setText(String.valueOf(items.get(position).getCommentCount()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+
+//like, read버튼 클릭시 이벤트 처리 here
+
+
+                Intent intent = new Intent(v.getContext(), BoardDetailActivity.class);
+                intent.putExtra("title", items.get(position).getTitle());
+                intent.putExtra("name", items.get(position).getQ_username());
+                intent.putExtra("date", items.get(position).getDate());
+                intent.putExtra("content", items.get(position).getContent());
+                intent.putExtra("like", items.get(position).getLikeCount());
+                intent.putExtra("commentcount", items.get(position).getCommentCount());
+                intent.putExtra("id", items.get(position).getId());
+                intent.putExtra("qnaid", items.get(position).getQnaid());
+
+                context.startActivity(intent);
+
+
+            }
+        });
 
     }
 
+
     @Override
     public int getItemCount() {
-        if(items == null){
-            return  0;
-        }else {
+        if (items == null) {
+            return 0;
+        } else {
             return items.size();
         }
     }
 
-    public class SearchViewHolder extends RecyclerView.ViewHolder {
-        /*  TextView boardNameTextView;
-          LinearLayout linearLayout;*/
-        TextView content, name, title, date,like, count;
+public class SearchViewHolder extends RecyclerView.ViewHolder {
+    /*  TextView boardNameTextView;
+      LinearLayout linearLayout;*/
+    TextView content, name, title, date, like, count;
 
-        public SearchViewHolder(@NonNull View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    System.out.println(getPosition());
-                    //어댑터에서는 this를 쓸 수 없으므로 context를 쓴다. context는 이 레이아웃의 변수들?
-                    Intent intent = new Intent(v.getContext() , BoardDetailActivity.class);
-
-                    intent.putExtra("title", items.get(getAdapterPosition()).getTitle());
-                    intent.putExtra("name", items.get(getAdapterPosition()).getQ_username());
-                    intent.putExtra("date", items.get(getAdapterPosition()).getDate());
-                    intent.putExtra("content", items.get(getAdapterPosition()).getContent());
-                    intent.putExtra("like", items.get(getAdapterPosition()).getLikeCount());
-                    intent.putExtra("commentcount", items.get(getAdapterPosition()).getCommentCount());
-                    intent.putExtra("id", items.get(getAdapterPosition()).getId());
-                    intent.putExtra("qnaid", items.get(getAdapterPosition()).getQnaid());
-
-                    intent.putExtra("likepeople", items.get(getAdapterPosition()).getLikepeople());
+    public SearchViewHolder(@NonNull View itemView) {
+        super(itemView);
 
 
-                    Log.d(items.get(getAdapterPosition()).getId(),"id");
-                    context.startActivity(intent);
-                }
-            });
-
-            title = itemView.findViewById(R.id.tv_text_title);
-            content = itemView.findViewById(R.id.tv_text_content);
-            name = itemView.findViewById(R.id.tv_text_name);
-            date = itemView.findViewById(R.id.tv_text_date);
-            like = itemView.findViewById(R.id.tv_text_like);
-            count = itemView.findViewById(R.id.tv_text_view);
-        }
+        title = itemView.findViewById(R.id.tv_text_title);
+        content = itemView.findViewById(R.id.tv_text_content);
+        name = itemView.findViewById(R.id.tv_text_name);
+        date = itemView.findViewById(R.id.tv_text_date);
+        like = itemView.findViewById(R.id.tv_text_like);
+        count = itemView.findViewById(R.id.tv_text_view);
     }
+}
 
 
 }
