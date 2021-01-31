@@ -1,5 +1,7 @@
 package com.course.capstone.models;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -12,7 +14,7 @@ public interface BankInterface {
     Call<Bank> getAllBank();
 
     @GET("api/v1/bankid/{parentid}")
-    Call<Bank> getByParentId(@Path("parentid")String parentid);
+    Call<List<Bank>> getByParentId(@Path("parentid")String parentid);
 
     @POST("api/v1/bank/create")
     Call<Bank> addBank(@Body Bank bank);

@@ -35,4 +35,7 @@ public interface PaymentInterface {
 
     @DELETE("api/v1/payment/delete/{id}")
     Call<Payment> removePayment(@Path("id")String id);
+
+    @GET("api/v1/payment/parentaccount/{parentaccount}")
+    Call<List<Payment>> getByParentaccount(@Path("parentaccount") int parentaccount);
 }
