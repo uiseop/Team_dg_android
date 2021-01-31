@@ -25,6 +25,7 @@
 
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".BoardSearchActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.SelectConcernActivity" />
         <activity android:name=".activities.SelectBankActivity" />

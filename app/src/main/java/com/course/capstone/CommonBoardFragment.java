@@ -85,6 +85,7 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
                 //버튼 클릭시 아래 구현이 실행된다.
                 System.out.println("InputRecord clicked");
                 getActivity().startActivity(new Intent(getActivity(), BoardSearchActivity.class));
+
                 break;
         }
 
