@@ -34,14 +34,18 @@ public class Card {
     public String getDesc(){
         return desc;
     }
-    public String getReward(){ return reward.get(0); }
-    public String getReward1(){ return reward.get(1); }
-    public String getImageReward(){
-        return imageReward.get(0);
+    public List<String> getReward(){ return reward; }
+//    public String getReward1(){if(reward == null){
+//        return null;
+//    }else{return reward.get(1);}
+//    }
+    public List<String> getImageReward(){
+        return imageReward;
     }
-    public String getImageReward1(){
-        return imageReward.get(0);
-    }
+//    public String getImageReward1(){if(imageReward.get(1)){
+//        return null;
+//    }else{return imageReward.get(1);}
+//    }
     public String getAnuual_fee(){return anuual_fee;}
     public String getCompanyname(){return companyname;}
 

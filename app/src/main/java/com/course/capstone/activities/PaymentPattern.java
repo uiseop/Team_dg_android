@@ -12,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.course.capstone.R;
 import com.course.capstone.adapter.PaymentAdapter;
+import com.course.capstone.models.Bank;
+import com.course.capstone.models.BankInterface;
 import com.course.capstone.models.Child;
+import com.course.capstone.models.DataManager;
 import com.course.capstone.models.Payment;
 import com.course.capstone.models.PaymentInterface;
 import com.course.capstone.models.RetrofitInterface;
@@ -56,83 +59,124 @@ public class PaymentPattern extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_pattern);
 
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        parentData = new ArrayList<String>();
+        childData = new HashMap<String, ArrayList<Child>>();
+
         HashMap<String, Integer> apc = new HashMap<>();
-        apc.put("편의점",0);
-        apc.put("외식",0);
-
-
+        apc.put("편의점", 0);
+        apc.put("외식", 0);
+        ArrayList<Child> restaurant = new ArrayList<Child>();
+        ArrayList<Child> convenience_store = new ArrayList<Child>();
+        DataManager dataManager = DataManager.getInstance();
         final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
+        BankInterface bankInterface = retrofit.create(BankInterface.class);
         PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
-        Call<List<Payment>> call = paymentInterface.getAll();
-
-        call.enqueue(new Callback<List<Payment>>() {
+        Call<List<Bank>> call2 = bankInterface.getByParentId((dataManager.getUser().getId()));
+        Callback<List<Bank>> callback = new Callback<List<Bank>>() {
             @Override
-            public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
-                List<Payment> payment = response.body();
+            public void onResponse(Call<List<Bank>> call, Response<List<Bank>> response) {
+                List<Bank> bank = response.body();
 
-                for (int i=0; i<payment.size(); i++){
-                    if (payment.get(i).getCategory().equals("편의점")){
-                        apc.put("편의점",apc.get("편의점")+payment.get(i).getAmount());
-                    }
-                    else if(payment.get(i).getCategory().equals("외식")){
-                        apc.put("외식",apc.get("외식")+payment.get(i).getAmount());
-                    }
+                for (int j = 0; j < bank.size(); j++) {
+                    Call<List<Payment>> call1 = paymentInterface.getByParentaccount(bank.get(j).getAccount());
+                    call1.enqueue(new Callback<List<Payment>>() {
+                        @Override
+                        public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
+                            List<Payment> payment = response.body();
+                            for (int i = 0; i < payment.size(); i++) {
+                                if (parentData.contains(payment.get(i).getCategory())) {
+                                    if (payment.get(i).getCategory().equals("편의점")) {
+                                        convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    } else if (payment.get(i).getCategory().equals("외식")) {
+                                        restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    }
+                                } else {
+                                    parentData.add(payment.get(i).getCategory());
+                                    if (payment.get(i).getCategory().equals("편의점")) {
+                                        convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    } else if (payment.get(i).getCategory().equals("외식")) {
+                                        restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    }
+                                }
+                            }
+
+                            childData.put("외식", restaurant);
+                            childData.put("편의점", convenience_store);
+
+                            for (int i = 0; i < payment.size(); i++) {
+                                if (payment.get(i).getCategory().equals("편의점")) {
+                                    apc.put("편의점", apc.get("편의점") + payment.get(i).getAmount());
+                                } else if (payment.get(i).getCategory().equals("외식")) {
+                                    apc.put("외식", apc.get("외식") + payment.get(i).getAmount());
+                                }
+                            }
+                            int total = 0;
+                            for (String key : apc.keySet()) {
+                                total += apc.get(key);
+                            }
+                            float convenience_store = Math.round((float) apc.get("편의점") / total * 100);
+                            float restaurant = Math.round((float) apc.get("외식") / total * 100);
+
+                            //그래프 나타내기
+                            graph = (PieChart) findViewById(R.id.graph);
+                            graph.setUsePercentValues(true);
+                            graph.getDescription().setEnabled(false);
+                            graph.setExtraOffsets(5, 10, 5, 5);
+
+                            graph.setDragDecelerationFrictionCoef(0.95f);
+
+                            graph.setDrawHoleEnabled(false);
+                            graph.setHoleColor(Color.WHITE);
+                            graph.setTransparentCircleRadius(61f);
+
+                            ArrayList<PieEntry> pieEntries = new ArrayList<>();
+
+                            if(convenience_store != 0){pieEntries.add(new PieEntry(convenience_store, "편의점"));}
+                            if(restaurant != 0){pieEntries.add(new PieEntry(restaurant, "외식"));}
+
+                            Description description = new Description();
+                            description.setText("카테고리"); //라벨
+                            description.setTextSize(15);
+                            graph.setDescription(description);
+
+                            graph.animateY(1000, Easing.EasingOption.EaseInOutCubic); //애니메이션
+
+                            PieDataSet dataSet = new PieDataSet(pieEntries, "Categories");
+                            dataSet.setSliceSpace(3f);
+                            dataSet.setSelectionShift(5f);
+                            dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+                            PieData data = new PieData((dataSet));
+                            data.setValueTextSize(10f);
+                            data.setValueTextColor(Color.BLACK);
+
+                            graph.setData(data);
+
+                            total_amount = (TextView) findViewById(R.id.textView_totalamount);
+                            total_amount.setText(Integer.toString(total));
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Payment>> call, Throwable t) {
+                            Toast.makeText(getBaseContext(), "소비내역 불러오기에 실패하였습니다", Toast.LENGTH_LONG).show();
+                            Log.d("TAG", "FAIL");
+                        }
+                    });
                 }
-                int total = 0;
-                for (String key : apc.keySet()){
-                    total += apc.get(key);
-                }
-                float convenience_store = Math.round((float)apc.get("편의점") / total * 100);
-                float restaurant = Math.round((float)apc.get("외식") / total * 100);
 
-                //그래프 나타내기
-                graph = (PieChart)findViewById(R.id.graph);
-                graph.setUsePercentValues(true);
-                graph.getDescription().setEnabled(false);
-                graph.setExtraOffsets(5,10,5,5);
 
-                graph.setDragDecelerationFrictionCoef(0.95f);
-
-                graph.setDrawHoleEnabled(false);
-                graph.setHoleColor(Color.WHITE);
-                graph.setTransparentCircleRadius(61f);
-
-                ArrayList<PieEntry> pieEntries = new ArrayList<>();
-
-                pieEntries.add(new PieEntry(convenience_store,"편의점"));
-                pieEntries.add(new PieEntry(restaurant,"외식"));
-
-                Description description = new Description();
-                description.setText("카테고리"); //라벨
-                description.setTextSize(15);
-                graph.setDescription(description);
-
-                graph.animateY(1000, Easing.EasingOption.EaseInOutCubic); //애니메이션
-
-                PieDataSet dataSet = new PieDataSet(pieEntries,"Categories");
-                dataSet.setSliceSpace(3f);
-                dataSet.setSelectionShift(5f);
-                dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-
-                PieData data = new PieData((dataSet));
-                data.setValueTextSize(10f);
-                data.setValueTextColor(Color.BLACK);
-
-                graph.setData(data);
-
-                total_amount =(TextView)findViewById(R.id.textView_totalamount);
-                total_amount.setText(Integer.toString(total));
             }
 
             @Override
-            public void onFailure(Call<List<Payment>> call, Throwable t) {
-                Toast.makeText(getBaseContext(), "소비내역 불러오기에 실패하였습니다",Toast.LENGTH_LONG).show();
-                Log.d("TAG","FAIL");
-            }
-        });
+            public void onFailure(Call<List<Bank>> call, Throwable t) {
 
-        expandableListView = (ExpandableListView)findViewById(R.id.expandable);
-        prepareListData();
+            }
+        };
+        call2.enqueue(callback);
+
+
+        expandableListView = (ExpandableListView) findViewById(R.id.expandable);
 
         paymentAdapter = new PaymentAdapter(this, parentData, childData);
         expandableListView.setAdapter(paymentAdapter);
@@ -166,52 +210,68 @@ public class PaymentPattern extends AppCompatActivity {
         });
 
     }
-    private void prepareListData(){
 
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        parentData = new ArrayList<String>();
-        childData = new HashMap<String, ArrayList<Child>>();
-
-        ArrayList<Child> restaurant = new ArrayList<Child>();
-        ArrayList<Child> convenience_store = new ArrayList<Child>();
-
-        final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
-        PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
-        Call<List<Payment>> call = paymentInterface.getAll();
-
-        call.enqueue(new Callback<List<Payment>>() {
-            @Override
-            public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
-                List<Payment> payment = response.body();
-
-                for (int i=0; i<payment.size(); i++){
-                    if ( parentData.contains( payment.get(i).getCategory())){
-                        if (payment.get(i).getCategory().equals("편의점")){
-                            convenience_store.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
-                        }
-                        else if(payment.get(i).getCategory().equals("외식")){
-                            restaurant.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
-                        }
-                    }
-                    else{
-                        parentData.add(payment.get(i).getCategory());
-                        if (payment.get(i).getCategory().equals("편의점")){
-                            convenience_store.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
-                        }
-                        else if(payment.get(i).getCategory().equals("외식")){
-                            restaurant.add(new Child(payment.get(i).getShopname(),payment.get(i).getAmount()));
-                        }
-                    }
-                }
-
-                childData.put("외식",restaurant);
-                childData.put("편의점",convenience_store);
-            }
-
-            @Override
-            public void onFailure(Call<List<Payment>> call, Throwable t) {
-                Log.d("fail","prepareListData FAILED");
-            }
-        });
-    }
+//    private void prepareListData() {
+//
+//        HashMap<String, Integer> hashMap = new HashMap<>();
+//        parentData = new ArrayList<String>();
+//        childData = new HashMap<String, ArrayList<Child>>();
+//
+//        ArrayList<Child> restaurant = new ArrayList<Child>();
+//        ArrayList<Child> convenience_store = new ArrayList<Child>();
+//        DataManager dataManager = DataManager.getInstance();
+//        final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
+//        PaymentInterface paymentInterface = retrofit.create(PaymentInterface.class);
+//        BankInterface bankInterface = retrofit.create(BankInterface.class);
+//        Call<List<Bank>> call2 = bankInterface.getByParentId(dataManager.getUser().getId());
+//        call2.enqueue(new Callback<List<Bank>>() {
+//            @Override
+//            public void onResponse(Call<List<Bank>> call, Response<List<Bank>> response) {
+//                List<Bank> bank = response.body();
+//                for (int i = 0; i < bank.size(); i++) {
+//                    int parentAccount = bank.get(i).getAccount();
+//                    Call<List<Payment>> call1 = paymentInterface.getByParentaccount(parentAccount);
+//                    call1.enqueue(new Callback<List<Payment>>() {
+//                        @Override
+//                        public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
+//                            List<Payment> payment = response.body();
+//
+//                            for (int i = 0; i < payment.size(); i++) {
+//                                if (parentData.contains(payment.get(i).getCategory())) {
+//                                    if (payment.get(i).getCategory().equals("편의점")) {
+//                                        convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+//                                    } else if (payment.get(i).getCategory().equals("외식")) {
+//                                        restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+//                                    }
+//                                } else {
+//                                    parentData.add(payment.get(i).getCategory());
+//                                    if (payment.get(i).getCategory().equals("편의점")) {
+//                                        convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+//                                    } else if (payment.get(i).getCategory().equals("외식")) {
+//                                        restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+//                                    }
+//                                }
+//                            }
+//
+//                            childData.put("외식", restaurant);
+//                            childData.put("편의점", convenience_store);
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<List<Payment>> call, Throwable t) {
+//                            Log.d("fail", "prepareListData FAILED");
+//                        }
+//                    });
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Bank>> call, Throwable t) {
+//
+//            }
+//        });
+//
+//
+//    }
 }

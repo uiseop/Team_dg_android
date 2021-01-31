@@ -32,6 +32,7 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Bitmap bitmap;
     Bitmap bitmap1;
     Bitmap bitmap2;
+    int i=0;
     private List<Card> mList;
     public CardAdapter(List<Card> mList){
         this.mList = mList;
@@ -79,26 +80,33 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void run() {
                 try {
                     URL url = new URL(mList.get(position).getImageCard());
-                    URL url1 = new URL(mList.get(position).getImageReward());
-                    URL url2 = new URL(mList.get(position).getImageReward1());
+                    URL url1 = new URL(mList.get(position).getImageReward().get(0));
+                    if(mList.get(position).getImageReward().size()==2){
+                        URL url2 = new URL(mList.get(position).getImageReward().get(1));
+                        HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
+                        conn2.setDoInput(true); // 서버로 부터 응답 수신
+                        conn2.connect();
+                        InputStream is2 = conn2.getInputStream(); // InputStream 값 가져오기
+                        bitmap2 = BitmapFactory.decodeStream(is2);} // Bitmap으로 변환
+                    else{
+                        i = 1;
+                    }
                     // Web에서 이미지를 가져온 뒤
                     // ImageView에 지정할 Bitmap을 만든다
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();
-                    HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
+
                     conn.setDoInput(true); // 서버로 부터 응답 수신
                     conn.connect();
                     conn1.setDoInput(true); // 서버로 부터 응답 수신
                     conn1.connect();
-                    conn2.setDoInput(true); // 서버로 부터 응답 수신
-                    conn2.connect();
+
 
                     InputStream is = conn.getInputStream(); // InputStream 값 가져오기
                     bitmap = BitmapFactory.decodeStream(is); // Bitmap으로 변환
                     InputStream is1 = conn1.getInputStream(); // InputStream 값 가져오기
                     bitmap1 = BitmapFactory.decodeStream(is1); // Bitmap으로 변환
-                    InputStream is2 = conn2.getInputStream(); // InputStream 값 가져오기
-                    bitmap2 = BitmapFactory.decodeStream(is2); // Bitmap으로 변환
+
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -120,15 +128,21 @@ public class CardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             // UI 작업을 할 수 있는 메인 Thread에서 ImageView에 이미지를 지정한다
             viewHolder.imgView_card.setImageBitmap(bitmap);
             viewHolder.imgView_desert.setImageBitmap(bitmap1);
-            viewHolder.imgView_desert2.setImageBitmap(bitmap2);
+            if(i == 0){
+            viewHolder.imgView_desert2.setImageBitmap(bitmap2);}
+            else{
+                viewHolder.imgView_desert2.setImageDrawable(null);
+                i = 0;
+            }
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         viewHolder.textView_name.setText(mList.get(position).getCardName());
         viewHolder.textView_bene.setText(mList.get(position).getDesc());
-        viewHolder.textView_desert.setText(mList.get(position).getReward());
-        viewHolder.textView_desert2.setText(mList.get(position).getReward1());
+        viewHolder.textView_desert.setText(mList.get(position).getReward().get(0));
+        if(mList.get(position).getReward().size() == 2){
+        viewHolder.textView_desert2.setText(mList.get(position).getReward().get(1));}
 //        viewHolder.imgView_desert.setImageResource(Integer.parseInt(mList.get(position).getImageReward()));
     }
 

@@ -1,15 +1,8 @@
 package com.course.capstone;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.nfc.Tag;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class CardPage extends AppCompatActivity{
+public class TotalCardPage extends AppCompatActivity{
     private RecyclerView RV;
     private RecyclerView.LayoutManager LM;
     private CardAdapter myAdapter;
@@ -43,7 +36,7 @@ public class CardPage extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myowncard);
+        setContentView(R.layout.card_spinner);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
@@ -154,7 +147,7 @@ public class CardPage extends AppCompatActivity{
                     if (linearLayoutManager != null && linearLayoutManager.findLastCompletelyVisibleItemPosition() == list.size() - 1) {
                         dataMore();
                         isLoading = true;
-                        Toast.makeText(CardPage.this, "스크롤감지", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TotalCardPage.this, "스크롤감지", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

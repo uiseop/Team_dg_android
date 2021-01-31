@@ -33,7 +33,7 @@ public interface CardInterface {
 //    }
 
     @GET("api/v1/cardinfo/rewards/{rewards}")
-    Call <List<Card>> getCardinfoByRewardsIn(@Path("rewards") List<String> rewards);
+    Call <List<Card>> getCardinfoByRewardsIn(@Path("rewards") String rewards);
 //    @GetMapping("api/v1/cardinfo/rewards/{rewards}")
 //    public List<Cardinfo> getByRewards(@PathVariable("rewards") List<String> rewards) {
 //        return cardinfoService.getCardinfoByRewardsIn(rewards);

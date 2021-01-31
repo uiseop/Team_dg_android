@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_card">
+        <item>신한카드</item>
+        <item>현대카드</item>
+        <item>삼성카드</item>
+        <item>KB국민카드</item>
+        <item>롯데카드</item>
+        <item>하나카드</item>
+        <item>우리카드</item>
+        <item>씨티카드</item>
+        <item>NH농협카드</item>
+        <item>IBK기업은행</item>
+    </string-array>
+</resources>
