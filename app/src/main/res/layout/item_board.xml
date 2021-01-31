@@ -21,7 +21,7 @@
 
 
             <TextView
-                android:id="@+id/tv_text_title"
+                android:id="@+id/s_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -32,7 +32,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_text_content"
+                android:id="@+id/s_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -58,7 +58,7 @@
                 android:textColor="#8f8f8f"
                 android:text="42분 전"/>
             <TextView
-                android:id="@+id/tv_text_name"
+                android:id="@+id/s_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="8sp"

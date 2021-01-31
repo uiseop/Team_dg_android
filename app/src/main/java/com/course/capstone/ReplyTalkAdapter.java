@@ -1,7 +1,6 @@
 package com.course.capstone;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,10 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
 import com.course.capstone.models.DataManager;
-import com.course.capstone.models.Qna;
-import com.course.capstone.models.QnaInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -123,8 +119,8 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                 }
             });
 
-            content = itemView.findViewById(R.id.tv_text_content);
-            name = itemView.findViewById(R.id.tv_text_name);
+            content = itemView.findViewById(R.id.s_content);
+            name = itemView.findViewById(R.id.s_name);
             date = itemView.findViewById(R.id.tv_text_date);
 
         }

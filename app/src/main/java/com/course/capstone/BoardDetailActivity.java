@@ -108,7 +108,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
 
-
+        refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
         initialize();
 
 
@@ -125,7 +125,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
 
                                 post(comment);
-                                refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
+
 
                             }
                         }).setNegativeButton("취소",
@@ -273,6 +273,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             }
         });
         setRecyclerView();
+
         commentinfo(qid);
       /*  Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
         update_like(qna);
@@ -285,7 +286,13 @@ public class BoardDetailActivity extends AppCompatActivity {
             btn_rewrite.setVisibility(ImageButton.GONE);
             btn_delete.setVisibility(ImageButton.GONE);
         }
-
+        //새로고침 당겨서 하기 구현
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                commentinfo(qid);
+            }
+        });
     }
 
 
@@ -308,7 +315,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                     adapter = new ReplyTalkAdapter(getApplicationContext(), comment, personid);
                     commentcount = adapter.items.size();
                     recyclerView.setAdapter(adapter);
-
+                    refreshLayout.setRefreshing(false);
 
 
                     Log.e("데이터 읽어오기 성공", String.valueOf(commentcount));

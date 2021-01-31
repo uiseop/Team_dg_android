@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Qna;
 
 import java.util.ArrayList;
@@ -140,9 +139,9 @@ public class HotAdapter extends RecyclerView.Adapter<HotAdapter.HotViewHolder> {
                 }
             });
 
-            title = itemView.findViewById(R.id.tv_text_title);
-            content = itemView.findViewById(R.id.tv_text_content);
-            name = itemView.findViewById(R.id.tv_text_name);
+            title = itemView.findViewById(R.id.s_title);
+            content = itemView.findViewById(R.id.s_content);
+            name = itemView.findViewById(R.id.s_name);
             date = itemView.findViewById(R.id.tv_text_date);
             like = itemView.findViewById(R.id.tv_text_like);
             count = itemView.findViewById(R.id.tv_text_view);

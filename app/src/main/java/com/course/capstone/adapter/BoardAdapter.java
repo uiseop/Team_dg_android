@@ -16,7 +16,6 @@ import com.course.capstone.models.Qna;
 import com.course.capstone.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -121,9 +120,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                 }
             });
 
-            title = itemView.findViewById(R.id.tv_text_title);
-            content = itemView.findViewById(R.id.tv_text_content);
-            name = itemView.findViewById(R.id.tv_text_name);
+            title = itemView.findViewById(R.id.s_title);
+            content = itemView.findViewById(R.id.s_content);
+            name = itemView.findViewById(R.id.s_name);
             date = itemView.findViewById(R.id.tv_text_date);
             like = itemView.findViewById(R.id.tv_text_like);
             count = itemView.findViewById(R.id.tv_text_view);

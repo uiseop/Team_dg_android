@@ -1,9 +1,7 @@
 package com.course.capstone.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +15,6 @@ import com.course.capstone.models.Qna;
 import com.course.capstone.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
@@ -62,7 +57,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_board, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.search_listview, viewGroup, false);
         return new SearchViewHolder(view);
     }
 
@@ -71,10 +66,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         holder.name.setText(items.get(position).getQ_username());
         holder.content.setText(items.get(position).getContent());
-        holder.date.setText(items.get(position).getDate());
         holder.title.setText(items.get(position).getTitle());
-        holder.like.setText(String.valueOf(items.get(position).getLikeCount()));
-        holder.count.setText(String.valueOf(items.get(position).getCommentCount()));
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +85,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 intent.putExtra("commentcount", items.get(position).getCommentCount());
                 intent.putExtra("id", items.get(position).getId());
                 intent.putExtra("qnaid", items.get(position).getQnaid());
+                intent.putExtra("likepeople", items.get(position).getLikepeople());
 
                 context.startActivity(intent);
 
@@ -111,23 +105,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     }
 
-public class SearchViewHolder extends RecyclerView.ViewHolder {
-    /*  TextView boardNameTextView;
-      LinearLayout linearLayout;*/
-    TextView content, name, title, date, like, count;
+    public class SearchViewHolder extends RecyclerView.ViewHolder {
+        /*  TextView boardNameTextView;
+          LinearLayout linearLayout;*/
+        TextView content, name, title;
 
-    public SearchViewHolder(@NonNull View itemView) {
-        super(itemView);
+        public SearchViewHolder(@NonNull View itemView) {
+            super(itemView);
 
 
-        title = itemView.findViewById(R.id.tv_text_title);
-        content = itemView.findViewById(R.id.tv_text_content);
-        name = itemView.findViewById(R.id.tv_text_name);
-        date = itemView.findViewById(R.id.tv_text_date);
-        like = itemView.findViewById(R.id.tv_text_like);
-        count = itemView.findViewById(R.id.tv_text_view);
+            title = itemView.findViewById(R.id.s_title);
+            content = itemView.findViewById(R.id.s_content);
+            name = itemView.findViewById(R.id.s_name);
+
+        }
     }
-}
 
 
 }

@@ -27,7 +27,7 @@
                 android:src="@drawable/replyuser" />
 
             <TextView
-                android:id="@+id/tv_text_name"
+                android:id="@+id/s_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -61,7 +61,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <TextView
-                android:id="@+id/tv_text_content"
+                android:id="@+id/s_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
