@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.course.capstone.activities.YoutubeActivity;
 import com.course.capstone.activities.education.EducationBank;
 import com.course.capstone.activities.education.EducationFraud;
 import com.course.capstone.activities.education.EducationInsurance;
@@ -56,7 +57,7 @@ public class Frag3 extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.button_bank:
-                getActivity().startActivity(new Intent (getActivity(), EducationBank.class));
+                getActivity().startActivity(new Intent (getActivity(), YoutubeActivity.class));
                 break;
             case R.id.button_fraud:
                 getActivity().startActivity(new Intent (getActivity(), EducationFraud.class));
