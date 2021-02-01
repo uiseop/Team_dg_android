@@ -1,6 +1,5 @@
 package com.course.capstone.firebase;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,7 +17,8 @@ import com.course.capstone.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
     int badge_count;
@@ -30,9 +30,15 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if (remoteMessage.getNotification() != null) {
-            Log.d("FCM Log", "알림 메시지: " + remoteMessage.getNotification().getBody());
-            String messageBody = remoteMessage.getNotification().getBody();
-            String messageTitle = remoteMessage.getNotification().getTitle();
+            String messageBody = "";
+            String messageTitle = "";
+            try {
+                Log.d("FCM Log", "알림 메시지: " + URLDecoder.decode(remoteMessage.getNotification().getBody(), "UTF-8"));
+                messageBody = URLDecoder.decode(remoteMessage.getNotification().getBody(), "UTF-8");
+                messageTitle = URLDecoder.decode(remoteMessage.getNotification().getTitle(), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
