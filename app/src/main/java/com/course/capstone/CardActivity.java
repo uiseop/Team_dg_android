@@ -88,7 +88,7 @@ public class CardActivity extends AppCompatActivity {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
