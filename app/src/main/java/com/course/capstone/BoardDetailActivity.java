@@ -23,6 +23,8 @@ import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
 import com.course.capstone.models.DataManager;
+import com.course.capstone.models.FCMInterface;
+import com.course.capstone.models.GenericResponse;
 import com.course.capstone.models.Like;
 import com.course.capstone.models.LikeInterface;
 import com.course.capstone.models.Qna;
@@ -31,7 +33,9 @@ import com.course.capstone.models.QnaInterface;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,6 +68,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     String content;
     String name;
     ArrayList<String> likepeoplelist;
+    ArrayList<String> commentpeoplelist;
 
     String date;
     String personid;
@@ -121,10 +126,57 @@ public class BoardDetailActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                if (commentpeoplelist.contains(dataManager.getUser().getUserid()) == false || commentpeoplelist == null) {
+                                    commentpeoplelist.add(dataManager.getUser().getUserid());
+                                }
                                 Comment comment = new Comment(dataManager.getUser().getUserid(), input_r_content.getText().toString(), time2, qid);
+                                Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist, commentpeoplelist);
+                                Retrofit retrofit = new Retrofit.Builder()
+                                        .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
+                                        .addConverterFactory(GsonConverterFactory.create())
+                                        .build();
+                                QnaInterface qnainterface = retrofit.create(QnaInterface.class);
+                                Call<Qna> call = qnainterface.updateQna(qid, qna);
+
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("qnaid", qid);
+
+                                FCMInterface fcmInterface = retrofit.create(FCMInterface.class);
+                                Call<GenericResponse> call2 = fcmInterface.send(hashMap);
+                                call2.enqueue(new Callback<GenericResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                                        Log.d(TAG, "알림 메시지 보내기 성공");
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<GenericResponse> call, Throwable t) {
+                                        Log.d(TAG, "알림 메시지 보내기 실패");
+                                    }
+                                });
+
+                                call.enqueue(new Callback<Qna>() {
+                                    @Override
+                                    public void onResponse(Call<Qna> call, Response<Qna> response) {
+                                        if (response.isSuccessful()) {
+                                            setResult(RESULT_OK);
+                                            finish();
+
+                                        } else {
+                                            Log.d(TAG, "onResponse1: Something Wrong");
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Qna> call, Throwable t) {
+                                        Toast.makeText(getBaseContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+                                        ;
+                                        Log.d(TAG, "onFailure2:수정 왜안돼");
+                                    }
+                                });
 
                                 post(comment);
+
 
 
                             }
@@ -181,10 +233,11 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                                 intent.putExtra("personid", personid);
                                 intent.putExtra("edit", code);
-                                intent.putExtra("like",likecount);
-                                intent.putExtra("comment",commentcount);
-                                intent.putExtra("likepeoplelist",likepeoplelist);
-                                intent.putExtra("date",date);
+                                intent.putExtra("like", likecount);
+                                intent.putExtra("comment", commentcount);
+                                intent.putExtra("likepeoplelist", likepeoplelist);
+                                intent.putExtra("commentpeoplelist", commentpeoplelist);
+                                intent.putExtra("date", date);
 
                                 startActivity(intent);
 
@@ -208,7 +261,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(final View view) {
 
-            if (likepeoplelist.contains(dataManager.getUser().getUserid()) == false||likepeoplelist==null) {
+                if (likepeoplelist.contains(dataManager.getUser().getUserid()) == false || likepeoplelist == null) {
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
 
                     alert_confirm.setMessage("이 댓글을 좋아요 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
@@ -220,7 +273,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                     likepeoplelist.add(dataManager.getUser().getUserid());
                                     System.out.println(likepeoplelist);
                                     likecount += 1;
-                                    Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+                                    Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist);
                                     update_like(qna);
                                    /* if(likecount>=10){
                                         hotadapter.addItem(qna);
@@ -239,36 +292,35 @@ public class BoardDetailActivity extends AppCompatActivity {
                             });
                     AlertDialog alert = alert_confirm.create();
                     alert.show();
+                } else {
+                    AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
+                    alert_confirm.setMessage("좋아요를 취소하시겠습니까?").setCancelable(false).setPositiveButton("아니요",
+
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Log.d("이미 눌렀다 이말이야", string_like.toString());
+                                    return;
+
+                                }
+                            }).setNegativeButton("확인",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    likecount--;
+                                    likepeoplelist.remove(dataManager.getUser().getUserid());
+                                    System.out.println(likepeoplelist);
+                                    Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist);
+                                    update_like(qna);
+
+                                    return;
+                                }
+                            });
+
+                    AlertDialog alert = alert_confirm.create();
+                    alert.show();
+
                 }
-            else{
-                AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
-                alert_confirm.setMessage("좋아요를 취소하시겠습니까?").setCancelable(false).setPositiveButton("아니요",
-
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Log.d("이미 눌렀다 이말이야", string_like.toString());
-                                return;
-
-                            }
-                        }).setNegativeButton("확인",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                likecount--;
-                                likepeoplelist.remove(dataManager.getUser().getUserid());
-                                System.out.println(likepeoplelist);
-                                Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
-                                update_like(qna);
-
-                                return;
-                            }
-                        });
-
-                AlertDialog alert = alert_confirm.create();
-                alert.show();
-
-            }
 
             }
         });
@@ -300,7 +352,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     //서버 연결 후 어댑터 연결
     public void commentinfo(String qid) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CommentInterface retrofitService = retrofit.create(CommentInterface.class);
@@ -317,12 +369,10 @@ public class BoardDetailActivity extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
                     refreshLayout.setRefreshing(false);
 
-
                     Log.e("데이터 읽어오기 성공", String.valueOf(commentcount));
 
 
                     txt_view.setText(String.valueOf(commentcount));
-
 
 
                 } else {
@@ -340,7 +390,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     public void post(Comment comment) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         commentcount += 1;
@@ -369,10 +419,10 @@ public class BoardDetailActivity extends AppCompatActivity {
                 Log.e("왜 안되는건데...?", t.getMessage());
             }
         });
-       Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+        Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist, commentpeoplelist);
         System.out.println(commentcount);
         QnaInterface retrofitService1 = retrofit.create(QnaInterface.class);
-        Call<Qna> call2 = retrofitService1.updateQna(qid,qna);
+        Call<Qna> call2 = retrofitService1.updateQna(qid, qna);
         call2.enqueue(new Callback<Qna>() {
             @Override
             public void onResponse(Call<Qna> call, Response<Qna> response) {
@@ -394,7 +444,6 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
 
-
         input_r_content.setText(""); //글쓰고 나서 텍스트 창 초기화
     }
 
@@ -402,7 +451,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     //게시글 삭제하는 함수
     public void delete() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         QnaInterface qnainterface = retrofit.create(QnaInterface.class);
@@ -412,7 +461,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(),  name + "님의 글이 삭제되었습니다.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), name + "님의 글이 삭제되었습니다.", Toast.LENGTH_LONG).show();
 
                     setResult(RESULT_OK);
                     finish();
@@ -438,10 +487,10 @@ public class BoardDetailActivity extends AppCompatActivity {
        final TextView txt_like = (TextView) findViewById(R.id.txt_like);
        string_like = String.valueOf(likecount);
 
-       Retrofit retrofit = new Retrofit.Builder()
-               .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
-               .addConverterFactory(GsonConverterFactory.create())
-               .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
     QnaInterface retrofitService = retrofit.create(QnaInterface.class);                                             
        Call<Qna> call = retrofitService.updateQna(qid,qna);
@@ -463,8 +512,6 @@ public class BoardDetailActivity extends AppCompatActivity {
 
        });
    }
-
-
 
 
     public void setRecyclerView() {
@@ -502,7 +549,8 @@ public class BoardDetailActivity extends AppCompatActivity {
         content = getIntent().getStringExtra("content");
         personid = getIntent().getStringExtra("id");
         qid = getIntent().getStringExtra("qnaid");
-        likepeoplelist=getIntent().getStringArrayListExtra("likepeople");
+        likepeoplelist = getIntent().getStringArrayListExtra("likepeople");
+        commentpeoplelist = getIntent().getStringArrayListExtra("commentpeople");
 
 
         txt_name.setText(name);

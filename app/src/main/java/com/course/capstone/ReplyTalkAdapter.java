@@ -129,7 +129,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
     //게시글 삭제하는 함수
     public void comentdelete(String commnetid) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
        CommentInterface commentInterface = retrofit.create(CommentInterface.class);
@@ -183,7 +183,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
  /*  public void comment_rewrite(Comment comment,String comment_id){
 
            Retrofit retrofit = new Retrofit.Builder()
-                   .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                   .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                    .addConverterFactory(GsonConverterFactory.create())
                    .build();
            CommentInterface commentinterface = retrofit.create(CommentInterface.class);

@@ -55,6 +55,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     int recomment;
     String repersonid;
     ArrayList<String> likepeople;
+    ArrayList<String> commentpeople;
     int edit;
     int relike;
 
@@ -85,6 +86,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         repersonid = getIntent().getStringExtra("personid");
         edit = getIntent().getIntExtra("edit", 0);
         likepeople = getIntent().getStringArrayListExtra("likepeoplelist");
+        commentpeople = getIntent().getStringArrayListExtra("commentpeoplelist");
         redate=getIntent().getStringExtra("date");
         System.out.println(edit);
 
@@ -102,7 +104,7 @@ public class BoardWriteActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 if (edit == 1) {
-                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), redate, recomment, relike, reqid, likepeople);
+                                    Qna re_qna = new Qna(rename, repersonid, input_title.getText().toString(), input_content.getText().toString(), redate, recomment, relike, reqid, likepeople, commentpeople);
                                     System.out.println(redate);
                                     rewrite(re_qna);
                                 } else {
@@ -135,7 +137,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         QnaInterface qnainterface = retrofit.create(QnaInterface.class);
@@ -166,7 +168,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
     public void rewrite(Qna qna) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-13-59-15-254.us-east-2.compute.amazonaws.com:8080/")
+                .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         QnaInterface qnainterface = retrofit.create(QnaInterface.class);

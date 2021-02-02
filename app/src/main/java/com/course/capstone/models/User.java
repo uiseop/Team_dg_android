@@ -19,6 +19,9 @@ public class User {
     @SerializedName("emailaddress")
     @Expose
     private String emailaddress;
+    @SerializedName("token")
+    @Expose
+    private String token;
     @SerializedName("id")
     @Expose
     private String id;
@@ -33,6 +36,16 @@ public class User {
         this.birthdate = birthdate;
         this.emailaddress = emailaddress;
     }
+
+    public User(String name, String userid, String password, String birthdate, String emailaddress, String token) {
+        this.name = name;
+        this.userid = userid;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.emailaddress = emailaddress;
+        this.token = token;
+    }
+
 
     public String getName() {
         return name;
@@ -80,5 +93,13 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
