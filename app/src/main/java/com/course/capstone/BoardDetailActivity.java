@@ -102,7 +102,6 @@ public class BoardDetailActivity extends AppCompatActivity {
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(false);
 
-        input_r_id = (EditText) findViewById(R.id.input_r_id);
         input_r_content = (EditText) findViewById(R.id.input_r_content);
 
         btn_r_write = (ImageButton) findViewById(R.id.btn_r_write); //댓글 쓰는 버튼
