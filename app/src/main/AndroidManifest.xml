@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TestActivity"></activity>
+        <activity android:name=".activities.TestActivity" />
         <activity android:name=".activities.YoutubeActivity" />
         <activity android:name=".activities.education.EducationFraud" />
         <activity android:name=".activities.education.EducationInsurance" />
@@ -24,21 +24,19 @@
         <activity android:name=".activities.MyInfoActivity" />
         <activity android:name=".CardActivity" />
         <activity android:name=".TotalCardPage" />
-        <activity android:name=".MypageActivity"></activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MypageActivity" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".BoardSearchActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.SelectConcernActivity" />
         <activity android:name=".activities.SelectBankActivity" />
         <activity android:name=".activities.PaymentPattern" />
         <activity android:name=".activities.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <service android:name=".firebase.MyFirebaseInstanceIDService">
