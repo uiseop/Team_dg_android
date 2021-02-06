@@ -12,6 +12,8 @@
         android:text="TEXT"
         android:id="@+id/tv_concern"
         android:textSize="20sp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:textColor="@color/black"
         android:gravity="center"
         android:layout_weight="10" />
 
