@@ -14,11 +14,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:background="@drawable/button_design"
+        app:backgroundTint="@color/bread"
         android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:text="로그인"
         android:textSize="20dp"
-        app:backgroundTint="@color/bread"
-        app:cornerRadius="?android:attr/buttonCornerRadius"
+
         app:layout_constraintBaseline_toBaselineOf="@+id/join_button"
         app:layout_constraintStart_toStartOf="@+id/login_password" />
 
@@ -63,10 +63,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="190dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:text="가입"
         android:textSize="20dp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:background="@drawable/button_design"
         app:backgroundTint="@color/bread"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_password" />
