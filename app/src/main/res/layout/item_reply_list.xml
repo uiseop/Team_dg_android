@@ -55,7 +55,7 @@
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
                 android:gravity="right|center_vertical"
-                android:src="@drawable/commentmenu" />
+                android:src="@drawable/real_comment_menu" />
 
         </LinearLayout>
         <LinearLayout
