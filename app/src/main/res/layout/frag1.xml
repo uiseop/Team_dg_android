@@ -10,6 +10,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="97dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
         android:orientation="horizontal"
         android:background="@drawable/rectangle_all_corner_radius"
@@ -38,11 +39,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="198dp"
+
         android:layout_marginBottom="30dp"
-        android:orientation="horizontal"
         android:background="@drawable/rectangle_all_corner_radius"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/banner"
         app:layout_constraintEnd_toEndOf="@id/banner"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,21 +55,21 @@
             android:id="@+id/imageView4"
             android:layout_width="169dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="14dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginLeft="14dp"
 
             app:srcCompat="@drawable/test" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
-            android:layout_width="177dp"
-            android:layout_height="177dp"
+            android:layout_width="202dp"
+            android:layout_height="161dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp" />
     </LinearLayout>
 
