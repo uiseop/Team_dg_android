@@ -105,7 +105,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
 
                             } else if (menuItem.getItemId() == R.id.action_recommentwrite) {
                                // Intent intent=new Intent(context,)
-                               // comment_rewrite(comment,items.get(getAdapterPosition()).getCommentid());
+                              //  comment_rewrite(comment,items.get(getAdapterPosition()).getCommentid());
 
                             } else {
 
@@ -180,7 +180,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
 
 
     }
- /*  public void comment_rewrite(Comment comment,String comment_id){
+   /*public void comment_rewrite(Comment comment,String comment_id){
 
            Retrofit retrofit = new Retrofit.Builder()
                    .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
@@ -206,8 +206,8 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                    ;
                    Log.d(TAG, "onFailure2:수정 왜안돼");
                }
-           });
+           });*/
 
-       }*/
-   }
+       }
+
 
