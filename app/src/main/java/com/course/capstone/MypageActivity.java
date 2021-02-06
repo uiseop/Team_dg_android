@@ -39,7 +39,6 @@ public class MypageActivity extends AppCompatActivity {
         ArrayList<DataItem> context = new ArrayList<>();
 
         id.add(new DataItem("내정보",0));
-        id.add(new DataItem("로그아웃",0));
         id.add(new DataItem("나의 소비패턴",0));
         id.add(new DataItem("은행 선택",0));
         id.add(new DataItem("관심사 선택",0));

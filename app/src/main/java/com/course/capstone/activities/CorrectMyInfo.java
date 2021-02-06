@@ -31,7 +31,8 @@ public class CorrectMyInfo extends AppCompatActivity {
 
     private TextView id;
     private EditText correct_name, correct_email, correct_birth, correct_pw, correct_pwck;
-    private Button btn;
+    private Button btn,btn_pre;
+
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -54,6 +55,7 @@ public class CorrectMyInfo extends AppCompatActivity {
         correct_pw = findViewById(R.id.editText_correctpw);
         correct_pwck = findViewById(R.id.editText_correctpwck);
         btn = findViewById(R.id.button_correct);
+        btn_pre = findViewById(R.id.button_correct2);
 
         id.setText(user.getUserid());
         correct_birth.setText(user.getBirthdate());
@@ -116,6 +118,13 @@ public class CorrectMyInfo extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+        btn_pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MyInfoActivity.class);
+                startActivity(intent);
             }
         });
     }
