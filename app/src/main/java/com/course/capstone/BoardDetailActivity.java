@@ -3,7 +3,6 @@ package com.course.capstone;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -19,14 +18,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.course.capstone.adapter.BoardAdapter;
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
 import com.course.capstone.models.DataManager;
 import com.course.capstone.models.FCMInterface;
 import com.course.capstone.models.GenericResponse;
-import com.course.capstone.models.Like;
-import com.course.capstone.models.LikeInterface;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
 
@@ -35,7 +31,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -106,7 +101,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         btn_r_write = (ImageButton) findViewById(R.id.btn_r_write); //댓글 쓰는 버튼
         btn_like = (ImageButton) findViewById(R.id.btn_like);
-        btn_delete = (ImageButton) findViewById(R.id.btn_delete);
+        btn_delete = (ImageButton) findViewById(R.id.btn_write);
         btn_rewrite = findViewById(R.id.btn_rewrite);
 
 

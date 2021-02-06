@@ -73,7 +73,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
         input_title = findViewById(R.id.input_title);
         input_content = findViewById(R.id.input_content);
-        btn_write = (ImageButton) findViewById(R.id.btn_delete);
+        btn_write = (ImageButton) findViewById(R.id.btn_write);
 
         retitle = getIntent().getStringExtra("title");
         input_title.setText(retitle);
