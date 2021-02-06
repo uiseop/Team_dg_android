@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.course.capstone.activities.TestActivity;
 import com.course.capstone.adapter.CurrentAdapter;
 import com.course.capstone.adapter.ImageAdapter;
 import com.course.capstone.models.ChartDTO;
@@ -45,7 +46,7 @@ public class Frag1 extends Fragment {
     TextView news_title;
     String nums;
     Bitmap bitmap;
-    ImageView imageView;
+    ImageView imageView,test;
     URL iurl;
     String nurl;
 
@@ -77,7 +78,13 @@ public class Frag1 extends Fragment {
 //        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
 //        recyclerView2.setLayoutManager(layoutManager2);
 //        recyclerView2.setAdapter(sAdapter);
-
+        test = v.findViewById(R.id.imageView4);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent (getActivity(), TestActivity.class));
+            }
+        });
 
         Thread mThread = new Thread(){
             ArrayList<String> listTitle = new ArrayList<>();
