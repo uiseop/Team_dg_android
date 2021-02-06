@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/menu7"
+        android:icon="@drawable/iconfinder_home_4092562"
         android:title="메인" />
     <item android:id="@+id/action_settings"
         android:title="게시판"
-        android:icon="@drawable/menu8"/>
+        android:icon="@drawable/iconfinder_board_2124180"/>
     <item android:id="@+id/action_navigation"
         android:title="동영상"
-        android:icon="@drawable/menu9"/>
+        android:icon="@drawable/iconfinder_ic_slow_motion_video_48px_3669227"/>
 </menu>
