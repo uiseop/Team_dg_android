@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
                         break;
 
+                    case R.id.action_play:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag4()).commit();
+
                 }
                 return true;
             }
