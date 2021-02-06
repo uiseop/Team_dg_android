@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="MY PAGE"
+            android:textColor="#000"
             android:textSize="40dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -32,7 +33,6 @@
             android:id="@+id/context"
             android:layout_width="457dp"
             android:layout_height="469dp"
-
             android:background="@drawable/rectangle_all_corner_radius" />
 
     </LinearLayout>
