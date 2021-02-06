@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.Iwrite"></activity>
-        <activity android:name=".activities.TestActivity" />
+        <activity android:name=".activities.TestActivity"></activity>
         <activity android:name=".activities.YoutubeActivity" />
         <activity android:name=".activities.education.EducationFraud" />
         <activity android:name=".activities.education.EducationInsurance" />
@@ -25,8 +24,10 @@
         <activity android:name=".activities.MyInfoActivity" />
         <activity android:name=".CardActivity" />
         <activity android:name=".TotalCardPage" />
-        <activity android:name=".MypageActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MypageActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".BoardSearchActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.SelectConcernActivity" />
