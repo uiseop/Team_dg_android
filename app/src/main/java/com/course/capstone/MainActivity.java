@@ -87,11 +87,15 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_navigation:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
+                        mToolbarLeftTitle.setText("교육영상");
+                        mypageImageButton.setVisibility(ImageButton.GONE);
                         break;
 
                     case R.id.action_play:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag4()).commit();
-
+                        mToolbarLeftTitle.setText("게임");
+                        mypageImageButton.setVisibility(ImageButton.GONE);
+                        break;
                 }
                 return true;
             }
