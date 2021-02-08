@@ -18,6 +18,7 @@
         <activity android:name=".activities.education.EducationInsurance" />
         <activity android:name=".activities.education.EducationStock" />
         <activity android:name=".activities.education.EducationBank" />
+        <activity android:name=".activities.Iwrite" />
         <activity android:name=".BoardWriteActivity" />
         <activity android:name=".BoardDetailActivity" />
         <activity android:name=".activities.CorrectMyInfo" />

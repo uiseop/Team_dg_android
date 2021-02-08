@@ -51,7 +51,7 @@ public class CommonBoardFragment extends Fragment implements View.OnClickListene
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mBoardRecyclerView.setLayoutManager(layoutManager);
         mBoardRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
+        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.write_swipe_refresh);
         boardinfo();
 
         FloatingActionButton onButtonClickedInputRecord1 = (FloatingActionButton) rootView.findViewById(R.id.board_fab);

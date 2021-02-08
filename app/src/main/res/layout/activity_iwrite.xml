@@ -5,5 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.Iwrite">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/write_swipe_refresh"
+        android:layout_width="417dp"
+        android:layout_height="716dp"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/i_write_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

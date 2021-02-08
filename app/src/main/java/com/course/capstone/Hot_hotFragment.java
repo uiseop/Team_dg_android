@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.course.capstone.models.DataManager;
 import com.course.capstone.models.Qna;
 import com.course.capstone.models.QnaInterface;
 
@@ -36,6 +37,7 @@ public class Hot_hotFragment extends Fragment {
     private RecyclerView HotRecyclerView;
     private HotAdapter HotAdapter;
     SwipeRefreshLayout refreshLayout; //당겨서 새로고침
+    DataManager dataManager = DataManager.getInstance();
 
     @Nullable
     @Override
@@ -76,7 +78,8 @@ public class Hot_hotFragment extends Fragment {
                     List<Qna> qna = response.body();
                      List<Qna> hotqna= new ArrayList<>();
                     for (int i = 0; i < qna.size(); i++) {
-                        if (qna.get(i).getLikeCount() >=10) {
+                        if (qna.get(i).getLikeCount() >=10)
+                            {
                             Log.d(qna.get(i).getTitle(), "onResponse1: Something Wrong");
 
                             hotqna.add(qna.get(i));
