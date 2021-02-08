@@ -58,7 +58,7 @@ public class Frag4 extends Fragment {
 
             }
         });
-        game = v.findViewById(R.id.game);
+        game = v.findViewById(R.id.game1);
 
         game.setOnClickListener(new View.OnClickListener() {
             @Override
