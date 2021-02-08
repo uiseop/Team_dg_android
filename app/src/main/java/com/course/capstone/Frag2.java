@@ -1,5 +1,6 @@
 package com.course.capstone;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class Frag2 extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText("자유게시판"));
         tabLayout.addTab(tabLayout.newTab().setText("hot게시판"));
         tabLayout.addTab(tabLayout.newTab().setText("금융공모전"));
+        tabLayout.setTabTextColors(Color.rgb(0,0,0),Color.rgb(244,195,123));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         mViewPager = (ViewPager) view.findViewById(R.id.board_view_pager);
         BoardTabPageAdapter boardTabPageAdapter = new BoardTabPageAdapter(getFragmentManager(), tabLayout.getTabCount());

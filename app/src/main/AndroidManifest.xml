@@ -27,7 +27,6 @@
         <activity android:name=".TotalCardPage" />
         <activity android:name=".MypageActivity"></activity>
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".BoardSearchActivity" />
         <activity android:name=".activities.RegisterActivity" />
