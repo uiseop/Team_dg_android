@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="1.당신의 연령대는 어떻게 됩니까?"
                 android:textColor="@color/blue"
@@ -29,132 +30,142 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <CheckBox
-                android:id="@+id/checkBox1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="19세이하"
-                android:textSize="13dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                    <RadioGroup
+                        android:id="@+id/group1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@id/textView18"
+                        app:layout_constraintStart_toStartOf="parent">
 
-            <CheckBox
-                android:id="@+id/checkBox1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="8dp"
-                android:text="20~40세"
-                android:textSize="13dp"
-                app:layout_constraintStart_toEndOf="@+id/checkBox1_1"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                        <RadioButton
+                            android:id="@+id/checkBox1_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="19세이하"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-            <CheckBox
-                android:id="@+id/checkBox1_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="41~50세"
-                android:textSize="13dp"
-                app:layout_constraintStart_toEndOf="@+id/checkBox1_2"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                        <RadioButton
+                            android:id="@+id/checkBox1_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="20~40세"
+                            app:layout_constraintStart_toStartOf="@+id/checkBox1_1"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox1_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="51~60세"
-                android:textSize="13dp"
-                app:layout_constraintStart_toEndOf="@+id/checkBox1_3"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
-            <CheckBox
-                android:id="@+id/checkBox1_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="61세이상"
-                android:textSize="12dp"
-                app:layout_constraintStart_toEndOf="@+id/checkBox1_4"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
-
+                        <RadioButton
+                            android:id="@+id/checkBox1_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:text="41~50세"
+                            app:layout_constraintStart_toEndOf="@+id/checkBox1_2"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
+                        <RadioButton
+                            android:id="@+id/checkBox1_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="51~60세"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
+                        <RadioButton
+                            android:id="@+id/checkBox1_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:text="61세이상"
+                            app:layout_constraintStart_toEndOf="@+id/checkBox1_4"
+                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
+                    </RadioGroup>
 
             <TextView
                 android:id="@+id/textView21"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="2.투자하고자 하는 자금의 투자 가능 기간은 얼마나 됩니까?"
                 android:textColor="@color/blue"
                 android:textSize="22dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/group1" />
 
-            <CheckBox
-                android:id="@+id/checkBox2_1"
+
+            <RadioGroup
+                android:id="@+id/group2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="6개월 이내"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/textView21"
+                app:layout_constraintStart_toStartOf="parent">
 
-            <CheckBox
-                android:id="@+id/checkBox2_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:text="6개월 이상~1년 이내"
-                app:layout_constraintStart_toEndOf="@+id/checkBox2_1"
-                app:layout_constraintTop_toTopOf="@+id/checkBox2_1" />
+                <RadioButton
+                    android:id="@+id/checkBox2_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="6개월 이내"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
-            <CheckBox
-                android:id="@+id/checkBox2_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:text="1년 이상~2년 이내"
-                app:layout_constraintStart_toEndOf="@+id/checkBox2_2"
-                app:layout_constraintTop_toTopOf="@+id/checkBox2_2" />
+                <RadioButton
+                    android:id="@+id/checkBox2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="6개월 이상~1년 이내"
+                    app:layout_constraintStart_toStartOf="@+id/checkBox2_1"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox2_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2년 이상~3년 이내"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox2_1" />
+                <RadioButton
+                    android:id="@+id/checkBox2_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="1년 이상~2년 이내"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox2_2"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2_2" />
 
-            <CheckBox
-                android:id="@+id/checkBox2_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:text="3년 이상"
-                app:layout_constraintStart_toEndOf="@+id/checkBox2_4"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox2_2" />
+                <RadioButton
+                    android:id="@+id/checkBox2_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2년 이상~3년 이내"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2_1" />
+                <RadioButton
+                    android:id="@+id/checkBox2_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="3년 이상"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox2_4"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox2_4" />
 
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="3.다음 중 투자경험과 가장 가까운 것은 어느 것입니까?(중복응답가능)"
                 android:textColor="@color/blue"
                 android:textSize="22dp"
                 app:layout_constraintStart_toStartOf="@+id/textView21"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/group2" />
 
             <CheckBox
                 android:id="@+id/checkBox3_1"
@@ -214,41 +225,49 @@
                 app:layout_constraintStart_toStartOf="@+id/textView25"
                 app:layout_constraintTop_toBottomOf="@+id/checkBox3_5" />
 
-            <CheckBox
-                android:id="@+id/checkBox4_1"
+            <RadioGroup
+                android:id="@+id/group4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="[매우낮은수준] 투자의사 결정을 스스로 내려본 경험이 없는 정도"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+                app:layout_constraintTop_toBottomOf="@id/textView27">
 
-            <CheckBox
-                android:id="@+id/checkBox4_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="[낮은수준] 주식과 채권의 차이를 구변할 수 있는 정도"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox4_1" />
+                <RadioButton
+                    android:id="@+id/checkBox4_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="[매우낮은수준] 투자의사 결정을 스스로 내려본 경험이 없는 정도"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-            <CheckBox
-                android:id="@+id/checkBox4_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="[높은 수준] 투자할 수 있는 대부분의 금융상품의 차이를 구변할 수 있는 정도"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox4_2" />
+                <RadioButton
+                    android:id="@+id/checkBox4_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="[낮은수준] 주식과 채권의 차이를 구변할 수 있는 정도"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox4_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox4_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="[매우높은수준] 금융상품을 비롯하여 모든 투자대상 상품의 차이를 이해할 수 있는 정도"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox4_3" />
+                <RadioButton
+                    android:id="@+id/checkBox4_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="[높은 수준] 투자할 수 있는 대부분의 금융상품의 차이를 구변할 수 있는 정도"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox4_2" />
+
+                <RadioButton
+                    android:id="@+id/checkBox4_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="[매우높은수준] 금융상품을 비롯하여 모든 투자대상 상품의 차이를 이해할 수 있는 정도"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox4_3" />
+            </RadioGroup>
 
 
             <TextView
@@ -261,53 +280,61 @@
                 android:textColor="@color/blue"
                 android:textSize="22dp"
                 app:layout_constraintStart_toStartOf="@+id/textView27"
-                app:layout_constraintTop_toBottomOf="@id/checkBox4_4" />
+                app:layout_constraintTop_toBottomOf="@id/group4" />
 
-            <CheckBox
-                android:id="@+id/checkBox5_1"
+            <RadioGroup
+                android:id="@+id/group5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="10%이내"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView28" />
-
-            <CheckBox
-                android:id="@+id/checkBox5_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="10% 이상 ~ 20% 이내"
+                android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/textView28"
-                app:layout_constraintLeft_toRightOf="@id/checkBox5_1"
-                tools:layout_editor_absoluteX="90dp" />
+                app:layout_constraintStart_toStartOf="parent">
+                <RadioButton
+                    android:id="@+id/checkBox5_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="10% 이내"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
-            <CheckBox
-                android:id="@+id/checkBox5_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="20% 이상 ~ 30% 이내"
-                app:layout_constraintTop_toBottomOf="@id/textView28"
-                app:layout_constraintLeft_toRightOf="@id/checkBox5_2"
-                tools:layout_editor_absoluteX="250dp" />
+                <RadioButton
+                    android:id="@+id/checkBox5_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="10% 이상 ~ 20% 이내"
+                    app:layout_constraintStart_toStartOf="@+id/checkBox5_1"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox5_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox5_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="30% 이상 ~ 40% 이내"
-                app:layout_constraintTop_toBottomOf="@id/checkBox5_1"
-                app:layout_constraintStart_toStartOf="parent"/>
+                <RadioButton
+                    android:id="@+id/checkBox5_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="20%이상~30% 이내"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox5_2"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox5_2" />
 
-            <CheckBox
-                android:id="@+id/checkBox5_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:text="40%이상"
-                app:layout_constraintLeft_toRightOf="@id/checkBox5_4"
-                app:layout_constraintTop_toBottomOf="@id/checkBox5_2" />
+                <RadioButton
+                    android:id="@+id/checkBox5_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30% 이상~40% 이내"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox5_1" />
+                <RadioButton
+                    android:id="@+id/checkBox5_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="40%이상"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox5_4"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox5_2" />
+            </RadioGroup>
 
 
             <TextView
@@ -319,36 +346,43 @@
                 android:text="6.다음 중 수입원을 가장 잘 나타내는 것은 어느 것입니까?"
                 android:textColor="@color/blue"
                 android:textSize="22dp"
-                app:layout_constraintTop_toBottomOf="@id/checkBox5_5"
-                app:layout_constraintStart_toStartOf="@id/textView28"/>
+                app:layout_constraintStart_toStartOf="@id/textView28"
+                app:layout_constraintTop_toBottomOf="@id/group5" />
 
-            <CheckBox
-                android:id="@+id/checkBox6_1"
+            <RadioGroup
+                android:id="@+id/group6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="현재 일정한 수입이 발생하고 있으며, 향후 수준을 유지하거나 증가할 것으로 예상된다."
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView29" />
+                app:layout_constraintTop_toBottomOf="@id/textView29">
+                <RadioButton
+                    android:id="@+id/checkBox6_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="현재 일정한 수입이 발생하고 있으며, 향후 수준을 유지하거나 증가할 것으로 예상된다."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView29" />
 
-            <CheckBox
-                android:id="@+id/checkBox6_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="현재 일정한 수입이 발생하고 있으나, 향후 감소하거나 불안정할 것으로 예상된다."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox6_1" />
+                <RadioButton
+                    android:id="@+id/checkBox6_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="현재 일정한 수입이 발생하고 있으나, 향후 감소하거나 불안정할 것으로 예상된다."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox6_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox6_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="현재 일정한 수입이 없으며, 연금이 주수입원이다."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox6_2" />
+                <RadioButton
+                    android:id="@+id/checkBox6_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="현재 일정한 수입이 없으며, 연금이 주수입원이다."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox6_2" />
 
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textView30"
@@ -360,43 +394,53 @@
                 android:textColor="@color/blue"
                 android:textSize="22dp"
                 app:layout_constraintStart_toStartOf="@id/textView29"
-                app:layout_constraintTop_toBottomOf="@id/checkBox6_3" />
+                app:layout_constraintTop_toBottomOf="@id/group6" />
 
-            <CheckBox
-                android:id="@+id/checkBox7_1"
+            <RadioGroup
+                android:id="@+id/group7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="무슨 일이 있어도 투자원금은 보존되어야 한다."
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView30" />
+                app:layout_constraintTop_toBottomOf="@id/textView30">
 
-            <CheckBox
-                android:id="@+id/checkBox7_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="10% 미만까지는 손실을 감수할 수 있을 것 같다"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox7_1" />
+                <RadioButton
+                    android:id="@+id/checkBox7_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="무슨 일이 있어도 투자원금은 보존되어야 한다."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView30" />
 
-            <CheckBox
-                android:id="@+id/checkBox7_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="10% 미만까지는 손실을 감수할 수 있을 것 같다"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox7_2" />
+                <RadioButton
+                    android:id="@+id/checkBox7_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="10% 미만까지는 손실을 감수할 수 있을 것 같다"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox7_1" />
 
-            <CheckBox
-                android:id="@+id/checkBox7_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="기대수익이 높다면 위험이 높아도 상관하지 않겠다"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/checkBox7_3" />
+                <RadioButton
+                    android:id="@+id/checkBox7_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="10% 미만까지는 손실을 감수할 수 있을 것 같다"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox7_2" />
+
+                <RadioButton
+                    android:id="@+id/checkBox7_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="기대수익이 높다면 위험이 높아도 상관하지 않겠다"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBox7_3" />
+
+
+            </RadioGroup>
 
 
             <Button
@@ -407,8 +451,8 @@
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="확인"
                 app:backgroundTint="@color/bread"
-                app:layout_constraintTop_toBottomOf="@id/checkBox7_4"
-                app:layout_constraintStart_toStartOf="@id/textView30" />
+                app:layout_constraintStart_toStartOf="@id/textView30"
+                app:layout_constraintTop_toBottomOf="@id/group7" />
 
             <Button
                 android:id="@+id/test_pre"
@@ -420,7 +464,9 @@
                 android:text="이전"
                 app:backgroundTint="@color/bread"
                 app:layout_constraintLeft_toRightOf="@id/test_clear"
-                app:layout_constraintTop_toBottomOf="@id/checkBox7_4" />
+                app:layout_constraintTop_toBottomOf="@id/group7" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </RelativeLayout>

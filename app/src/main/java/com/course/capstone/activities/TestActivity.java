@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 
 import com.course.capstone.Frag1;
 import com.course.capstone.MainActivity;
@@ -19,13 +20,13 @@ import com.course.capstone.models.DataManager;
 public class TestActivity extends AppCompatActivity {
 
     Button btn1,btn2;
-    CheckBox c1_1,c1_2,c1_3,c1_4,c1_5;
-    CheckBox c2_1,c2_2,c2_3,c2_4,c2_5;
+    RadioButton c1_1,c1_2,c1_3,c1_4,c1_5;
+    RadioButton c2_1,c2_2,c2_3,c2_4,c2_5;
     CheckBox c3_1,c3_2,c3_3,c3_4,c3_5;
-    CheckBox c4_1,c4_2,c4_3,c4_4;
-    CheckBox c5_1,c5_2,c5_3,c5_4,c5_5;
-    CheckBox c6_1,c6_2,c6_3;
-    CheckBox c7_1,c7_2,c7_3,c7_4;
+    RadioButton c4_1,c4_2,c4_3,c4_4;
+    RadioButton c5_1,c5_2,c5_3,c5_4,c5_5;
+    RadioButton c6_1,c6_2,c6_3;
+    RadioButton c7_1,c7_2,c7_3,c7_4;
     double score=0;
     DataManager dataManager=DataManager.getInstance();
     String name=dataManager.getUser().getName();
