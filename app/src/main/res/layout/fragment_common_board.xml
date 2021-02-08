@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/write_swipe_refresh"
-        android:layout_width="417dp"
-        android:layout_height="716dp"
+        android:id="@+id/comment_swipe_refresh"
+        android:layout_width="403dp"
+        android:layout_height="578dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,9 +45,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="#F4C37B"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.course.capstone.CardActivity;
 import com.course.capstone.TotalCardPage;
+import com.course.capstone.activities.Icomment;
 import com.course.capstone.activities.Iwrite;
 import com.course.capstone.activities.LoginActivity;
 import com.course.capstone.activities.PaymentPattern;
@@ -138,10 +139,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-
-
                     if (content.get(position).getTitle() == "내가 쓴글") {
                         Intent intent = new Intent(context, Iwrite.class);
+                        context.startActivity(intent);
+                    }
+                    else if (content.get(position).getTitle() == "댓글 단 글"){
+                        Intent intent = new Intent(context, Icomment.class);
                         context.startActivity(intent);
                     }
                 }

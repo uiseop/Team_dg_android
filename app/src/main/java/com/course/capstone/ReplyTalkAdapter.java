@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
 import com.course.capstone.models.DataManager;
+import com.course.capstone.models.Qna;
+import com.course.capstone.models.QnaInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,18 +33,37 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.ViewHolder> {
     Context context;
     List<Comment> items;
+    String qnaname;
     String personid;
+    String title;
+    String qcontent;
+    String qdate;
+    int commentcount;
+    int likecount;
+    String qid;
+    ArrayList<String>likepeoplelist;
+    ArrayList<String>commentpeoplelist;
 
     DataManager dataManager=DataManager.getInstance();
     ImageButton btn_r_menu;
 
-
-    public ReplyTalkAdapter(Context context, List<Comment> items,String personid) {
+    public ReplyTalkAdapter(Context context, List<Comment> items,String qnaname,String personid, String title, String content, String date, int commentcount, int likecount,String qid, ArrayList<String> likepeoplelist,ArrayList<String> commentpeople) {
         this.context = context;
         this.items = items;
         this.personid=personid;
-
+        this.qnaname = qnaname;
+        this.title = title;
+        this.qcontent = content;
+        this.qdate = date;
+        this.commentcount = commentcount;
+        this.likecount = likecount;
+        this.qid = qid;
+        this.likepeoplelist = likepeoplelist;
+        this.commentpeoplelist=commentpeople;
     }
+
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -101,6 +123,9 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                             if (menuItem.getItemId() == R.id.action_delete) {
 
                                 comentdelete( items.get(getAdapterPosition()).getCommentid());
+                                commentpeoplelist.remove(dataManager.getUser().getUserid());
+                                Qna qna = new Qna(qnaname, personid, title, qcontent, qdate, commentcount, likecount, qid, likepeoplelist,commentpeoplelist);
+                                update(qna);
 
 
                             } else if (menuItem.getItemId() == R.id.action_recommentwrite) {
@@ -132,7 +157,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                 .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-       CommentInterface commentInterface = retrofit.create(CommentInterface.class);
+        CommentInterface commentInterface = retrofit.create(CommentInterface.class);
         Call<Void> call = commentInterface.removeComment(commnetid);
 
         call.enqueue(new Callback<Void>() {
@@ -156,58 +181,34 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
                 Log.d(TAG, "onFailure2: 게시물 목록 왜안나와");
             }
         });
-       /* Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+    }
+        public  void update(Qna qna) {
 
-        QnaInterface retrofitService = retrofit.create(QnaInterface.class);
-        Call<Qna> call1 = retrofitService.updateQna(qid,qna);
 
-        call.enqueue(new Callback<Qna>() {
-            @Override
-            public void onResponse(Call<Qna> call, Response<Qna> response) {
-                Log.d("좋아요 기능 성공!", string_like.toString());
-                Toast.makeText(getApplicationContext(),  "감사합니다.", Toast.LENGTH_LONG).show();
-                txt_like.setText(string_like);
-                setResult(RESULT_OK);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-            }
+            QnaInterface retrofitService = retrofit.create(QnaInterface.class);
+            Call<Qna> call = retrofitService.updateQna(qid,qna);
 
-            @Override
-            public void onFailure(Call<Qna> call, Throwable t) {
-                Log.e("좋아요 기능 실패ㅠㅠ", t.getMessage());
-            }
+            call.enqueue(new Callback<Qna>() {
+                @Override
+                public void onResponse(Call<Qna> call, Response<Qna> response) {
 
-        });*/
 
+
+                }
+
+                @Override
+                public void onFailure(Call<Qna> call, Throwable t) {
+                    Log.e("좋아요 기능 실패ㅠㅠ", t.getMessage());
+                }
+
+            });
+        }
 
     }
-   /*public void comment_rewrite(Comment comment,String comment_id){
-
-           Retrofit retrofit = new Retrofit.Builder()
-                   .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
-                   .addConverterFactory(GsonConverterFactory.create())
-                   .build();
-           CommentInterface commentinterface = retrofit.create(CommentInterface.class);
-           Call<Comment> call = commentinterface.updateComment(comment_id, comment);
-
-           call.enqueue(new Callback<Comment>() {
-               @Override
-               public void onResponse(Call<Comment> call, Response<Comment> response) {
-                   if (response.isSuccessful()) {
-
-
-                   } else {
-                       Log.d(TAG, "onResponse1: Something Wrong");
-                   }
-               }
-
-               @Override
-               public void onFailure(Call<Comment> call, Throwable t) {
-                   Toast.makeText(context, "목록을 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
-                   ;
-                   Log.d(TAG, "onFailure2:수정 왜안돼");
-               }
-           });*/
-
-       }
 
 

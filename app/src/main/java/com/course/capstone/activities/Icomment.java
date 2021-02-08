@@ -27,21 +27,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class Iwrite extends AppCompatActivity {
-    private RecyclerView iwriteRecyclerView;
-    private BoardAdapter iwriteAdapter;
+public class Icomment extends AppCompatActivity {
+    private RecyclerView icommentRecyclerView;
+    private BoardAdapter icommentAdapter;
     SwipeRefreshLayout refreshLayout;
     DataManager dataManager = DataManager.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iwrite);
-        iwriteRecyclerView = (RecyclerView) findViewById(R.id.i_write_recyclerview);
-        iwriteRecyclerView.setHasFixedSize(true);
+        setContentView(R.layout.activity_icomment);
+        icommentRecyclerView = (RecyclerView) findViewById(R.id.i_comment_recycler);
+        icommentRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
-        iwriteRecyclerView.setLayoutManager(layoutManager);
-        iwriteRecyclerView.addItemDecoration(new DividerItemDecoration(Iwrite.this, DividerItemDecoration.VERTICAL));
+        icommentRecyclerView.setLayoutManager(layoutManager);
+        icommentRecyclerView.addItemDecoration(new DividerItemDecoration(Icomment.this, DividerItemDecoration.VERTICAL));
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.comment_swipe_refresh);
         mywrited();
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -65,18 +67,18 @@ public class Iwrite extends AppCompatActivity {
             public void onResponse(Call<List<Qna>> call, Response<List<Qna>> response) {
                 if (response.isSuccessful()) {
                     List<Qna> qna = response.body();
-                    List<Qna> iwriteqna = new ArrayList<>();
+                    List<Qna> icommentqna = new ArrayList<>();
                     for (int i = 0; i < qna.size(); i++) {
-                        if (qna.get(i).getQ_username().equals(dataManager.getUser().getUserid()) ) {
+                        if (qna.get(i).getCommentpeople().contains(dataManager.getUser().getUserid()) ) {
                             Log.d(qna.get(i).getTitle(), "onResponse1: Something Wrong");
 
-                            iwriteqna.add(qna.get(i));
+                            icommentqna.add(qna.get(i));
 
 
                         }
                     }
-                    iwriteAdapter = new BoardAdapter(Iwrite.this, iwriteqna);
-                    iwriteRecyclerView.setAdapter(iwriteAdapter);
+                    icommentAdapter = new BoardAdapter(Icomment.this, icommentqna);
+                    icommentRecyclerView.setAdapter(icommentAdapter);
 
                     refreshLayout.setRefreshing(false);
 

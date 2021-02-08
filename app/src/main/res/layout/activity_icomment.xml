@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Iwrite">
+    tools:context=".activities.Icomment">
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/comment_swipe_refresh"
         android:layout_width="417dp"
@@ -14,10 +14,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/i_write_recyclerview"
+        android:id="@+id/i_comment_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="285dp" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

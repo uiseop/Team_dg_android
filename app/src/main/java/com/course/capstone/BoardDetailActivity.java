@@ -358,7 +358,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<Comment> comment = response.body();
 
-                    adapter = new ReplyTalkAdapter(getApplicationContext(), comment, personid);
+                    adapter = new ReplyTalkAdapter(getApplicationContext(), comment, name,personid,title, content, date, commentcount, likecount, qid, likepeoplelist,commentpeoplelist);
                     commentcount = adapter.items.size();
                     recyclerView.setAdapter(adapter);
                     refreshLayout.setRefreshing(false);
