@@ -34,7 +34,7 @@ public class Frag2 extends Fragment {
 
         tabLayout.addTab(tabLayout.newTab().setText("자유게시판"));
         tabLayout.addTab(tabLayout.newTab().setText("hot게시판"));
-        tabLayout.addTab(tabLayout.newTab().setText("금융공모전"));
+        tabLayout.addTab(tabLayout.newTab().setText("오늘의금융상식"));
         tabLayout.setTabTextColors(Color.rgb(0,0,0),Color.rgb(244,195,123));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         mViewPager = (ViewPager) view.findViewById(R.id.board_view_pager);

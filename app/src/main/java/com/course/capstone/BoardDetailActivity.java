@@ -132,22 +132,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 QnaInterface qnainterface = retrofit.create(QnaInterface.class);
                                 Call<Qna> call = qnainterface.updateQna(qid, qna);
 
-                                HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("qnaid", qid);
 
-                                FCMInterface fcmInterface = retrofit.create(FCMInterface.class);
-                                Call<GenericResponse> call2 = fcmInterface.send(hashMap);
-                                call2.enqueue(new Callback<GenericResponse>() {
-                                    @Override
-                                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
-                                        Log.d(TAG, "알림 메시지 보내기 성공");
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<GenericResponse> call, Throwable t) {
-                                        Log.d(TAG, "알림 메시지 보내기 실패");
-                                    }
-                                });
 
                                 call.enqueue(new Callback<Qna>() {
                                     @Override
@@ -171,7 +156,24 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                                 post(comment);
 
+                                HashMap<String, Object> hashMap = new HashMap<>();
+                                hashMap.put("qnaid", qid);
+                                hashMap.put("commenterid", dataManager.getUser().getUserid());
+                                hashMap.put("writerid", name);
 
+                                FCMInterface fcmInterface = retrofit.create(FCMInterface.class);
+                                Call<GenericResponse> call2 = fcmInterface.send(hashMap);
+                                call2.enqueue(new Callback<GenericResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                                        Log.d(TAG, "알림 메시지 보내기 성공");
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<GenericResponse> call, Throwable t) {
+                                        Log.d(TAG, "알림 메시지 보내기 실패");
+                                    }
+                                });
 
                             }
                         }).setNegativeButton("취소",
@@ -486,7 +488,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-    QnaInterface retrofitService = retrofit.create(QnaInterface.class);                                             
+    QnaInterface retrofitService = retrofit.create(QnaInterface.class);
        Call<Qna> call = retrofitService.updateQna(qid,qna);
 
        call.enqueue(new Callback<Qna>() {

@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.course.capstone.DailyFragment;
 import com.course.capstone.freeFragment;
 import com.course.capstone.hotFragment;
-import com.course.capstone.infoFragment;
 
 public class BoardTabPageAdapter extends FragmentStatePagerAdapter {
 
@@ -28,7 +28,7 @@ public class BoardTabPageAdapter extends FragmentStatePagerAdapter {
                 return new hotFragment();
 
             case 2:
-                return new infoFragment();
+                return new DailyFragment();
 
 
             default:
