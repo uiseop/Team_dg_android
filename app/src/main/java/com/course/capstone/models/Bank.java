@@ -17,6 +17,17 @@ public class Bank {
     @SerializedName("parentid")
     @Expose
     private String parentid;
+    @SerializedName("balance")
+    @Expose
+    int balance;
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     DataManager dataManager = DataManager.getInstance();
     public void setParentid(){

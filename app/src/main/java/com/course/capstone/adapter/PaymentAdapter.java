@@ -52,9 +52,7 @@ public class PaymentAdapter extends BaseExpandableListAdapter{
         TextView childamount = (TextView)convertView.findViewById(R.id.childamount);
 
         childname.setText(childData.getShop());
-        Log.d("shop",childData.getShop());
         childamount.setText(Integer.toString(childData.getCost()));
-        Log.d("amount",Integer.toString(childData.getCost()));
         return convertView;
     }
 

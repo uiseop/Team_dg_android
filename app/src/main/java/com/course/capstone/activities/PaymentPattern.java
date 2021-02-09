@@ -16,6 +16,8 @@ import com.course.capstone.models.Bank;
 import com.course.capstone.models.BankInterface;
 import com.course.capstone.models.Child;
 import com.course.capstone.models.DataManager;
+import com.course.capstone.models.FCMInterface;
+import com.course.capstone.models.GenericResponse;
 import com.course.capstone.models.Payment;
 import com.course.capstone.models.PaymentInterface;
 import com.course.capstone.models.RetrofitInterface;
@@ -48,7 +50,9 @@ public class PaymentPattern extends AppCompatActivity {
     ExpandableListView expandableListView;
     List<String> parentData;
     HashMap<String, ArrayList<Child>> childData;
-
+    int alarmbalance = 2000000;
+    int totalbalance = 0;
+    String msg = "잔고가 "+alarmbalance+" 미만입니다. 주의하세요!";
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -77,9 +81,38 @@ public class PaymentPattern extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Bank>> call, Response<List<Bank>> response) {
                 List<Bank> bank = response.body();
+                //bank는 call2를  통해서 불러온 bank list
+                for (int i=0; i<bank.size();i++){
+                    totalbalance += bank.get(i).getBalance();
+                }
+                Log.d("total", String.valueOf(totalbalance));
+                Log.d("alaram", String.valueOf(alarmbalance));
+
+                if(totalbalance < alarmbalance) {
+                    HashMap<String, Object> alarm = new HashMap<>();
+                    alarm.put("message",msg);
+                    alarm.put("userid",dataManager.getUser().getId());
+                    Log.d("msg",msg);
+                    Log.d("userid",dataManager.getUser().getId());
+
+                    FCMInterface fcmInterface = retrofit.create(FCMInterface.class);
+                    Call<GenericResponse> call3 = fcmInterface.balance(alarm);
+                    call3.enqueue(new Callback<GenericResponse>() {
+                        @Override
+                        public void onResponse(Call<GenericResponse> call, Response<GenericResponse> response) {
+                            Log.d("TAG","success");
+                        }
+
+                        @Override
+                        public void onFailure(Call<GenericResponse> call, Throwable t) {
+                            Log.d("TAG","fail");
+                        }
+                    });
+                }
 
                 for (int j = 0; j < bank.size(); j++) {
                     Call<List<Payment>> call1 = paymentInterface.getByParentaccount(bank.get(j).getAccount());
+                    //call1은 은행별 account를 통해 불러온 payment list
                     call1.enqueue(new Callback<List<Payment>>() {
                         @Override
                         public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
@@ -119,7 +152,7 @@ public class PaymentPattern extends AppCompatActivity {
                             float restaurant = Math.round((float) apc.get("외식") / total * 100);
 
                             //그래프 나타내기
-                            graph = (PieChart) findViewById(R.id.graph);
+                            graph = findViewById(R.id.graph);
                             graph.setUsePercentValues(true);
                             graph.getDescription().setEnabled(false);
                             graph.setExtraOffsets(5, 10, 5, 5);

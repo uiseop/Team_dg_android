@@ -16,10 +16,6 @@ public class Payment {
     @Expose
     int amount;
 
-    @SerializedName("balance")
-    @Expose
-    int balance;
-
     @SerializedName("parentaccount")
     @Expose
     int parentaccount;
@@ -54,13 +50,5 @@ public class Payment {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
     }
 }

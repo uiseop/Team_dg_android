@@ -11,4 +11,6 @@ public interface FCMInterface {
     Call<GenericResponse> send (@Body HashMap<String, Object> hashMap);
 //    Call<GenericResponse> send (@Body String qnaid);
 
+    @POST("api/v1/fcm/balance")
+    Call<GenericResponse> balance (@Body HashMap<String, Object> hashMap);
 }
