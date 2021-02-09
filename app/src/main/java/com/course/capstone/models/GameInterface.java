@@ -1,13 +1,11 @@
 package com.course.capstone.models;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface GameInterface {
-    @GET("api/v1/cross")
-    Call <List<CrossInfo>> getAllCross();
+    @GET("product")
+    Call<String> getHtml();
 
 //    @RestController
 //    public class CrossController {
