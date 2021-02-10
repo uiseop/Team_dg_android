@@ -103,7 +103,7 @@ public class CorrectMyInfo extends AppCompatActivity {
                 user.setPassword(pw);
                 user.setBirthdate(birth);
                 user.setEmailaddress(email);
-
+//TODO: update 수정 필요
                 Call<User> call = userInterface.updateUser(ID,user);
                 call.enqueue(new Callback<User>() {
                     @Override

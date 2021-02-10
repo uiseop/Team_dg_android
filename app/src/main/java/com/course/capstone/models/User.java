@@ -3,25 +3,37 @@ package com.course.capstone.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class User {
     @SerializedName("name")
     @Expose
     private String name;
+
     @SerializedName("userid")
     @Expose
     private String userid;
+
     @SerializedName("password")
     @Expose
     private String password;
+
     @SerializedName("birthdate")
     @Expose
     private String birthdate;
+
     @SerializedName("emailaddress")
     @Expose
     private String emailaddress;
+
     @SerializedName("token")
     @Expose
     private String token;
+
+    @SerializedName("cross")
+    @Expose
+    private List<Cross> cross;
+
     @SerializedName("id")
     @Expose
     private String id;
@@ -46,6 +58,26 @@ public class User {
         this.token = token;
     }
 
+    public User(String name, String userid, String password, String birthdate, String emailaddress, String token, List<Cross> cross) {
+        this.name = name;
+        this.userid = userid;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.emailaddress = emailaddress;
+        this.token = token;
+        this.cross = cross;
+    }
+
+    public User(String name, String userid, String password, String birthdate, String emailaddress, String token, List<Cross> cross, String id) {
+        this.name = name;
+        this.userid = userid;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.emailaddress = emailaddress;
+        this.token = token;
+        this.cross = cross;
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -101,5 +133,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public List<Cross> getCross() {
+        return cross;
+    }
+
+    public void setCross(List<Cross> cross) {
+        this.cross = cross;
     }
 }
