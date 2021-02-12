@@ -48,7 +48,7 @@ dependencies {
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
 
-
+    implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.github.PhilJay:MpAndroidChart:v3.0.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

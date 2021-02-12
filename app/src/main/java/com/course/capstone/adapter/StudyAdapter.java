@@ -1,5 +1,7 @@
 package com.course.capstone.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.course.capstone.R;
+import com.course.capstone.activities.MyInfoActivity;
+import com.course.capstone.activities.TaxActivity;
 
 import java.util.ArrayList;
 
@@ -43,8 +47,19 @@ public class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.StudyViewHol
     public void onBindViewHolder(StudyAdapter.StudyViewHolder holder, int position) {
 
         holder.myText.setText(content.get(position));
-        Log.d(content.get(position),"it's me mario");
+        holder.myText.setOnClickListener(new View.OnClickListener() {
 
+
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                if (content.get(position) == "세금") {
+                    Intent intent = new Intent(context, TaxActivity.class);
+                    context.startActivity(intent);
+                }
+
+            }
+        });
     }
 
 
