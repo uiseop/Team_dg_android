@@ -1,23 +1,20 @@
 package com.course.capstone.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.course.capstone.MypageActivity;
 import com.course.capstone.R;
 import com.course.capstone.models.DataManager;
-import com.course.capstone.models.RetrofitInterface;
 import com.course.capstone.models.User;
 import com.course.capstone.models.UserInterface;
 
@@ -31,7 +28,7 @@ public class CorrectMyInfo extends AppCompatActivity {
 
     private TextView id;
     private EditText correct_name, correct_email, correct_birth, correct_pw, correct_pwck;
-    private Button btn,btn_pre;
+    private Button btn, btn_pre;
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
@@ -96,15 +93,14 @@ public class CorrectMyInfo extends AppCompatActivity {
                 String name = correct_name.getText().toString();
                 String pw = correct_pwck.getText().toString();
                 String birth = correct_birth.getText().toString();
-                String email=  correct_email.getText().toString();
+                String email = correct_email.getText().toString();
 
                 user.setUserid(ID);
                 user.setName(name);
                 user.setPassword(pw);
                 user.setBirthdate(birth);
                 user.setEmailaddress(email);
-//TODO: update 수정 필요
-                Call<User> call = userInterface.updateUser(ID,user);
+                Call<User> call = userInterface.updateUser(user.getId(), user);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
