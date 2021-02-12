@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.course.capstone.activities.StudyActivity;
 import com.course.capstone.models.GameInterface;
 
 import java.util.List;
@@ -34,14 +35,24 @@ import retrofit2.http.HTTP;
 
 public class Frag4 extends Fragment {
     Button game;
+    Button study;
     String nurl;
     Response<String> cross;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.frag4,container,false);
+        study=v.findViewById(R.id.study);
+        study.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), StudyActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")

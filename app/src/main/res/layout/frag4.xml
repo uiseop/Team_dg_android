@@ -145,7 +145,24 @@
         app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toBottomOf="@id/button8"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/study"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="공부하러 가기"
+        android:textSize="28dp"
+        app:backgroundTint="#FFC5C084"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button6"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/button9"
@@ -160,5 +177,6 @@
         app:backgroundTint="@color/bread"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
