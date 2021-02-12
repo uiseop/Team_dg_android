@@ -48,18 +48,17 @@ public class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.StudyViewHol
 
         holder.myText.setText(content.get(position));
         holder.myText.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
-            public void onClick(View v) {
-                Context context = v.getContext();
+            public void onClick(View view) {
+                Context context = view.getContext();
+
                 if (content.get(position) == "세금") {
                     Intent intent = new Intent(context, TaxActivity.class);
                     context.startActivity(intent);
                 }
-
             }
         });
+
     }
 
 

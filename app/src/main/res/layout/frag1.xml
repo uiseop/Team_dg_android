@@ -69,8 +69,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="40dp"
-            />
+            android:layout_marginRight="40dp" />
     </LinearLayout>
 
     <com.youth.banner.Banner
@@ -91,6 +90,14 @@
         app:barrierDirection="top"
         tools:layout_editor_absoluteX="200dp"
         tools:layout_editor_absoluteY="118dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:orientation="horizontal"
+        android:background="@drawable/rectangle_all_corner_radius"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="191dp"></LinearLayout>
 
     <!--        app:layout_constraintBottom_toTopOf="@id/banner"-->
 
