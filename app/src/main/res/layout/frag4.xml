@@ -1,182 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/game1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="금융상품"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/game2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="보험"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/game1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/game3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="세금"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/game2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="신용"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game1" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="연금"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/button4"
-        app:layout_constraintTop_toBottomOf="@id/game2" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="일반상식"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button9" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="일반상식2"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/button5"
-        app:layout_constraintTop_toTopOf="@id/button5" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="일반상식3"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/button6"
-        app:layout_constraintTop_toTopOf="@id/button6" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="증권"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toRightOf="@id/button"
-        app:layout_constraintTop_toBottomOf="@id/game3" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="펀드"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintStart_toEndOf="@+id/button9"
-        app:layout_constraintTop_toBottomOf="@id/button8"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/study"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="102dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="공부하러 가기"
-        android:textSize="28dp"
-        app:backgroundTint="#FFC5C084"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button6"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="카드"
-        android:textSize="28dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button4" />
+        android:layout_height="wrap_content">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/game1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="금융상품"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/game2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="보험"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/game1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/game3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="세금"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/game2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="신용"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="연금"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/button4"
+            app:layout_constraintTop_toBottomOf="@id/game2" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="일반상식"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button9" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="일반상식2"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/button5"
+            app:layout_constraintTop_toTopOf="@id/button5" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="일반상식3"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/button6"
+            app:layout_constraintTop_toTopOf="@id/button6" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="증권"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toRightOf="@id/button"
+            app:layout_constraintTop_toBottomOf="@id/game3" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="펀드"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintBottom_toTopOf="@+id/button7"
+            app:layout_constraintStart_toEndOf="@+id/button9"
+            app:layout_constraintTop_toBottomOf="@id/button8"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/study"
+            android:layout_width="413dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="공부하러 가기"
+            android:textSize="28dp"
+            app:backgroundTint="#FFC5C084"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button6"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="카드"
+            android:textSize="28dp"
+            app:backgroundTint="@color/bread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button4" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

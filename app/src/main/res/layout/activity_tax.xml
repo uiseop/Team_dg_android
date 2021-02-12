@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.StudyActivity">
+    tools:context=".activities.TaxActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/study_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,7 +49,7 @@ public class Frag4 extends Fragment {
         study.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(), StudyActivity.class);
+                Intent intent=new Intent(getActivity(), StudyActivity.class);
                 getActivity().startActivity(intent);
             }
         });
