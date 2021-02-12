@@ -1,18 +1,12 @@
 package com.course.capstone;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,17 +15,11 @@ import androidx.fragment.app.Fragment;
 import com.course.capstone.activities.StudyActivity;
 import com.course.capstone.models.GameInterface;
 
-import java.util.List;
-
-import okhttp3.Headers;
-import okhttp3.HttpUrl;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.http.HTTP;
 
 public class Frag4 extends Fragment {
     Button game;
@@ -39,13 +27,11 @@ public class Frag4 extends Fragment {
     String nurl;
     Response<String> cross;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.frag4,container,false);
-        study=v.findViewById(R.id.study);
+        study=v.findViewById(R.id.studyitem);
         study.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

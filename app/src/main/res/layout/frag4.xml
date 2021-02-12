@@ -154,7 +154,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/study"
+            android:id="@+id/studyitem"
             android:layout_width="413dp"
             android:layout_height="52dp"
             android:layout_marginBottom="5dp"

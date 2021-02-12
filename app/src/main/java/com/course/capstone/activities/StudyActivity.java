@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.course.capstone.R;
 import com.course.capstone.adapter.MyAdapter;
@@ -14,17 +15,17 @@ import com.course.capstone.models.DataItem;
 import java.util.ArrayList;
 
 public class StudyActivity extends AppCompatActivity {
-    private RecyclerView studyre;
+    private RecyclerView studyrecyclerview;
 
     private RecyclerView.LayoutManager SManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study);
-        studyre=  findViewById(R.id.study_recyclerview);
-        studyre.setHasFixedSize(true);
+        studyrecyclerview=  findViewById(R.id.study_recyclerview);
+        studyrecyclerview.setHasFixedSize(true);
         SManager = new LinearLayoutManager(this);
-        studyre.setLayoutManager(SManager);
+        studyrecyclerview.setLayoutManager(SManager);
         ArrayList<String> study = new ArrayList<>();
         study.add("세계경제");
         study.add("대출");
@@ -41,8 +42,9 @@ public class StudyActivity extends AppCompatActivity {
         study.add("일반상식2");
         study.add("일반상식3");
 
-        StudyAdapter Study= new StudyAdapter(study);
-        studyre.setAdapter(Study);
+
+        StudyAdapter studyAdapter= new StudyAdapter(study);
+        studyrecyclerview.setAdapter(studyAdapter);
 
 
     }

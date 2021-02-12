@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="80dp">
 
-
     <TextView
-        android:id="@+id/study"
+        android:id="@+id/studyitem"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="74dp"
 
         android:text="TextView"
-        android:textSize="30sp"
-        android:textColor="#000"/>
+        android:textColor="#000"
+        android:textSize="30sp" />
+
 </LinearLayout>
+
