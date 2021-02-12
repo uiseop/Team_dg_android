@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TestResultActivity">
+
+    <TextView
+        android:id="@+id/textView_wjrrmrxnwkgud"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="적극투자형"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView_dnlgjawndflqgud"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dnlgjawndflqgud" />
+
+    <TextView
+        android:id="@+id/textView_rhdrurxnwkgud"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="공격투자형"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView_wjrrmrxnwkgud"
+        app:layout_constraintTop_toBottomOf="@+id/textView_wjrrmrxnwkgud" />
+
+    <TextView
+        android:id="@+id/textView80"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="80점 초과"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_wjrrmrxnwkgud"
+        app:layout_constraintTop_toTopOf="@+id/textView_rhdrurxnwkgud" />
+
+    <TextView
+        android:id="@+id/textView6080"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="60점 초과~80점 이하"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4060"
+        app:layout_constraintStart_toStartOf="@+id/textView4060"
+        app:layout_constraintTop_toTopOf="@+id/textView_wjrrmrxnwkgud" />
+
+    <TextView
+        android:id="@+id/textView_dkswjdcnrngud"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="안정추구형"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView_dkswjdgud"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dkswjdgud" />
+
+    <TextView
+        android:id="@+id/textView_dnlgjawndflqgud"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="위험중립형"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView_dkswjdcnrngud"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dkswjdcnrngud" />
+
+    <TextView
+        android:id="@+id/textView4060"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="40점 초과~60점 이하"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2040"
+        app:layout_constraintStart_toStartOf="@+id/textView2040"
+        app:layout_constraintTop_toTopOf="@+id/textView_dnlgjawndflqgud" />
+
+    <TextView
+        android:id="@+id/textView2040"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="20점 초과~40점 이하"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView20"
+        app:layout_constraintTop_toTopOf="@+id/textView_dkswjdcnrngud" />
+
+    <TextView
+        android:id="@+id/textView_dkswjdgud"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="안정형"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="20점 이하"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView_dkswjdgud" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="투자성향"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textdesign"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:gravity="center_horizontal"
+        android:text="점수"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+    <Button
+        android:id="@+id/button_testresult"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="나에게 맞는 진단결과 확인하기"
+        android:textColor="#25699F"
+        android:textSize="20dp"
+        app:backgroundTint="@color/bread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

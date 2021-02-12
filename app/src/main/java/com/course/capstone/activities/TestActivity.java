@@ -179,7 +179,7 @@ public class TestActivity extends AppCompatActivity {
 
                 score = score / 32 * 100;
                 if(score>80){
-                    s="공격자투자형";
+                    s="공격투자형";
                 }
                 else if(score>60){
                     s="적극투자형";
@@ -197,12 +197,13 @@ public class TestActivity extends AppCompatActivity {
 
                 Context context= v.getContext();
                 new AlertDialog.Builder(context)
-                        .setTitle(name+"님의 투자성향").setMessage(s+"입니다")
+                        .setTitle(name+"님의 투자성향").setMessage(score+"점 : "+s+"입니다")
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent=new Intent(context, MainActivity.class);
-                                context.startActivity(intent);
+                                Intent intent=new Intent(context, TestResultActivity.class);
+                                intent.putExtra("score",score);
+                                startActivity(intent);
                             }
                         }).show();
             }
