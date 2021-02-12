@@ -67,7 +67,8 @@ public class Frag4 extends Fragment {
 
         for (Cross cross1 : crosses) {
             for (String btn_name : btn){
-                if (cross1.getCategory() == btn_name){
+                Integer integer = cross1.getScore();
+                if (cross1.getCategory() == btn_name && integer!=null){
                     text = btn_name + '1';
                     point1 = v.findViewById(R.id.text);
                     point1.setText(cross1.getScore());

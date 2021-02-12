@@ -26,7 +26,10 @@ import com.course.capstone.activities.TestActivity;
 import com.course.capstone.adapter.CurrentAdapter;
 import com.course.capstone.adapter.ImageAdapter;
 import com.course.capstone.models.ChartDTO;
+import com.course.capstone.models.Cross;
 import com.course.capstone.models.DataBean;
+import com.course.capstone.models.DataManager;
+import com.course.capstone.models.User;
 import com.youth.banner.Banner;
 import com.youth.banner.util.BannerUtils;
 
@@ -40,6 +43,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Frag1 extends Fragment {
@@ -49,6 +53,8 @@ public class Frag1 extends Fragment {
     ImageView imageView,test;
     URL iurl;
     String nurl;
+    DataManager dataManager = DataManager.getInstance();
+    int tot;
 
     //환율데이터 레이아웃
     private RecyclerView recyclerView;
@@ -61,6 +67,13 @@ public class Frag1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.frag1,container,false);
+        List<Cross> cross = dataManager.getUser().getCross();
+        for (Cross cross1 : cross) {
+            Integer integer = cross1.getScore();
+            if(integer != null) {
+                tot += cross1.getScore();
+            }
+        }
 
         //환율데이타 받아오는곳
         recyclerView = v.findViewById(R.id.recyclerview);
