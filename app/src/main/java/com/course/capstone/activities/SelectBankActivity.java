@@ -55,6 +55,7 @@ public class SelectBankActivity extends AppCompatActivity {
         adapter.addItem(ContextCompat.getDrawable(this,R.drawable.shinhan),"신한은행",0,parentid);
         adapter.addItem(ContextCompat.getDrawable(this,R.drawable.woori),"우리은행",0,parentid);
         adapter.addItem(ContextCompat.getDrawable(this,R.drawable.ibk),"기업은행",0,parentid);
+        adapter.addItem(ContextCompat.getDrawable(this,R.drawable.kookmin),"국민은행",0,parentid);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

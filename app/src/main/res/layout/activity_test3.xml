@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.test.test3">
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="위험중립형"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="성향분석"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/textView59"
+        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="투자에는 그에 상응하는 투자위험이 있음을 충분히 인식하고 있으며,
+         \n예·적금보다 높은 수익을 기대할 수 있다면 일정수준의 손실위험을 감수할 수 있다"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/textView40"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="추천"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/textView41"
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="-주식에 펀드자산의 최대 50% 미만을 투자하는 채권혼합형펀드
+        \n\n-주식 및 주식관련파생상품에 펀드자산의 30% 이하를 투자 하는 채권혼합형펀드
+        \n\n-투자등급의 일반 회사채권에 주로 투자하는 채권형펀드
+        \n\n-부동산실물(오피스빌딩, 대형상가 등)에 투자하는 부동산펀드
+        \n\nex)
+        \n\n-채권혼합형펀드
+        \n\n-일반채권형펀드
+        \n\n-부동산실물자산펀드
+        \n\n-원금부분보장형(원금 80% 이상) ELF 등"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/textView42"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="위험등급"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:text="중위험"
+        android:textSize="15sp"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        app:layout_constraintStart_toEndOf="@+id/textView59"
+        app:layout_constraintTop_toTopOf="@+id/textView59" />
+</androidx.constraintlayout.widget.ConstraintLayout>
