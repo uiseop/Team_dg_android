@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -69,36 +70,31 @@ public class Frag1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.frag1,container,false);
         List<Cross> cross = dataManager.getUser().getCross();
-        name = dataManager.getUser().getName();
-        id = v.findViewById(R.id.userid);
-        id.setText(name + "님 환영합니다!!");
-        rank = v.findViewById(R.id.rank);
-        for (Cross cross1 : cross) {
-            Integer integer = cross1.getScore();
-            if(integer != null) {
-                tot += cross1.getScore();
-            }
-        }
-        if(tot >= 0 && tot <20){
-            rank.setImageResource(R.drawable.one);
-        }
-        else if(tot>=20 && tot<40){
-            rank.setImageResource(R.drawable.two);
-        }
-        else if(tot>=40 && tot<60){
-            rank.setImageResource(R.drawable.three);
-        }
-        else if(tot>=60 && tot<80){
-            rank.setImageResource(R.drawable.four);
-        }
-        else{
-            rank.setImageResource(R.drawable.five);
-        }
+//        name = dataManager.getUser().getName();
+//        id = v.findViewById(R.id.appId);
+//        id.setText(name + "님 환영합니다!!");
+
+
+//        if(tot >= 0 && tot <20){
+//            rank.setImageResource(R.drawable.one);
+//        }
+//        else if(tot>=20 && tot<40){
+//            rank.setImageResource(R.drawable.two);
+//        }
+//        else if(tot>=40 && tot<60){
+//            rank.setImageResource(R.drawable.three);
+//        }
+//        else if(tot>=60 && tot<80){
+//            rank.setImageResource(R.drawable.four);
+//        }
+//        else{
+//            rank.setImageResource(R.drawable.five);
+//        }
 
         //환율데이타 받아오는곳
         recyclerView = v.findViewById(R.id.recyclerview);
         CurrentAdapter myAdapter = new CurrentAdapter(list);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(myAdapter);
         //뉴스데이타 받아오는곳
