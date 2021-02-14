@@ -55,7 +55,7 @@ dependencies {
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
     compile 'com.android.support:multidex:1.0.3'
-
+    compile 'com.loopeer.library:cardstack:1.0.2'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
