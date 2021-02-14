@@ -35,15 +35,17 @@ public class MyJavascriptInterface {
             int check = 0;
             for(int i=0; i<crossList.size(); i++){
                 if(crossList.get(i).getCategory().equals(category)){
+                    Log.d("Fail", category);
+                    Log.d("Fail", crossList.get(i).getCategory());
                     Log.d("Fail", "이미 푼 적이 있는 문제입니다");
                     break;
                 }
                 else{
                     check++;
-                    if(check == crossList.size())
-                        crossList.add(new Cross(Integer.parseInt(score), category));
                 }
             }
+            if(check == crossList.size())
+                crossList.add(new Cross(Integer.parseInt(score), category));
         }
         else{
             crossList.add(new Cross(Integer.parseInt(score), category));
