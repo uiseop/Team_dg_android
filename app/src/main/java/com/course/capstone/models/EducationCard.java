@@ -4,12 +4,22 @@ public class EducationCard {
     private int image;
     private String title;
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    private String content;
 
 
-    public EducationCard( int image,String title) {
+
+    public EducationCard( int image,String title,String content) {
         this.title = title;
         this.image = image;
-
+        this.content=content;
     }
 
     public int getImage() {
