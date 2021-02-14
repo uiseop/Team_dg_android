@@ -6,13 +6,15 @@
 
     <stroke
         android:width="2dp"
-        android:color="#EEEEEE" />
+        android:color="#EEEEEE"
+        />
 
     <corners
         android:bottomLeftRadius="12dp"
         android:bottomRightRadius="12dp"
         android:topLeftRadius="12dp"
-        android:topRightRadius="12dp" />
+        android:topRightRadius="12dp"
+        />
     <!-- 좌측 여백 -->
     <padding
         android:left="2dp"
