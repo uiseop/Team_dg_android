@@ -135,7 +135,7 @@ public class CardviewAdapter extends RecyclerView.Adapter<CardviewAdapter.ViewHo
                 // value는 height 값
                 int value = (int) animation.getAnimatedValue();
                 // imageView의 높이 변경
-              content.getLayoutParams().height = value;
+              //content.getLayoutParams().height = value;
                 content.requestLayout();
                 // imageView가 실제로 사라지게하는 부분
                 content.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
