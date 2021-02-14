@@ -47,14 +47,15 @@ import java.util.List;
 
 
 public class Frag1 extends Fragment {
-    TextView news_title;
-    String nums;
+    TextView news_title,id;
+    String nums,name;
     Bitmap bitmap;
-    ImageView imageView,test;
+    ImageView imageView,test,rank;
     URL iurl;
     String nurl;
     DataManager dataManager = DataManager.getInstance();
     int tot;
+
 
     //환율데이터 레이아웃
     private RecyclerView recyclerView;
@@ -68,11 +69,30 @@ public class Frag1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v=inflater.inflate(R.layout.frag1,container,false);
         List<Cross> cross = dataManager.getUser().getCross();
+        name = dataManager.getUser().getName();
+        id = v.findViewById(R.id.userid);
+        id.setText(name + "님 환영합니다!!");
+        rank = v.findViewById(R.id.rank);
         for (Cross cross1 : cross) {
             Integer integer = cross1.getScore();
             if(integer != null) {
                 tot += cross1.getScore();
             }
+        }
+        if(tot >= 0 && tot <20){
+            rank.setImageResource(R.drawable.one);
+        }
+        else if(tot>=20 && tot<40){
+            rank.setImageResource(R.drawable.two);
+        }
+        else if(tot>=40 && tot<60){
+            rank.setImageResource(R.drawable.three);
+        }
+        else if(tot>=60 && tot<80){
+            rank.setImageResource(R.drawable.four);
+        }
+        else{
+            rank.setImageResource(R.drawable.five);
         }
 
         //환율데이타 받아오는곳
