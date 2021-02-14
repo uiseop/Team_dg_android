@@ -17,7 +17,7 @@
         android:text="적극투자형"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView_dnlgjawndflqgud"
         app:layout_constraintTop_toBottomOf="@+id/textView_dnlgjawndflqgud" />
 
@@ -32,7 +32,7 @@
         android:text="공격투자형"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView_wjrrmrxnwkgud"
         app:layout_constraintTop_toBottomOf="@+id/textView_wjrrmrxnwkgud" />
 
@@ -46,7 +46,7 @@
         android:text="80점 초과"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_wjrrmrxnwkgud"
         app:layout_constraintTop_toTopOf="@+id/textView_rhdrurxnwkgud" />
@@ -61,7 +61,7 @@
         android:text="60점 초과~80점 이하"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView4060"
         app:layout_constraintStart_toStartOf="@+id/textView4060"
         app:layout_constraintTop_toTopOf="@+id/textView_wjrrmrxnwkgud" />
@@ -77,7 +77,7 @@
         android:text="안정추구형"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView_dkswjdgud"
         app:layout_constraintTop_toBottomOf="@+id/textView_dkswjdgud" />
 
@@ -92,7 +92,7 @@
         android:text="위험중립형"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView_dkswjdcnrngud"
         app:layout_constraintTop_toBottomOf="@+id/textView_dkswjdcnrngud" />
 
@@ -106,7 +106,7 @@
         android:text="40점 초과~60점 이하"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView2040"
         app:layout_constraintStart_toStartOf="@+id/textView2040"
         app:layout_constraintTop_toTopOf="@+id/textView_dnlgjawndflqgud" />
@@ -121,7 +121,7 @@
         android:text="20점 초과~40점 이하"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView20"
@@ -184,7 +184,7 @@
         android:text="점수"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="@+id/textView15" />
@@ -198,7 +198,7 @@
         android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:text="나에게 맞는 진단결과 확인하기"
         android:textColor="#25699F"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:backgroundTint="@color/bread"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
