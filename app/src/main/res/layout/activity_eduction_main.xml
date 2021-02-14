@@ -7,81 +7,39 @@
     tools:context=".activities.education.EductionMain">
 
     <Button
-        android:id="@+id/button_fraud"
+        android:id="@+id/button_career1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/button_design"
-        android:backgroundTint="@color/bread"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="금융사기"
-        android:textSize="25dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_insurance"
-        app:layout_constraintTop_toBottomOf="@+id/button_stock" />
-
-    <Button
-        android:id="@+id/button_bank"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button_design"
-        android:backgroundTint="@color/bread"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="은행"
-        android:textSize="25dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintBottom_toTopOf="@+id/button_insurance"
-        app:layout_constraintEnd_toStartOf="@+id/button_stock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_stock"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/button_design"
-        android:backgroundTint="@color/bread"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="증권"
-        android:textSize="25dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintBottom_toTopOf="@+id/button_fraud"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_bank"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_insurance"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="130dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginBottom="200dp"
         android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:backgroundTint="@color/bread"
-
-        android:text="보험"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="금융교육"
         android:textSize="25dp"
         app:backgroundTint="@color/bread"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_fraud"
+        app:layout_constraintEnd_toStartOf="@+id/button_career2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_bank" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_career2"
+        android:layout_width="0dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/button_design"
+        android:backgroundTint="@color/bread"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:text="금융진로"
+        android:textSize="25dp"
+        app:backgroundTint="@color/bread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_career1"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
