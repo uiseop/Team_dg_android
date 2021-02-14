@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TaxActivity"></activity>
+        <activity android:name=".activities.TaxdetailActivity"></activity>
+        <activity android:name=".activities.TaxActivity" />
         <activity android:name=".activities.TestResultActivity" />
         <activity android:name=".activities.Icomment" />
         <activity android:name=".activities.StudyActivity" />

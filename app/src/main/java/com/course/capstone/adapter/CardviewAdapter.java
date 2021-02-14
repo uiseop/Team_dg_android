@@ -2,6 +2,7 @@ package com.course.capstone.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,9 @@ public class CardviewAdapter extends RecyclerView.Adapter<CardviewAdapter.ViewHo
 
     Context context;
     ArrayList<EducationCard> items;
+    private SparseBooleanArray selectedItems = new SparseBooleanArray();
+    // 직전에 클릭됐던 Item의 position
+    private int prePosition = -1;
 
     public CardviewAdapter(Context context, ArrayList<EducationCard> items) {
         this.context = context;
@@ -38,7 +42,7 @@ public class CardviewAdapter extends RecyclerView.Adapter<CardviewAdapter.ViewHo
         Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         holder.image.setBackground(drawable);
         holder.title.setText(item.getTitle());
-        holder.content.setText(item.getContent());
+
     }
     @Override
     public int getItemCount() {
@@ -54,7 +58,6 @@ public class CardviewAdapter extends RecyclerView.Adapter<CardviewAdapter.ViewHo
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.imageView5);
             title = (TextView) itemView.findViewById(R.id.info_title);
-            content = (TextView) itemView.findViewById(R.id.info_text);
             cardview = (CardView) itemView.findViewById(R.id.card_view);
         }
     }
