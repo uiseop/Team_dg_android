@@ -14,7 +14,7 @@
 
         android:layout_marginTop="404dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/loginbtn"
+        android:background="@drawable/login_design"
 
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
@@ -39,10 +39,10 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/password"
         android:ems="10"
-        android:hint="password"
+        android:hint="PW"
         android:inputType="textPassword"
         android:paddingLeft="28dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="14dp"
         android:textColorHighlight="@color/bread"
         android:textColorLink="#F7C545"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -61,6 +61,7 @@
         android:hint="ID"
         android:inputType="textEmailAddress"
         android:paddingLeft="28dp"
+        android:paddingRight="30dp"
         android:paddingBottom="13dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"

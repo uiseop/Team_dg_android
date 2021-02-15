@@ -1,6 +1,7 @@
 package com.course.capstone.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String UserID = login_email.getText().toString();
                 String UserPw = login_password.getText().toString();
 
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 login(hashMap);
                 }
+
         });
     }
     public void login(HashMap<String, Object> parameters){
@@ -73,11 +76,12 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         UserInterface userinterface = retrofit.create(UserInterface.class);
         Call<User> call = userinterface.loginUser(parameters);
-
+//        login_button.setBackgroundColor(Color.TRANSPARENT);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
+
                     User user = response.body();
                     DataManager dataManager=DataManager.getInstance();
                     dataManager.setUser(user);
@@ -87,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     Log.d(TAG, "onResponse1: Something Wrong");
+
                 }
             }
 
@@ -94,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(getBaseContext(), "존재하지 않는 ID이거나 비밀번호가 틀렸습니다.",Toast.LENGTH_LONG).show();;
                 Log.d(TAG, "onFailure2: Something Wrong");
+//                login_button.setBackgroundResource(R.drawable.loginbtn);
             }
         });
     }

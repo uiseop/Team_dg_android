@@ -92,24 +92,32 @@ public class MainActivity extends AppCompatActivity {
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag1()).commit();
 //                        mToolbarLeftTitle.setText("따끈따끈 금융");
+                        nam.setText(name+"님 환영합니다!");
                         mypageImageButton.setVisibility(ImageButton.VISIBLE);
+                        search_bttn.setVisibility(ImageButton.VISIBLE);
                         break;
                     case R.id.action_settings:
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag2()).commit();
 //                        mToolbarLeftTitle.setText("게시판");
+                        nam.setText("게시판");
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        search_bttn.setVisibility(ImageButton.GONE);
                         break;
                     case R.id.action_navigation:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
 //                        mToolbarLeftTitle.setText("교육영상");
+                        nam.setText("교육영상");
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        search_bttn.setVisibility(ImageButton.GONE);
                         break;
 
                     case R.id.action_play:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag4()).commit();
 //                        mToolbarLeftTitle.setText("게임");
+                        nam.setText("십자풀이");
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        search_bttn.setVisibility(ImageButton.GONE);
                         break;
                 }
                 return true;
