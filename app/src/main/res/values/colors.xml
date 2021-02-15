@@ -14,4 +14,6 @@
     <color name="mainBg">#f2f2f2</color>
     <color name="bread">#FFF4C37B</color>
     <color name="blue">#11AFF7</color>
+    <color name="main">#F7C545</color>
+    <color name="cursor">#FF835716</color>
 </resources>

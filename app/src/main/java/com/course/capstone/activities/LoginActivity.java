@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login_email, login_password;
-    private Button login_button, join_button;
+    private ImageButton join_button,login_button;
 
     String username, pw;
 
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         login_email = findViewById( R.id.login_id );
         login_password = findViewById( R.id.login_password );
 
-        join_button = findViewById( R.id.join_button );
+        join_button = findViewById( R.id.register );
         join_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login_button = findViewById( R.id.login_button );
+        login_button = findViewById( R.id.login_btn );
         login_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
