@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.course.capstone.R;
 import com.course.capstone.activities.MyInfoActivity;
+import com.course.capstone.activities.ProductsActivity;
+import com.course.capstone.activities.Sense2Activity;
+import com.course.capstone.activities.SenseActivity;
 import com.course.capstone.activities.TaxActivity;
 
 import java.util.ArrayList;
@@ -54,6 +57,18 @@ public class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.StudyViewHol
 
                 if (content.get(position) == "세금") {
                     Intent intent = new Intent(context, TaxActivity.class);
+                    context.startActivity(intent);
+                }
+                else if(content.get(position)=="일반상식2"){
+                    Intent intent = new Intent(context, Sense2Activity.class);
+                    context.startActivity(intent);
+                }
+                else if(content.get(position)=="일반상식"){
+                    Intent intent = new Intent(context, SenseActivity.class);
+                    context.startActivity(intent);
+                }
+                else if(content.get(position)=="금융상품"){
+                    Intent intent = new Intent(context, ProductsActivity.class);
                     context.startActivity(intent);
                 }
             }
