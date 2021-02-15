@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -31,7 +32,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_email, join_password, join_name, join_pwck, join_id, join_birth;
-    private Button join_button, check_button, pre_button;
+    private RelativeLayout join_button, check_button, pre_button;
     private AlertDialog dialog;
     private boolean validate = false;
 
@@ -48,9 +49,18 @@ public class RegisterActivity extends AppCompatActivity {
         join_birth = findViewById(R.id.editText_joinbirth);
         join_id = findViewById(R.id.editText_joinid);
 
-        join_button = (Button) findViewById(R.id.button3);
-        check_button = (Button) findViewById(R.id.check_button);
-        pre_button = (Button)findViewById(R.id.pre_button);
+        join_button = (RelativeLayout) findViewById(R.id.layout7);
+        check_button = (RelativeLayout) findViewById(R.id.check_button);
+        pre_button = (RelativeLayout)findViewById(R.id.layout8);
+
+
+        pre_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //
         Retrofit retrofit = new Retrofit.Builder()

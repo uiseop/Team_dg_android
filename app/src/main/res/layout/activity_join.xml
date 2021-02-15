@@ -4,195 +4,268 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_back">
+    android:background="@drawable/whaning"
+    >
 
 
-    <EditText
-        android:id="@+id/editText_joinname"
-        android:layout_width="0dp"
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginRight="147dp"
-        android:ems="10"
-        android:inputType="text"
-        android:privateImeOptions="defaultInputmode=korean"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_joinname"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="180dp"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
-    <EditText
-        android:id="@+id/editText_joinpw"
-        android:layout_width="147dp"
+        <TextView
+            android:id="@+id/dlfma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            ></TextView>
+        <EditText
+            android:hint="이름을 입력하여 주시오"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:id="@+id/editText_joinname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="40dp"
+            android:layout_alignLeft="@+id/dlfma"
+            android:layout_centerHorizontal="true">
+        </EditText>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editText_joinid"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinid" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="@+id/layout">
 
-    <EditText
-        android:id="@+id/editText_joinbirth"
-        android:layout_width="147dp"
+        <TextView
+            android:id="@+id/dkdlel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            ></TextView>
+        <EditText
+            android:hint="ID"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:id="@+id/editText_joinid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="40dp"
+            android:layout_alignLeft="@+id/dkdlel"
+            android:layout_centerHorizontal="true">
+        </EditText>
+
+        <RelativeLayout
+            android:id="@+id/check_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/check"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/editText_joinid"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="ex)20210101"
-        android:inputType="numberSigned|text"
-        app:layout_constraintStart_toStartOf="@+id/editText_joinpwck"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinpwck" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="@+id/layout2">
 
-    <EditText
-        android:id="@+id/editText_joinemail"
-        android:layout_width="147dp"
+        <TextView
+            android:id="@+id/qlalfqjsgh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="비밀번호"
+            android:textColor="@color/black"
+            android:textSize="17dp"></TextView>
+
+        <EditText
+            android:hint="비밀번호"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:id="@+id/editText_joinpw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="55dp"
+            android:layout_alignLeft="@+id/qlalfqjsgh"
+            android:layout_centerHorizontal="true">
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/editText_joinbirth"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinbirth" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="@+id/layout3">
 
-    <TextView
-        android:id="@+id/textView_joinemail"
+        <TextView
+            android:id="@+id/ghkrdls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            ></TextView>
+        <EditText
+            android:hint="비밀번호 확인"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:id="@+id/editText_joinpwck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="40dp"
+            android:layout_alignLeft="@+id/ghkrdls"
+            android:layout_centerHorizontal="true">
+        </EditText>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="@+id/layout4">
+
+        <TextView
+            android:id="@+id/todsusdnjfdlf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생년월일"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            ></TextView>
+        <EditText
+            android:hint="ex) 20210101"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:id="@+id/editText_joinbirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="55dp"
+            android:layout_alignLeft="@+id/todsusdnjfdlf"
+            android:layout_centerHorizontal="true">
+        </EditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="@+id/layout5">
+
+        <TextView
+            android:id="@+id/dlapdlf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentTop="true"
+            ></TextView>
+        <EditText
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:paddingLeft="28dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="13dp"
+            android:hint="gildong@xxx.xxx"
+            android:id="@+id/editText_joinemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/id"
+            android:textCursorDrawable="@drawable/cursor"
+            android:layout_marginLeft="55dp"
+            android:layout_alignLeft="@+id/dlapdlf"
+            android:layout_centerHorizontal="true">
+        </EditText>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="E-mail"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView_joinbirth"
-        app:layout_constraintTop_toBottomOf="@+id/textView_joinbirth" />
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="89dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout6"
+        android:background="@drawable/join">
 
-    <TextView
-        android:id="@+id/textView_joinname"
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/layout8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="이름"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toStartOf="@+id/editText_joinname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_joinpw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="비밀번호"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView_joinid"
-        app:layout_constraintTop_toBottomOf="@+id/textView_joinid" />
-
-    <TextView
-        android:id="@+id/textView_joinbirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="생년월일"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView_joinid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="ID"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView_joinname"
-        app:layout_constraintTop_toBottomOf="@+id/textView_joinname" />
-
-    <EditText
-        android:id="@+id/editText_joinid"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/editText_joinname"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinname" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="가입"
-        android:textSize="15dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintStart_toStartOf="@+id/textView_joinemail"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinemail" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="확인"
-        android:textColor="@color/black"
-        android:textSize="17dp"
-        app:layout_constraintStart_toStartOf="@+id/textView_joinpw"
-        app:layout_constraintTop_toBottomOf="@+id/textView_joinpw" />
-
-    <EditText
-        android:id="@+id/editText_joinpwck"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="비밀번호 확인"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/editText_joinpw"
-        app:layout_constraintTop_toBottomOf="@+id/editText_joinpw" />
-
-    <Button
-        android:id="@+id/check_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="중복 확인"
-        android:textSize="15dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText_joinid"
-        app:layout_constraintTop_toTopOf="@+id/editText_joinid" />
-
-    <Button
-        android:id="@+id/pre_button"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="이전"
-        android:textSize="15dp"
-        app:backgroundTint="@color/bread"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="89dp"
+        android:background="@drawable/back"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout6">
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
