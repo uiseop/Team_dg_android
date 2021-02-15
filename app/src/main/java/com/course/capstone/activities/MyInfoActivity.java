@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.course.capstone.models.User;
 public class MyInfoActivity extends AppCompatActivity {
 
     TextView correct,exit,logout;
-    TextView id,name,email,birth;
+    TextView id,name,email,birth,uname;
     DataManager dataManager = DataManager.getInstance();
     User user = dataManager.getUser();
 
@@ -28,17 +29,21 @@ public class MyInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_myinfo);
 
         correct = findViewById(R.id.textView_correct);
+        correct.setPaintFlags(correct.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         exit = findViewById(R.id.textView_exit);
+        exit.setPaintFlags(exit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         id = findViewById(R.id.textView_myid);
         name = findViewById(R.id.textView_myname);
         email = findViewById(R.id.textView_myemail);
         birth = findViewById(R.id.textView_mybirth);
         logout = findViewById(R.id.textView12);
-
+        exit.setPaintFlags(exit.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         id.setText(user.getUserid());
         name.setText(user.getName());
         email.setText(user.getEmailaddress());
         birth.setText(user.getBirthdate());
+        uname =findViewById(R.id.textView13);
+        uname.setText(user.getName()+"님 환영합니다!");
 
         correct.setOnClickListener(new View.OnClickListener() {
             @Override
