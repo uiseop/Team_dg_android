@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigationView;
     private ActionBar actionBar;
     private ImageView mypageImageButton,search_bttn;
+    private RelativeLayout main;
     private TextView mToolbarLeftTitle,nam,pla;
     private String name;
     DataManager dataManager = DataManager.getInstance();
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         name = dataManager.getUser().getName();
+        main = findViewById(R.id.mainpage);
         pla = findViewById(R.id.place);
         nam = findViewById(R.id.username);
         nam.setText(name+"님 환영합니다!");
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         nam.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.VISIBLE);
                         search_bttn.setVisibility(ImageButton.VISIBLE);
+                        main.setBackgroundResource(R.drawable.main_layout);
                         pla.setVisibility(TextView.GONE);
                         break;
                     case R.id.action_settings:
@@ -108,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
                         search_bttn.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         break;
                     case R.id.action_navigation:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
@@ -116,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         pla.setText("교육영상");
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
 
@@ -126,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         pla.setText("게임");
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
                 }

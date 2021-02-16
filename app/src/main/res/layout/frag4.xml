@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,304 +7,47 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/study">
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:id="@+id/game1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="금융상품"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/game11"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:orientation="vertical">
 
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/game1"
-            app:layout_constraintStart_toStartOf="@+id/game1"
-            app:layout_constraintTop_toBottomOf="@+id/game1" />
+            <ImageView
+                android:id="@+id/rank"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/one"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"></ImageView>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="고태희님"
+                android:fontFamily="@font/sdsamliphopangchettfbasic"
+                android:textSize="20dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/rank"
+                android:layout_alignTop="@+id/rank"></TextView>
 
-        <Button
-            android:id="@+id/game2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            <LinearLayout
+                android:id="@+id/rmadbd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rank"
+                android:layout_marginTop="16dp">
 
-            android:text="보험"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/game1"
-            app:layout_constraintTop_toTopOf="parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/games"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/point21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="13dp"
-            android:gravity="top"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/game2"
-            app:layout_constraintStart_toStartOf="@+id/game2"
-            app:layout_constraintTop_toBottomOf="@+id/game2"
-            />
-
-        <Button
-            android:id="@+id/game3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="세금"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/game2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="신용"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/game1" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="연금"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/button4"
-            app:layout_constraintTop_toBottomOf="@id/game2" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="일반상식"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button9" />
-
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="일반상식2"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/button5"
-            app:layout_constraintTop_toTopOf="@id/button5" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="일반상식3"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/button6"
-            app:layout_constraintTop_toTopOf="@id/button6" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="증권"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toRightOf="@id/button"
-            app:layout_constraintTop_toBottomOf="@id/game3" />
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="160dp"
-            android:layout_marginLeft="160dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="펀드"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintBottom_toTopOf="@+id/button7"
-            app:layout_constraintStart_toEndOf="@+id/button9"
-            app:layout_constraintTop_toBottomOf="@id/button8"
-            app:layout_constraintVertical_bias="0.476" />
-
-
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_design"
-            android:fontFamily="@font/sdsamliphopangchettfbasic"
-            android:text="카드"
-            android:textSize="28dp"
-            app:backgroundTint="@color/bread"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button4" />
-
-        <TextView
-            android:id="@+id/game31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/game3"
-            app:layout_constraintStart_toStartOf="@+id/game3"
-            app:layout_constraintTop_toBottomOf="@+id/game3" />
-
-        <TextView
-            android:id="@+id/button41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button4"
-            app:layout_constraintStart_toStartOf="@+id/button4"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
-
-        <TextView
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
-        <TextView
-            android:id="@+id/button81"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button8"
-            app:layout_constraintStart_toStartOf="@+id/button8"
-            app:layout_constraintTop_toBottomOf="@+id/button8" />
-
-        <TextView
-            android:id="@+id/button91"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button9"
-            app:layout_constraintStart_toStartOf="@+id/button9"
-            app:layout_constraintTop_toBottomOf="@+id/button9" />
-
-        <TextView
-            android:id="@+id/button101"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button10"
-            app:layout_constraintStart_toStartOf="@+id/button10"
-            app:layout_constraintTop_toBottomOf="@+id/button10" />
-
-        <TextView
-            android:id="@+id/button51"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button5"
-            app:layout_constraintStart_toStartOf="@+id/button5"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-        <TextView
-            android:id="@+id/button61"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button6"
-            app:layout_constraintStart_toStartOf="@+id/button6"
-            app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-        <TextView
-            android:id="@+id/button71"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="@+id/button7"
-            app:layout_constraintStart_toStartOf="@+id/button7"
-            app:layout_constraintTop_toBottomOf="@+id/button7" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/study"
-        android:layout_width="413dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="0dp"
-
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="공부하러 가기"
-        android:textSize="28dp"
-        app:backgroundTint="#FFC5C084"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
