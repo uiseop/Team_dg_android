@@ -10,6 +10,7 @@
 
         android:text="TextView"
         android:textColor="#000"
+        android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:textSize="30sp" />
 
 </LinearLayout>
