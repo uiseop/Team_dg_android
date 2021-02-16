@@ -13,10 +13,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.course.capstone.models.Comment;
 import com.course.capstone.models.CommentInterface;
@@ -55,6 +60,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     ImageButton btn_like; //좋아요 버튼
     private ImageButton btn_rewrite;
     ImageButton btn_delete;//글 삭제 버튼
+    ToggleButton buttonFavorite;
 
     int no;
     int likecount;
@@ -100,15 +106,37 @@ public class BoardDetailActivity extends AppCompatActivity {
         input_r_content = (EditText) findViewById(R.id.input_r_content);
 
         btn_r_write = (ImageButton) findViewById(R.id.btn_r_write); //댓글 쓰는 버튼
-        btn_like = (ImageButton) findViewById(R.id.btn_like);
+//        btn_like = (ImageButton) findViewById(R.id.btn_like);
         btn_delete = (ImageButton) findViewById(R.id.btn_write);
         btn_rewrite = findViewById(R.id.btn_rewrite);
 
+        buttonFavorite = findViewById(R.id.btn_like);
+
+
+        ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
+        scaleAnimation.setDuration(500);
+        BounceInterpolator bounceInterpolator = new BounceInterpolator();
+        scaleAnimation.setInterpolator(bounceInterpolator);
+        buttonFavorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                //animation
+                compoundButton.startAnimation(scaleAnimation);
+            }
+        });
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
 
         refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipe_comment);
         initialize();
+
+
+        if (likepeoplelist.contains(dataManager.getUser().getUserid()) == false || likepeoplelist == null){
+            buttonFavorite.setChecked(false);
+        }
+        else{
+            buttonFavorite.setChecked(true);
+        }
 
 
         //댓글버튼 클릭시! alert창
@@ -253,7 +281,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         //좋아요 버튼 클릭시
 
-        btn_like.setOnClickListener(new View.OnClickListener() {
+        buttonFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
 
@@ -282,7 +310,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-
+                                    buttonFavorite.setChecked(false);
                                     return;
                                 }
                             });
@@ -296,6 +324,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Log.d("이미 눌렀다 이말이야", string_like.toString());
+                                    buttonFavorite.setChecked(true);
                                     return;
 
                                 }
