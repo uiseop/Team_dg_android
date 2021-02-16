@@ -33,29 +33,31 @@
                 android:layout_gravity="center_vertical"
                 android:text="익명"
                 android:textColor="@color/black"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/sdsamliphopangchettfbasic" />
 
             <TextView
                 android:id="@+id/tv_text_date"
-                android:layout_width="285dp"
-                android:layout_height="wrap_content"
+                android:layout_width="289dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:gravity="right"
                 android:text="47분 전"
                 android:textColor="@color/colorPrimaryDark"
-                android:textSize="9dp" />
+                android:textSize="10.5dp" />
 
             <ImageButton
                 android:id="@+id/btn_r_menu"
-                android:layout_width="44dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
                 android:gravity="right|center_vertical"
-                android:src="@drawable/real_comment_menu" />
+                android:src="@drawable/dots" />
 
         </LinearLayout>
         <LinearLayout
@@ -68,7 +70,8 @@
                 android:id="@+id/s_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12dp"
+                android:fontFamily="@font/sdsamliphopangchettfbasic"
+                android:textSize="14dp"
                 android:textColor="@color/black"
                 android:text="아냐 그렇진 않은것 같아."/>
         </LinearLayout>
@@ -76,7 +79,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="6dp"
-            android:layout_weight="0.1"
+            android:layout_weight="0.12"
             android:gravity="bottom">
 
             <View

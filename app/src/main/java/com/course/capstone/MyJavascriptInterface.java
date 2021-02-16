@@ -34,7 +34,7 @@ public class MyJavascriptInterface {
             crossList = user.getCross();
             int check = 0;
             for(int i=0; i<crossList.size(); i++){
-                if(crossList.get(i).getCategory().equals(category)){
+                if(crossList.get(i).getCategory().equals(category) && crossList.get(i).getScore() != 0){
                     Log.d("Fail", category);
                     Log.d("Fail", crossList.get(i).getCategory());
                     Log.d("Fail", "이미 푼 적이 있는 문제입니다");
