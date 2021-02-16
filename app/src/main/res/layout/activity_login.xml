@@ -11,10 +11,10 @@
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="404dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/login_design"
+        android:src="@drawable/login_design"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="398dp"
+        android:layout_marginRight="6dp"
 
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
@@ -85,11 +85,12 @@
     </TextView>
 
     <ImageButton
+        android:paddingTop="30dp"
+        android:backgroundTint="@color/white"
         android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="508dp"
-        android:background="@drawable/register"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="518dp"
         android:src="@drawable/register"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
