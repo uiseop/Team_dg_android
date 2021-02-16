@@ -16,4 +16,5 @@
     <color name="blue">#11AFF7</color>
     <color name="main">#F7C545</color>
     <color name="cursor">#FF835716</color>
+    <color name="ggray">#23000000</color>
 </resources>
