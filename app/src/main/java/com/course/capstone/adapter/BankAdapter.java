@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.course.capstone.R;
 import com.course.capstone.models.Bank;
@@ -57,7 +58,6 @@ public class BankAdapter extends BaseAdapter {
         TextView textTextView = convertView.findViewById(R.id.textView1);
         EditText editText = convertView.findViewById(R.id.account);
         CheckBox checkBox = (CheckBox)convertView.findViewById(R.id.checkBox1);
-
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         Bank listViewItem = listViewItemList.get(position);
 
@@ -74,27 +74,33 @@ public class BankAdapter extends BaseAdapter {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (checkBox.isChecked() == false){
+                if (!checkBox.isChecked()){
                 }
-                else if (checkBox.isChecked() == true){
+                else if (checkBox.isChecked()){
                     DataManager dataManager = DataManager.getInstance();
                     String parentid = dataManager.getUser().getId();
-                    int account = Integer.parseInt(editText.getText().toString());
-                    String bankname = listViewItem.getText();
-                    Bank bank = new Bank(bankname,account,parentid);
 
-                    Call<Bank> call = bankInterface.addBank(bank);
-                    call.enqueue(new Callback<Bank>() {
-                        @Override
-                        public void onResponse(Call<Bank> call, Response<Bank> response) {
-                            System.out.println("onresponse");
-                        }
+                    if (editText.getText().toString().equals(null)){
+                        Toast.makeText(context,"계좌를 입력하세요",Toast.LENGTH_SHORT).show();
+                        checkBox.setChecked(false);
+                    }else {
+                        int account = Integer.parseInt(editText.getText().toString());
+                        String bankname = listViewItem.getText();
+                        Bank bank = new Bank(bankname, account, parentid);
 
-                        @Override
-                        public void onFailure(Call<Bank> call, Throwable t) {
-                            System.out.println("onfailure");
-                        }
-                    });
+                        Call<Bank> call = bankInterface.addBank(bank);
+                        call.enqueue(new Callback<Bank>() {
+                            @Override
+                            public void onResponse(Call<Bank> call, Response<Bank> response) {
+                                System.out.println("onresponse");
+                            }
+
+                            @Override
+                            public void onFailure(Call<Bank> call, Throwable t) {
+                                System.out.println("onfailure");
+                            }
+                        });
+                    }
                 }
             }
         });
