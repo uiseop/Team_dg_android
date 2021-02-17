@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.course.capstone.adapter.MyAdapter;
 import com.course.capstone.models.DataItem;
@@ -17,7 +18,7 @@ public class MypageActivity extends AppCompatActivity {
     private RecyclerView myIdentity,myContext;
 
     private RecyclerView.LayoutManager IManager,CManger;
-
+    DataManager dataManager = DataManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,13 @@ public class MypageActivity extends AppCompatActivity {
         myIdentity=  findViewById(R.id.identity);
         myIdentity.setHasFixedSize(true);
         IManager = new LinearLayoutManager(this);
+        TextView textView = findViewById(R.id.id);
+        TextView textView1 = findViewById(R.id.name);
+        TextView textView2 = findViewById(R.id.email);
+
+        textView.setText(dataManager.getUser().getUserid());
+        textView1.setText(dataManager.getUser().getName());
+        textView2.setText(dataManager.getUser().getEmailaddress());
 
 
         myContext= findViewById(R.id.context);
