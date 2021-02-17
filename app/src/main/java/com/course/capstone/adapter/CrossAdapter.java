@@ -119,10 +119,12 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
                     // value는 height 값
                     int value = (int) animation.getAnimatedValue();
                     // imageView의 높이 변경
-                    //content.getLayoutParams().height = value;
-                    go.requestLayout();
+                    go.getLayoutParams().height = value;
+                    gogame.requestLayout();
+                    gostudy.requestLayout();
                     // imageView가 실제로 사라지게하는 부분
-                    go.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    gogame.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    gostudy.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
                 }
             });
             // Animation start
