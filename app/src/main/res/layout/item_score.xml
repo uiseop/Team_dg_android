@@ -65,23 +65,23 @@
 
         <ImageButton
             android:id="@+id/gostudy"
-            android:layout_width="14dp"
-            android:layout_height="70dp"
+            android:layout_width="11dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/gostudy" />
+            app:srcCompat="@drawable/gogame" />
 
         <ImageButton
             android:id="@+id/gogame"
-            android:layout_width="14dp"
-            android:layout_height="70dp"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/gogame" />
+            tools:srcCompat="@drawable/gostudy" />
     </LinearLayout>
 
 </RelativeLayout>

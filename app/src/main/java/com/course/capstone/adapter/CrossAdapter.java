@@ -74,7 +74,7 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             //다 해줬는데도 GlideApp 에러가 나면 rebuild project를 해주자.
             changeVisibility(selectedItems.get(position));
             itemView.setOnClickListener(this);
-            percentageChartView.setOnClickListener(this);
+           // percentageChartView.setOnClickListener(this);
             textView.setOnClickListener(this);
 
         }
