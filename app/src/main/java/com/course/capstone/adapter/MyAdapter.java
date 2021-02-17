@@ -121,12 +121,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     } else if (content.get(position).getTitle() == "관심사 선택") {
                         Intent intent = new Intent(context, SelectConcernActivity.class);
                         context.startActivity(intent);
-                    } else if (content.get(position).getTitle() == "나의 소비패턴") {
-                        Intent intent = new Intent(context, PaymentPattern.class);
-                        context.startActivity(intent);
-                    } else if (content.get(position).getTitle() == "카드 추천") {
-                        Intent intent = new Intent(context, CardActivity.class);
-                        context.startActivity(intent);
                     }
                 }
 

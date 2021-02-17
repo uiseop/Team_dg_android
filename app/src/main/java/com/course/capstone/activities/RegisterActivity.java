@@ -95,11 +95,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirm = join_pwck.getText().toString();
 
                 if(password.equals(confirm)){
-                    join_password.setBackgroundResource(R.drawable.correct);
-                    join_pwck.setBackgroundResource(R.drawable.correct);
+                    join_password.setBackgroundColor(Color.GREEN);
+                    join_pwck.setBackgroundColor(Color.GREEN);
                 } else{
-                    join_password.setBackgroundResource(R.drawable.wrong);
-                    join_pwck.setBackgroundResource(R.drawable.wrong);
+                    join_password.setBackgroundColor(Color.RED);
+                    join_pwck.setBackgroundColor(Color.RED);
                 }
             }
 
