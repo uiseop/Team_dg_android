@@ -1,6 +1,7 @@
 package com.course.capstone;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +65,13 @@ public class Frag4 extends Fragment {
 //            }
 //        });
 //
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Apply activity transition
+        } else {
+            // Swap without transition
+        }
+
         crosses = dataManager.getUser().getCross();
 //
         textView = v.findViewById(R.id.wlsgodfbf);
@@ -72,7 +80,7 @@ public class Frag4 extends Fragment {
         recyclerView = v.findViewById(R.id.games);
         LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getContext());
 //        GridLayoutManager gm = new GridLayoutManager(getContext(),2);
-        CrossAdapter crossAdapter = new CrossAdapter(crosses);
+        CrossAdapter crossAdapter = new CrossAdapter(crosses,getContext());
         recyclerView.setLayoutManager(gridLayoutManager);
 //        recyclerView.setLayoutManager(gm);
         recyclerView.setAdapter(crossAdapter);

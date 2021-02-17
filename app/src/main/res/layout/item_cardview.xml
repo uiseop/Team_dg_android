@@ -63,7 +63,7 @@
         android:animateLayoutChanges="true"
         android:background="@drawable/rectangle_all_corner_radius"
 
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:fontFamily="@font/poppins_medium"
         android:text="TextView"
         android:textColor="#000000"
         android:textSize="25dp"

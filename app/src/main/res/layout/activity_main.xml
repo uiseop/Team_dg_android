@@ -58,6 +58,19 @@
             android:layout_centerVertical="true"
             />
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/gostudy" />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_alignParentRight="true"
             android:layout_width="50dp"

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.course.capstone.activities.StudyActivity;
 import com.course.capstone.firebase.MyFirebaseInstanceIDService;
 import com.course.capstone.models.DataManager;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUESTCODE_REVIEW_WRITE = 1002;
     private BottomNavigationView mBottomNavigationView;
     private ActionBar actionBar;
-    private ImageView mypageImageButton,search_bttn;
+    private ImageView mypageImageButton, search_bttn;
+    private ImageButton StudyImage;
     private RelativeLayout main;
-    private TextView mToolbarLeftTitle,nam,pla;
+    private TextView mToolbarLeftTitle, nam, pla;
     private String name;
     DataManager dataManager = DataManager.getInstance();
 
@@ -49,13 +51,23 @@ public class MainActivity extends AppCompatActivity {
         main = findViewById(R.id.mainpage);
         pla = findViewById(R.id.place);
         nam = findViewById(R.id.username);
-        nam.setText(name+"님 환영합니다!");
+        StudyImage = findViewById(R.id.imageButton);
+        nam.setText(name + "님 환영합니다!");
         pla.setVisibility(TextView.GONE);
+        StudyImage.setVisibility((ImageButton.GONE));
         search_bttn = findViewById(R.id.img_search);
+        StudyImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this, StudyActivity.class);
+                startActivity(intent);
+            }
+        });
         search_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,BoardSearchActivity.class);
+                Intent intent = new Intent(MainActivity.this, BoardSearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -96,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag1()).commit();
 //                        mToolbarLeftTitle.setText("따끈따끈 금융");
-                        nam.setText(name+"님 환영합니다!");
+                        nam.setText(name + "님 환영합니다!");
                         nam.setVisibility(TextView.VISIBLE);
+                        StudyImage.setVisibility((ImageButton.GONE));
                         mypageImageButton.setVisibility(ImageButton.VISIBLE);
                         search_bttn.setVisibility(ImageButton.VISIBLE);
                         main.setBackgroundResource(R.drawable.main_layout);
@@ -112,27 +125,30 @@ public class MainActivity extends AppCompatActivity {
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
                         search_bttn.setVisibility(ImageButton.GONE);
+                        StudyImage.setVisibility((ImageButton.GONE));
                         main.setBackgroundResource(R.drawable.white_layout);
                         break;
                     case R.id.action_navigation:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag3()).commit();
 //                        mToolbarLeftTitle.setText("교육영상");
                         nam.setVisibility(TextView.GONE);
                         pla.setText("교육영상");
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
                         main.setBackgroundResource(R.drawable.white_layout);
+                        StudyImage.setVisibility((ImageButton.GONE));
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
 
                     case R.id.action_play:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag4()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag4()).commit();
 //                        mToolbarLeftTitle.setText("게임");
                         nam.setVisibility(TextView.GONE);
                         pla.setText("게임");
                         pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
                         main.setBackgroundResource(R.drawable.white_layout);
+                        StudyImage.setVisibility((ImageButton.VISIBLE));
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
                 }
