@@ -32,9 +32,9 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
     private List<Cross> mList;
     Context context;
     int[] col = {R.color.bread, R.color.main, R.color.cursor,
-    R.color.colorAccent, R.color.colorPrimaryDark, R.color.teal_200,
-    R.color.blue,R.color.teal_700, R.color.purple_200, R.color.purple_500,
-    R.color.purple_700,R.color.bread,R.color.main,R.color.cursor};
+            R.color.colorAccent, R.color.colorPrimaryDark, R.color.teal_200,
+            R.color.blue,R.color.teal_700, R.color.purple_200, R.color.purple_500,
+            R.color.purple_700,R.color.bread,R.color.main,R.color.cursor};
 
     public  class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
         private TextView textView;
@@ -54,7 +54,7 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             textView = itemView.findViewById(R.id.cat);
             percentageChartView = itemView.findViewById(R.id.scr);
             rl = itemView.findViewById(R.id.back);
-            
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,7 +80,7 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             //다 해줬는데도 GlideApp 에러가 나면 rebuild project를 해주자.
             changeVisibility(selectedItems.get(position));
             itemView.setOnClickListener(this);
-           // percentageChartView.setOnClickListener(this);
+            // percentageChartView.setOnClickListener(this);
             textView.setOnClickListener(this);
 
         }
@@ -125,12 +125,10 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
                     // value는 height 값
                     int value = (int) animation.getAnimatedValue();
                     // imageView의 높이 변경
-                    go.getLayoutParams().height = value;
-                    gogame.requestLayout();
-                    gostudy.requestLayout();
+                    //content.getLayoutParams().height = value;
+                    go.requestLayout();
                     // imageView가 실제로 사라지게하는 부분
-                    gogame.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-                    gostudy.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    go.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
                 }
             });
             // Animation start
