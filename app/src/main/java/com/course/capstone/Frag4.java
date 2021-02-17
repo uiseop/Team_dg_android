@@ -85,6 +85,8 @@ public class Frag4 extends Fragment {
 //        recyclerView.setLayoutManager(gm);
         recyclerView.setAdapter(crossAdapter);
 
+
+
         return v;
     }
 }

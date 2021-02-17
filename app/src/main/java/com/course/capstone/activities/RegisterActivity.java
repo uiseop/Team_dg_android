@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText join_email, join_password, join_name, join_pwck, join_id, join_birth;
     private RelativeLayout join_button, check_button, pre_button;
     private AlertDialog dialog;
+    private ImageButton imageButton;
     private boolean validate = false;
 
     @Override
@@ -51,13 +53,21 @@ public class RegisterActivity extends AppCompatActivity {
         join_pwck = findViewById(R.id.editText_joinpwck);
         join_birth = findViewById(R.id.editText_joinbirth);
         join_id = findViewById(R.id.editText_joinid);
-
+        imageButton = findViewById(R.id.arrow);
         join_button = (RelativeLayout) findViewById(R.id.layout7);
         check_button = (RelativeLayout) findViewById(R.id.check_button);
         pre_button = (RelativeLayout)findViewById(R.id.layout8);
 
 
         pre_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);

@@ -54,6 +54,12 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             textView = itemView.findViewById(R.id.cat);
             percentageChartView = itemView.findViewById(R.id.scr);
             rl = itemView.findViewById(R.id.back);
+            
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
         }
 
         void onBind(Cross data, int position) {
