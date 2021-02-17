@@ -9,13 +9,12 @@
 
     <ImageButton
         android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:src="@drawable/login_design"
         android:backgroundTint="@color/white"
-        android:layout_marginTop="398dp"
-        android:layout_marginRight="6dp"
-
+        android:layout_marginTop="405dp"
+        android:layout_marginRight="17dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
@@ -23,11 +22,11 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="460dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="패스워드"
+        android:layout_marginTop="456dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="PW"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintRight_toLeftOf="@+id/login_id"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,11 +73,11 @@
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="412dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="아이디"
+        android:layout_marginTop="407dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="ID"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="18dp"
         app:layout_constraintRight_toLeftOf="@+id/login_id"
         app:layout_constraintTop_toTopOf="parent">
 

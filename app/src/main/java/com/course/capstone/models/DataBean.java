@@ -22,8 +22,9 @@ public class DataBean {
 
     public static List<DataBean> getTestData(){
         List<DataBean> list = new ArrayList<>();
-        list.add(new DataBean(R.drawable.dongguk_logo_1,"http://www.dongguk.edu/mbs/kr/index.jsp",1));
-        list.add(new DataBean(R.drawable.dongguk_logo_2,"http://www.naver.com",2));
+        list.add(new DataBean(R.drawable.ad1,"http://www.dongguk.edu/mbs/kr/index.jsp",1));
+        list.add(new DataBean(R.drawable.ad2,"http://www.naver.com",2));
+        list.add(new DataBean(R.drawable.ad3,"http://www.daum.net",3));
         return list;
     }
 }

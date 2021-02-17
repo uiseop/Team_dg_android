@@ -1,5 +1,6 @@
 package com.course.capstone.adapter;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,16 +27,22 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
 
     //데이터 배열 선언
     private List<Cross> mList;
+    int[] col = {R.color.bread, R.color.main, R.color.cursor,
+    R.color.colorAccent, R.color.colorPrimaryDark, R.color.teal_200,
+    R.color.blue,R.color.teal_700, R.color.purple_200, R.color.purple_500,
+    R.color.purple_700,R.color.bread,R.color.main,R.color.cursor};
 
     public  class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textView;
         private PercentageChartView percentageChartView;
-        LinearLayout layoutManager;
+        private RelativeLayout rl;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.cat);
             percentageChartView = itemView.findViewById(R.id.scr);
+            rl = itemView.findViewById(R.id.back);
         }
     }
 
@@ -66,7 +73,9 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
         else{
             holder.percentageChartView.setProgress(mList.get(position).getScore(),true);
         }
+
         holder.textView.setText(mList.get(position).getCategory());
+        holder.rl.setBackgroundResource(col[position]);
 
         //다 해줬는데도 GlideApp 에러가 나면 rebuild project를 해주자.
 

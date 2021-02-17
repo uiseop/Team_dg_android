@@ -35,6 +35,32 @@
                 android:layout_toRightOf="@+id/rank"
                 android:layout_alignTop="@+id/rank"></TextView>
 
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/name"
+                android:progressDrawable="@drawable/progress_custom"
+                android:layout_alignTop="@+id/name"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="12dp"
+                android:layout_centerHorizontal="true"
+                android:progress="40" />
+
+            <TextView
+                android:id="@+id/wlsgodfbf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/sdsamliphopangchettfbasic"
+                android:text="진행률"
+                android:layout_alignTop="@id/progressBar2"
+                android:layout_alignRight="@id/name"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="-160dp"/>
+
+
             <LinearLayout
                 android:id="@+id/rmadbd"
                 android:layout_width="match_parent"
@@ -48,6 +74,7 @@
                     android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
