@@ -204,7 +204,7 @@
         android:text="나에게 맞는 카드는 ?"
         android:textSize="20sp"
         android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/textView_myid"
         app:layout_constraintTop_toBottomOf="@+id/textView_correct" />
 
