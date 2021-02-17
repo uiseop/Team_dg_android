@@ -14,7 +14,7 @@
         android:src="@drawable/login_design"
         android:backgroundTint="@color/white"
         android:layout_marginTop="405dp"
-        android:layout_marginRight="17dp"
+        android:layout_marginRight="12dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
@@ -33,12 +33,14 @@
     <EditText
         android:id="@+id/login_password"
         android:textCursorDrawable="@drawable/cursor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="52dp"
         android:background="@drawable/password"
+        android:fontFamily="@font/poppins_medium"
         android:ems="10"
         android:hint="PW"
+
         android:inputType="textPassword"
         android:paddingLeft="28dp"
         android:paddingBottom="14dp"
@@ -52,10 +54,12 @@
     <EditText
         android:textCursorDrawable="@drawable/cursor"
         android:id="@+id/login_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
         android:layout_marginTop="392dp"
         android:background="@drawable/id"
+        android:fontFamily="@font/poppins_medium"
+
         android:ems="10"
         android:hint="ID"
         android:inputType="textEmailAddress"
