@@ -144,6 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/id"
+            android:inputType="textPassword"
             android:textCursorDrawable="@drawable/cursor"
             android:layout_marginLeft="55dp"
             android:layout_alignLeft="@+id/qlalfqjsgh"
@@ -181,11 +182,20 @@
             android:layout_height="wrap_content"
             android:background="@drawable/id"
             android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textPassword"
             android:layout_marginLeft="40dp"
             android:layout_alignLeft="@+id/ghkrdls"
             android:layout_centerHorizontal="true">
         </EditText>
 
+        <RelativeLayout
+            android:id="@+id/btn_pwck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/editText_joinpwck"
+            android:background="@drawable/check">
+        </RelativeLayout>
 
     </RelativeLayout>
 

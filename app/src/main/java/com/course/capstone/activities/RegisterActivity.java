@@ -32,7 +32,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText join_email, join_password, join_name, join_pwck, join_id, join_birth;
-    private RelativeLayout join_button, check_button, pre_button;
+    private RelativeLayout join_button, check_button, pre_button, pwck_button;
     private AlertDialog dialog;
     private boolean validate = false;
 
@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         join_button = (RelativeLayout) findViewById(R.id.layout7);
         check_button = (RelativeLayout) findViewById(R.id.check_button);
         pre_button = (RelativeLayout)findViewById(R.id.layout8);
-
+        pwck_button = (RelativeLayout) findViewById(R.id.btn_pwck);
 
         pre_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,31 +80,45 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         //비밀번호 확인
-        join_pwck.addTextChangedListener(new TextWatcher() {
+        pwck_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onClick(View v) {
                 String password = join_password.getText().toString();
                 String confirm = join_pwck.getText().toString();
 
                 if(password.equals(confirm)){
-                    join_password.setBackgroundColor(Color.GREEN);
-                    join_pwck.setBackgroundColor(Color.GREEN);
-                } else{
-                    join_password.setBackgroundColor(Color.RED);
-                    join_pwck.setBackgroundColor(Color.RED);
+                    Toast.makeText(getApplicationContext(),"확인되었습니다",Toast.LENGTH_LONG).show();
+                }else{
+                    join_pwck.setText("");
+                    Toast.makeText(getApplicationContext(),"일치하지 않습니다",Toast.LENGTH_LONG).show();
                 }
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
         });
+//        join_pwck.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                String password = join_password.getText().toString();
+//                String confirm = join_pwck.getText().toString();
+//
+//                if(password.equals(confirm)){
+//                    join_password.setBackgroundColor(Color.GREEN);
+//                    join_pwck.setBackgroundColor(Color.GREEN);
+//                } else{
+//                    join_password.setBackgroundColor(Color.RED);
+//                    join_pwck.setBackgroundColor(Color.RED);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
         //가입
         join_button.setOnClickListener(new View.OnClickListener() {

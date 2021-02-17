@@ -10,8 +10,10 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.course.capstone.CardActivity;
 import com.course.capstone.R;
 import com.course.capstone.models.DataManager;
 import com.course.capstone.models.User;
@@ -19,7 +21,8 @@ import com.course.capstone.models.User;
 public class MyInfoActivity extends AppCompatActivity {
 
     TextView correct,exit,logout;
-    TextView id,name,email,birth,uname;
+    TextView id,name,email,birth,uname,card;
+    ImageView pattern;
     DataManager dataManager = DataManager.getInstance();
     User user = dataManager.getUser();
 
@@ -44,6 +47,8 @@ public class MyInfoActivity extends AppCompatActivity {
         birth.setText(user.getBirthdate());
         uname =findViewById(R.id.textView13);
         uname.setText(user.getName()+"님 환영합니다!");
+        card = findViewById(R.id.textView_card);
+        pattern = findViewById(R.id.imageView_payment);
 
         correct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,5 +95,20 @@ public class MyInfoActivity extends AppCompatActivity {
                         .show();
             }
         });
+        pattern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyInfoActivity.this, PaymentPattern.class);
+                startActivity(intent);
+            }
+        });
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyInfoActivity.this, CardActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
