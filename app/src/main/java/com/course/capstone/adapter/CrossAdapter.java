@@ -1,26 +1,19 @@
 package com.course.capstone.adapter;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.course.capstone.models.Cross;
 import com.course.capstone.R;
-import com.course.capstone.models.Concern;
+import com.course.capstone.models.Cross;
 import com.ramijemli.percentagechartview.PercentageChartView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> {
