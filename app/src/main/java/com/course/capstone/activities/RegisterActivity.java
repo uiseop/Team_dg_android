@@ -16,10 +16,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.course.capstone.R;
+import com.course.capstone.models.Cross;
 import com.course.capstone.models.User;
 import com.course.capstone.models.UserInterface;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -176,6 +179,22 @@ public class RegisterActivity extends AppCompatActivity {
         String emailaddress = parameters.get("emailaddress").toString();*/
 
         User newuser = new User(name, userid, userpw, birthdate, useremail);
+        List<Cross> cross = new ArrayList<>();
+        cross.add(new Cross(0, "금융상품"));
+        cross.add(new Cross(0, "보험"));
+        cross.add(new Cross(0, "세금"));
+        cross.add(new Cross(0, "신용"));
+        cross.add(new Cross(0, "연금"));
+        cross.add(new Cross(0, "증권"));
+        cross.add(new Cross(0, "카드"));
+        cross.add(new Cross(0, "펀드"));
+        cross.add(new Cross(0, "일반상식1"));
+        cross.add(new Cross(0, "일반상식2"));
+        cross.add(new Cross(0, "일반상식3"));
+        cross.add(new Cross(0, "세계경제"));
+        cross.add(new Cross(0, "대출"));
+        cross.add(new Cross(0, "저축"));
+        newuser.setCross(cross);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")

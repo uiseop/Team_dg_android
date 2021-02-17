@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigationView;
     private ActionBar actionBar;
     private ImageView mypageImageButton,search_bttn;
-    private TextView mToolbarLeftTitle,nam;
+    private RelativeLayout main;
+    private TextView mToolbarLeftTitle,nam,pla;
     private String name;
     DataManager dataManager = DataManager.getInstance();
 
@@ -44,9 +46,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         name = dataManager.getUser().getName();
+        main = findViewById(R.id.mainpage);
+        pla = findViewById(R.id.place);
         nam = findViewById(R.id.username);
         nam.setText(name+"님 환영합니다!");
-
+        pla.setVisibility(TextView.GONE);
         search_bttn = findViewById(R.id.img_search);
         search_bttn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,30 +97,42 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag1()).commit();
 //                        mToolbarLeftTitle.setText("따끈따끈 금융");
                         nam.setText(name+"님 환영합니다!");
+                        nam.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.VISIBLE);
                         search_bttn.setVisibility(ImageButton.VISIBLE);
+                        main.setBackgroundResource(R.drawable.main_layout);
+                        pla.setVisibility(TextView.GONE);
                         break;
                     case R.id.action_settings:
 
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new Frag2()).commit();
 //                        mToolbarLeftTitle.setText("게시판");
-                        nam.setText("게시판");
+                        nam.setVisibility(TextView.GONE);
+                        pla.setText("게시판");
+                        pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
                         search_bttn.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         break;
                     case R.id.action_navigation:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag3()).commit();
 //                        mToolbarLeftTitle.setText("교육영상");
-                        nam.setText("교육영상");
+                        nam.setVisibility(TextView.GONE);
+                        pla.setText("교육영상");
+                        pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
 
                     case R.id.action_play:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,new Frag4()).commit();
 //                        mToolbarLeftTitle.setText("게임");
-                        nam.setText("십자풀이");
+                        nam.setVisibility(TextView.GONE);
+                        pla.setText("게임");
+                        pla.setVisibility(TextView.VISIBLE);
                         mypageImageButton.setVisibility(ImageButton.GONE);
+                        main.setBackgroundResource(R.drawable.white_layout);
                         search_bttn.setVisibility(ImageButton.GONE);
                         break;
                 }
