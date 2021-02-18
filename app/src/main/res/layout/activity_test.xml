@@ -30,59 +30,56 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioGroup
-                        android:id="@+id/group1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintTop_toBottomOf="@id/textView18"
-                        app:layout_constraintStart_toStartOf="parent">
+            <RadioGroup
+                android:id="@+id/group1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView18">
 
-                        <RadioButton
-                            android:id="@+id/checkBox1_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="19세이하"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                <RadioButton
+                    android:id="@+id/checkBox1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="19세이하"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-                        <RadioButton
-                            android:id="@+id/checkBox1_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="20~40세"
-                            app:layout_constraintStart_toStartOf="@+id/checkBox1_1"
-                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
+                <RadioButton
+                    android:id="@+id/checkBox1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="20~40세"
 
-                        <RadioButton
-                            android:id="@+id/checkBox1_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:text="41~50세"
-                            app:layout_constraintStart_toEndOf="@+id/checkBox1_2"
-                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
-                        <RadioButton
-                            android:id="@+id/checkBox1_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="51~60세"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
-                        <RadioButton
-                            android:id="@+id/checkBox1_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"
-                            android:text="61세이상"
-                            app:layout_constraintStart_toEndOf="@+id/checkBox1_4"
-                            app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
-                    </RadioGroup>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
+
+                <RadioButton
+                    android:id="@+id/checkBox1_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="41~50세"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox1_2"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
+
+                <RadioButton
+                    android:id="@+id/checkBox1_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="51~60세"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox1_1" />
+
+                <RadioButton
+                    android:id="@+id/checkBox1_5"
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:text="61세이상"
+                    app:layout_constraintStart_toEndOf="@+id/checkBox1_4"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBox1_2" />
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/textView21"
@@ -104,8 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/textView21"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView21">
 
                 <RadioButton
                     android:id="@+id/checkBox2_1"
@@ -120,8 +117,6 @@
                     android:id="@+id/checkBox2_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     android:text="6개월 이상~1년 이내"
                     app:layout_constraintStart_toStartOf="@+id/checkBox2_1"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox2_1" />
@@ -130,8 +125,6 @@
                     android:id="@+id/checkBox2_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     android:text="1년 이상~2년 이내"
                     app:layout_constraintStart_toEndOf="@+id/checkBox2_2"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox2_2" />
@@ -143,12 +136,11 @@
                     android:text="2년 이상~3년 이내"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox2_1" />
+
                 <RadioButton
                     android:id="@+id/checkBox2_5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:text="3년 이상"
                     app:layout_constraintStart_toEndOf="@+id/checkBox2_4"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox2_4" />
@@ -287,8 +279,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/textView28"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView28">
+
                 <RadioButton
                     android:id="@+id/checkBox5_1"
                     android:layout_width="wrap_content"
@@ -302,8 +295,6 @@
                     android:id="@+id/checkBox5_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     android:text="10% 이상 ~ 20% 이내"
                     app:layout_constraintStart_toStartOf="@+id/checkBox5_1"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox5_1" />
@@ -312,8 +303,6 @@
                     android:id="@+id/checkBox5_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     android:text="20%이상~30% 이내"
                     app:layout_constraintStart_toEndOf="@+id/checkBox5_2"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox5_2" />
@@ -325,12 +314,11 @@
                     android:text="30% 이상~40% 이내"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox5_1" />
+
                 <RadioButton
                     android:id="@+id/checkBox5_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
                     android:text="40%이상"
                     app:layout_constraintStart_toEndOf="@+id/checkBox5_4"
                     app:layout_constraintTop_toBottomOf="@+id/checkBox5_2" />
@@ -355,6 +343,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView29">
+
                 <RadioButton
                     android:id="@+id/checkBox6_1"
                     android:layout_width="wrap_content"

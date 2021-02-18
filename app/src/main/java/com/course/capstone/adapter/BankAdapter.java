@@ -74,33 +74,25 @@ public class BankAdapter extends BaseAdapter {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!checkBox.isChecked()){
-                }
-                else if (checkBox.isChecked()){
+                if (!checkBox.isChecked()) {
+                } else if (checkBox.isChecked()) {
                     DataManager dataManager = DataManager.getInstance();
                     String parentid = dataManager.getUser().getId();
+                    int account = Integer.parseInt(editText.getText().toString());
+                    String bankname = listViewItem.getText();
+                    Bank bank = new Bank(bankname, account, parentid);
+                    Call<Bank> call = bankInterface.addBank(bank);
+                    call.enqueue(new Callback<Bank>() {
+                        @Override
+                        public void onResponse(Call<Bank> call, Response<Bank> response) {
+                            System.out.println("onresponse");
+                        }
 
-                    if (editText.getText().toString().equals(null)){
-                        Toast.makeText(context,"계좌를 입력하세요",Toast.LENGTH_SHORT).show();
-                        checkBox.setChecked(false);
-                    }else {
-                        int account = Integer.parseInt(editText.getText().toString());
-                        String bankname = listViewItem.getText();
-                        Bank bank = new Bank(bankname, account, parentid);
-
-                        Call<Bank> call = bankInterface.addBank(bank);
-                        call.enqueue(new Callback<Bank>() {
-                            @Override
-                            public void onResponse(Call<Bank> call, Response<Bank> response) {
-                                System.out.println("onresponse");
-                            }
-
-                            @Override
-                            public void onFailure(Call<Bank> call, Throwable t) {
-                                System.out.println("onfailure");
-                            }
-                        });
-                    }
+                        @Override
+                        public void onFailure(Call<Bank> call, Throwable t) {
+                            System.out.println("onfailure");
+                        }
+                    });
                 }
             }
         });

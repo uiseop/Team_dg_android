@@ -31,6 +31,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +51,10 @@ public class PaymentPattern extends AppCompatActivity {
     ExpandableListView expandableListView;
     List<String> parentData;
     HashMap<String, ArrayList<Child>> childData;
-    int alarmbalance = 2000000;
+    int alarmbalance = 100000;
+    String dotnum = NumberFormat.getInstance().format(alarmbalance);
     int totalbalance = 0;
-    String msg = "잔고가 "+alarmbalance+" 미만입니다. 주의하세요!";
+    String msg = "잔고가 "+dotnum+" 미만입니다. 주의하세요!";
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -70,8 +72,12 @@ public class PaymentPattern extends AppCompatActivity {
         HashMap<String, Integer> apc = new HashMap<>();
         apc.put("편의점", 0);
         apc.put("외식", 0);
+        apc.put("여가", 0);
+
         ArrayList<Child> restaurant = new ArrayList<Child>();
         ArrayList<Child> convenience_store = new ArrayList<Child>();
+        ArrayList<Child> leisure = new ArrayList<Child>();
+
         DataManager dataManager = DataManager.getInstance();
         final RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
         BankInterface bankInterface = retrofit.create(BankInterface.class);
@@ -123,6 +129,8 @@ public class PaymentPattern extends AppCompatActivity {
                                         convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
                                     } else if (payment.get(i).getCategory().equals("외식")) {
                                         restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    } else if (payment.get(i).getCategory().equals("여가")) {
+                                        leisure.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
                                     }
                                 } else {
                                     parentData.add(payment.get(i).getCategory());
@@ -130,18 +138,23 @@ public class PaymentPattern extends AppCompatActivity {
                                         convenience_store.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
                                     } else if (payment.get(i).getCategory().equals("외식")) {
                                         restaurant.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
+                                    } else if (payment.get(i).getCategory().equals("여가")) {
+                                        leisure.add(new Child(payment.get(i).getShopname(), payment.get(i).getAmount()));
                                     }
                                 }
                             }
 
                             childData.put("외식", restaurant);
                             childData.put("편의점", convenience_store);
+                            childData.put("여가",leisure);
 
                             for (int i = 0; i < payment.size(); i++) {
                                 if (payment.get(i).getCategory().equals("편의점")) {
                                     apc.put("편의점", apc.get("편의점") + payment.get(i).getAmount());
                                 } else if (payment.get(i).getCategory().equals("외식")) {
                                     apc.put("외식", apc.get("외식") + payment.get(i).getAmount());
+                                } else if (payment.get(i).getCategory().equals("여가")) {
+                                    apc.put("여가", apc.get("여가") + payment.get(i).getAmount());
                                 }
                             }
                             int total = 0;
@@ -150,6 +163,7 @@ public class PaymentPattern extends AppCompatActivity {
                             }
                             float convenience_store = Math.round((float) apc.get("편의점") / total * 100);
                             float restaurant = Math.round((float) apc.get("외식") / total * 100);
+                            float leisure = Math.round((float) apc.get("여가") / total * 100);
 
                             //그래프 나타내기
                             graph = findViewById(R.id.graph);
@@ -167,6 +181,7 @@ public class PaymentPattern extends AppCompatActivity {
 
                             if(convenience_store != 0){pieEntries.add(new PieEntry(convenience_store, "편의점"));}
                             if(restaurant != 0){pieEntries.add(new PieEntry(restaurant, "외식"));}
+                            if(leisure != 0){pieEntries.add(new PieEntry(leisure, "여가"));}
 
                             Description description = new Description();
                             description.setText("카테고리"); //라벨

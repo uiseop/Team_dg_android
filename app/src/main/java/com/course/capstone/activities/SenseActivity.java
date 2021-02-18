@@ -47,7 +47,7 @@ public class SenseActivity extends AppCompatActivity {
                " 대표적인 플랫폼으로 ‘와디즈’라는 곳이 있다"
         )); Sense1.add(new EducationCard(R.drawable.sense_5,"골드칼라","두뇌와 정보로 새로운 가치를 창조하여 정보화시대를 이끌어가는 능력 위주의 전문직 종사자, 대표적으로 컴퓨터 프로그래머가 있습니다, 세계적으로 유명한 골드칼라 인물로 빌 게이츠가 있습니다"
         ));
-        Sense1.add(new EducationCard(R.drawable.sense_6,"화이트칼라","과거 경험에도 불구하고, 적절한 대책을 게을리하여 막지 못하는 위기상황\n" +
+        Sense1.add(new EducationCard(R.drawable.sense_6,"화이트스완","과거 경험에도 불구하고, 적절한 대책을 게을리하여 막지 못하는 위기상황\n" +
                 "비슷한 말로 우리나라 속담에는 ‘소 잃고 외양간 고친다’ 라는 말이 있습니다.\n" +
                 "‘인간의 욕심은 끝이 없고 같은 실수를 반복한다’고 하지만, 같은 실수를 반복해서는 안됩니다.\n"));
         Sense1.add(new EducationCard(R.drawable.sense_7,"워킹\n"+"홀리데이", "외국의 청소년 및 청년들에게 특별비자를 발급하여 여행 중인 방문국에서 취업 자격을 주는 제도\n" +
