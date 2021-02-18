@@ -29,11 +29,12 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.ViewHold
         private TextView textView_name;
         private TextView textView_current, textView_release, texView_director;
         private ImageView iv;
-        LinearLayout layoutManager;
+        RelativeLayout relativeLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             iv = itemView.findViewById(R.id.ct);
+            relativeLayout = itemView.findViewById(R.id.city);
             textView_name = itemView.findViewById(R.id.Country);
             textView_current = itemView.findViewById(R.id.price);
             textView_release = itemView.findViewById(R.id.rate);
@@ -65,13 +66,16 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.ViewHold
         Log.d("debug :", "List " + mList.get(position).getGapPrice());
         Log.d("debug :", "List " + mList.get(position).getGapRate());
         if(mList.get(position).getTitle().equals("유럽 EUR")){
-            holder.iv.setImageResource(R.drawable.euroimg);
+            holder.relativeLayout.setBackgroundResource(R.drawable.euros);
         }
-        else if(mList.get(position).getTitle().equals("일본 JPY") || mList.get(position).getTitle().equals("중국 CNY")){
-            holder.iv.setImageResource(R.drawable.jpyimg);
+        else if(mList.get(position).getTitle().equals("일본 JPY")){
+            holder.relativeLayout.setBackgroundResource(R.drawable.jpyes);
+        }
+        else if(mList.get(position).getTitle().equals("중국 CNY")){
+            holder.relativeLayout.setBackgroundResource(R.drawable.chi);
         }
         else{
-            holder.iv.setImageResource(R.drawable.dollarimg);
+            holder.relativeLayout.setBackgroundResource(R.drawable.dollar);
         }
         holder.textView_name.setText(mList.get(position).getTitle());
         holder.textView_current.setText(mList.get(position).getCurrent());
