@@ -78,11 +78,9 @@
                 android:id="@+id/tv_text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-
-                android:layout_marginTop="21dp"
-
+                android:layout_below="@id/s_content"
                 android:text="47분 전"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorGray"
                 android:textSize="10.5dp" />
         </RelativeLayout>
 

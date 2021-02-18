@@ -8,6 +8,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.course.capstone.R;
@@ -32,6 +34,7 @@ public class Icomment extends AppCompatActivity {
     private BoardAdapter icommentAdapter;
     SwipeRefreshLayout refreshLayout;
     DataManager dataManager = DataManager.getInstance();
+    private ImageButton imageButton;
 
 
 
@@ -39,6 +42,13 @@ public class Icomment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_icomment);
+        imageButton = findViewById(R.id.back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         icommentRecyclerView = (RecyclerView) findViewById(R.id.i_comment_recycler);
         icommentRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);

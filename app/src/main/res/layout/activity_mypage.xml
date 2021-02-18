@@ -97,12 +97,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/jungbo">
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/black"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/identity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:paddingTop="12dp"
@@ -110,7 +118,15 @@
             android:paddingRight="8dp"
             android:paddingBottom="12dp"
             android:background="@drawable/rectangle_all_corner_radius" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="커뮤니티"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"></TextView>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/context"
             android:layout_width="match_parent"

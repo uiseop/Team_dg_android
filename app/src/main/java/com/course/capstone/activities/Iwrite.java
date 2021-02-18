@@ -8,6 +8,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.course.capstone.R;
@@ -31,12 +33,20 @@ public class Iwrite extends AppCompatActivity {
     private RecyclerView iwriteRecyclerView;
     private BoardAdapter iwriteAdapter;
     SwipeRefreshLayout refreshLayout;
+    private ImageButton imageButton;
     DataManager dataManager = DataManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iwrite);
+        imageButton = findViewById(R.id.back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         iwriteRecyclerView = (RecyclerView) findViewById(R.id.i_write_recyclerview);
         iwriteRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
