@@ -3,6 +3,7 @@ package com.course.capstone.activities;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,12 +34,15 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login_email, login_password;
     private ImageButton join_button,login_button;
 
+
     String username, pw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
+
+
 
         login_email = findViewById( R.id.login_id );
         login_password = findViewById( R.id.login_password );
@@ -103,4 +107,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
