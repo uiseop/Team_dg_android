@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.course.capstone.adapter.MyAdapter;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 public class MypageActivity extends AppCompatActivity {
 
     private RecyclerView myIdentity,myContext;
-
+    ImageButton imageButton;
     private RecyclerView.LayoutManager IManager,CManger;
     DataManager dataManager = DataManager.getInstance();
 
@@ -24,6 +26,13 @@ public class MypageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
+        imageButton = findViewById(R.id.arrow);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         myIdentity=  findViewById(R.id.identity);
         myIdentity.setHasFixedSize(true);
         IManager = new LinearLayoutManager(this);

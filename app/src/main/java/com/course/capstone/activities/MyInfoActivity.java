@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,12 +26,19 @@ public class MyInfoActivity extends AppCompatActivity {
     ImageView pattern;
     DataManager dataManager = DataManager.getInstance();
     User user = dataManager.getUser();
+    ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfo);
-
+        imageButton = findViewById(R.id.back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         correct = findViewById(R.id.textView_correct);
         correct.setPaintFlags(correct.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         exit = findViewById(R.id.textView_exit);

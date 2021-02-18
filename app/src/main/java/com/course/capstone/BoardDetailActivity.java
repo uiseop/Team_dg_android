@@ -56,6 +56,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     TextView txt_like;
     TextView txt_view;
     TextView tv_title;
+    ImageButton back;
     ImageButton btn_r_write; //댓글 보내는 버튼
     ImageButton btn_like; //좋아요 버튼
     private ImageButton btn_rewrite;
@@ -111,9 +112,16 @@ public class BoardDetailActivity extends AppCompatActivity {
         btn_rewrite = findViewById(R.id.btn_rewrite);
 
         buttonFavorite = findViewById(R.id.btn_like);
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
-        ScaleAnimation scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
+        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 1.0f, 1.0f, 1.4f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 1.4f);
         scaleAnimation.setDuration(500);
         BounceInterpolator bounceInterpolator = new BounceInterpolator();
         scaleAnimation.setInterpolator(bounceInterpolator);
@@ -288,34 +296,15 @@ public class BoardDetailActivity extends AppCompatActivity {
                 if (likepeoplelist.contains(dataManager.getUser().getUserid()) == false || likepeoplelist == null) {
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
 
-                    alert_confirm.setMessage("이 댓글을 좋아요 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
 
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Log.d("-------제발!!후후루루루-성공!", string_like.toString());
-                                    likepeoplelist.add(dataManager.getUser().getUserid());
-                                    System.out.println(likepeoplelist);
-                                    likecount += 1;
-                                    Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist);
-                                    update_like(qna);
-                                   /* if(likecount>=10){
-                                        hotadapter.addItem(qna);
-
-                                    }*/
+                    Log.d("-------제발!!후후루루루-성공!", string_like.toString());
+                    likepeoplelist.add(dataManager.getUser().getUserid());
+                    System.out.println(likepeoplelist);
+                    likecount += 1;
+                    Qna qna = new Qna(name, personid, title, content, date, commentcount, likecount, qid, likepeoplelist);
+                    update_like(qna);
 
 
-                                }
-                            }).setNegativeButton("취소",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    buttonFavorite.setChecked(false);
-                                    return;
-                                }
-                            });
-                    AlertDialog alert = alert_confirm.create();
-                    alert.show();
                 } else {
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(BoardDetailActivity.this);
                     alert_confirm.setMessage("좋아요를 취소하시겠습니까?").setCancelable(false).setPositiveButton("아니요",
@@ -341,7 +330,6 @@ public class BoardDetailActivity extends AppCompatActivity {
                                     return;
                                 }
                             });
-
                     AlertDialog alert = alert_confirm.create();
                     alert.show();
 
@@ -586,6 +574,10 @@ public class BoardDetailActivity extends AppCompatActivity {
 
 
         Log.d(name, "-------------제발!!-성공!");
+    }
+
+    public void onBackPressed(){
+        super.onBackPressed();
     }
 
 }

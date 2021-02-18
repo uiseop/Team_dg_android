@@ -2,6 +2,7 @@ package com.course.capstone.adapter;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.course.capstone.Frag5;
 import com.ramijemli.percentagechartview.PercentageChartView;
 import com.course.capstone.R;
 import com.course.capstone.models.Cross;
@@ -31,6 +33,14 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
     //데이터 배열 선언
     private List<Cross> mList;
     Context context;
+    String[] url = {"http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page1.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page2.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page3.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page4.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page5.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page6.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page7.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page8.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page9.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page10.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page11.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page12.html",
+            "http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page13.html","http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/page14.html"
+    };
     int[] col = {R.color.bread, R.color.main, R.color.cursor,
             R.color.colorAccent, R.color.colorPrimaryDark, R.color.teal_200,
             R.color.blue,R.color.teal_700, R.color.purple_200, R.color.purple_500,
@@ -55,11 +65,6 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             percentageChartView = itemView.findViewById(R.id.scr);
             rl = itemView.findViewById(R.id.back);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                }
-            });
         }
 
         void onBind(Cross data, int position) {
@@ -67,21 +72,19 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
             this.position = position;
             Log.d("debug :", "List " + mList.get(position).getCategory());
             Integer integer = mList.get(position).getScore();
-            if(integer == null){
-                percentageChartView.setProgress(0,true);
-            }
-            else{
-                percentageChartView.setProgress(mList.get(position).getScore(),true);
-            }
+
+            percentageChartView.setProgress(mList.get(position).getScore(),true);
+
 
             textView.setText(mList.get(position).getCategory());
             rl.setBackgroundResource(col[position]);
 
             //다 해줬는데도 GlideApp 에러가 나면 rebuild project를 해주자.
             changeVisibility(selectedItems.get(position));
-            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
             // percentageChartView.setOnClickListener(this);
-            textView.setOnClickListener(this);
+//            textView.setOnClickListener(this);
+
 
         }
         @Override
@@ -111,24 +114,26 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
         }
         private void changeVisibility(final boolean isExpanded) {
             // height 값을 dp로 지정해서 넣고싶으면 아래 소스를 이용
-            int dpValue = 150;
+            int dpValue = 100;
             float d = context.getResources().getDisplayMetrics().density;
             int height = (int) (dpValue * d);
 
             // ValueAnimator.ofInt(int... values)는 View가 변할 값을 지정, 인자는 int 배열
             ValueAnimator va = isExpanded ? ValueAnimator.ofInt(0, height) : ValueAnimator.ofInt(height, 0);
             // Animation이 실행되는 시간, n/1000초
-            va.setDuration(600);
+            va.setDuration(2400);
             va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
                     // value는 height 값
                     int value = (int) animation.getAnimatedValue();
                     // imageView의 높이 변경
-                    //content.getLayoutParams().height = value;
-                    go.requestLayout();
+                    go.getLayoutParams().height = value;
+                    gogame.requestLayout();
+                    gostudy.requestLayout();
                     // imageView가 실제로 사라지게하는 부분
-                    go.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    gogame.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+                    gostudy.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
                 }
             });
             // Animation start
@@ -157,6 +162,14 @@ public class CrossAdapter extends RecyclerView.Adapter<CrossAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(mList.get(position),position);
+        holder.rl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Frag5.class);
+                intent.putExtra("url",url[position]);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
