@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/iconfinder_home_4092562"
+        android:icon="@drawable/home"
         android:title="메인" />
     <item android:id="@+id/action_settings"
         android:title="게시판"
-        android:icon="@drawable/iconfinder_board_2124180"/>
+        android:icon="@drawable/board"/>
     <item android:id="@+id/action_play"
         android:title="십자풀이"
-        android:icon="@drawable/crossword"/>
+        android:icon="@drawable/puzzle"/>
     <item android:id="@+id/action_navigation"
         android:title="동영상"
-        android:icon="@drawable/iconfinder_ic_slow_motion_video_48px_3669227"/>
+        android:icon="@drawable/video"/>
 </menu>

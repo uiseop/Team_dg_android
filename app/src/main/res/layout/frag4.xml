@@ -18,7 +18,7 @@
                 android:id="@+id/rank"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/one"
+                android:src="@drawable/three"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_alignParentTop="true"
