@@ -31,6 +31,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +51,10 @@ public class PaymentPattern extends AppCompatActivity {
     ExpandableListView expandableListView;
     List<String> parentData;
     HashMap<String, ArrayList<Child>> childData;
-    int alarmbalance = 2000000;
+    int alarmbalance = 100000;
+    String dotnum = NumberFormat.getInstance().format(alarmbalance);
     int totalbalance = 0;
-    String msg = "잔고가 "+alarmbalance+" 미만입니다. 주의하세요!";
+    String msg = "잔고가 "+dotnum+" 미만입니다. 주의하세요!";
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
             .addConverterFactory(GsonConverterFactory.create())
