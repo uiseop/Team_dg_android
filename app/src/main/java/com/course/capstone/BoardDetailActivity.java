@@ -383,7 +383,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
 
                     txt_view.setText(String.valueOf(commentcount));
-                    Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+                    Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist,commentpeoplelist);
                     update_like(qna);
 
 
