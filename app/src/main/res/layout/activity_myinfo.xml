@@ -4,20 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/haha"
+    android:background="@drawable/lalala"
     tools:context=".activities.MyInfoActivity">
-
-    <TextView
-        android:id="@+id/textView_correct"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="회원정보 수정"
-        android:textColor="@color/colorGray"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        android:src="@drawable/arrow_wt"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        android:background="@android:color/transparent"></ImageButton>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 정보"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textSize="25dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/white"></TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
     <TextView
         android:id="@+id/textView17"
@@ -157,19 +175,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_myemail" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:text="내정보"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView_card"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView_payment"
@@ -194,18 +200,55 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView_payment"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:text="나에게 맞는 카드는 ?"
-        android:textSize="20sp"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/textView_myid"
-        app:layout_constraintTop_toBottomOf="@+id/textView_correct" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/naya"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/newslayout">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="@id/naya"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="내정보"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            />
+        <TextView
+            android:id="@+id/textView_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView13"
+            android:layout_marginTop="6dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:text="회원정보 수정"
+            android:textColor="@color/colorGray"
+            android:textSize="15dp"
+             />
+        <TextView
+            android:id="@+id/textView_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="나에게 맞는 카드는 ?"
+            android:textSize="20sp"
+            android:fontFamily="@font/sdsamliphopangchettfbasic"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_correct" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

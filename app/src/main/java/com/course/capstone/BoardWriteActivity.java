@@ -43,7 +43,7 @@ public class BoardWriteActivity extends AppCompatActivity {
     private EditText input_content;
     DataManager dataManager = DataManager.getInstance();
     TextView tv_title;
-    ImageButton btn_write;
+    ImageButton btn_write,back;
     SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date = new Date();
     String time1 = format1.format(date);
@@ -66,7 +66,13 @@ public class BoardWriteActivity extends AppCompatActivity {
         toolbarText = findViewById(R.id.toolbartext);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayShowTitleEnabled(false);

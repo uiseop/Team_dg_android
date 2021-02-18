@@ -16,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/rank"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/one"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
@@ -31,22 +31,22 @@
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:textSize="20dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/rank"
                 android:layout_alignTop="@+id/rank"></TextView>
 
             <ProgressBar
                 android:id="@+id/progressBar2"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="260dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/name"
                 android:progressDrawable="@drawable/progress_custom"
                 android:layout_alignTop="@+id/name"
                 android:layout_marginTop="2dp"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="20dp"
                 android:layout_centerHorizontal="true"
-                android:progress="40" />
+                android:progress="67" />
 
             <TextView
                 android:id="@+id/wlsgodfbf"
@@ -58,7 +58,7 @@
                 android:layout_alignTop="@id/progressBar2"
                 android:layout_alignRight="@id/name"
                 android:layout_marginTop="1dp"
-                android:layout_marginRight="-160dp"/>
+                android:layout_marginRight="-150dp"/>
 
 
             <LinearLayout

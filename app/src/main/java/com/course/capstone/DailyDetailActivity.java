@@ -49,7 +49,7 @@ public class DailyDetailActivity extends AppCompatActivity {
     TextView txt_name;
     TextView txt_view;
     TextView tv_title;
-    private ImageButton btn_rewrite;
+    private ImageButton btn_rewrite,back;
     ImageButton btn_delete;//글 삭제 버튼
 
     int no;
@@ -81,6 +81,13 @@ public class DailyDetailActivity extends AppCompatActivity {
         toolbarText = findViewById(R.id.toolbartext);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요

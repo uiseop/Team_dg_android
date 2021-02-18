@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/lalala">
 
     <ImageButton
         android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/left_arrow"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/mainBg"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="14dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"
         android:text="MY PAGE"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20dp"
         android:fontFamily="@font/sdsamliphopangchettfbasic"/>
 
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="23dp"
         app:layout_constraintTop_toBottomOf="@+id/mypage"
         android:background="@drawable/rectangle_all_corner_radius">
 

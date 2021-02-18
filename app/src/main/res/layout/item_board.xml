@@ -29,7 +29,7 @@
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="subject"
                 android:textColor="#000000"
-                android:textSize="19sp" />
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/s_content"
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:textColor="#8f8f8f"
                 android:text="content"
-                android:textSize="14sp" />
+                android:textSize="15dp" />
 
         </LinearLayout>
         <LinearLayout
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:textSize="10sp"
+                android:textSize="12dp"
                 android:textColor="#8f8f8f"
                 android:text="42분 전"/>
             <TextView
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:textSize="10sp"
+                android:textSize="12dp"
                 android:textColor="@color/black"
                 android:text="만돌맨돌"/>
             <LinearLayout
@@ -78,31 +78,33 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/heart_4"/>
+                    android:src="@drawable/button_favorite"/>
                 <TextView
                     android:id="@+id/tv_text_like"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="-2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="8sp"
+                    android:textSize="16dp"
                     android:text="10"
                     android:textColor="#FF2C0E"/>
                 <ImageButton
-                    android:layout_marginRight="3dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="2dp"
                     android:background="@android:color/transparent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/chat"/>
+                    android:src="@drawable/comment3"/>
                 <TextView
                     android:id="@+id/tv_text_view"
-                    android:layout_marginRight="5dp"
+
+                    android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="8sp"
+                    android:textSize="16dp"
                     android:text="8"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="#58C666"/>
             </LinearLayout>
 
 

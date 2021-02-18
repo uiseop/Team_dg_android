@@ -44,8 +44,8 @@ public class Frag4 extends Fragment {
     TextView textView;
     ProgressBar progressBar;
     String[] btn = {"game1","game2","game3","button4",
-    "button","button5","button6","button7","button8",
-    "button10","button9"};
+            "button","button5","button6","button7","button8",
+            "button10","button9"};
 
     private RecyclerView recyclerView;
 
