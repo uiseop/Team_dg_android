@@ -512,7 +512,7 @@ public class BoardDetailActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<Qna> call, Response<Qna> response) {
                Log.d("좋아요 기능 성공!", string_like.toString());
-               Toast.makeText(getApplicationContext(),  "감사합니다.", Toast.LENGTH_LONG).show();
+
                txt_like.setText(string_like);
                setResult(RESULT_OK);
 
