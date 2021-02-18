@@ -340,10 +340,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         setRecyclerView();
 
         commentinfo(qid);
-      /*  Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
-        update_like(qna);
 
-       */
         if ((dataManager.getUser().getId()).equals(personid)) {
             btn_rewrite.setVisibility(ImageButton.VISIBLE);
             btn_delete.setVisibility(ImageButton.VISIBLE);
@@ -386,6 +383,9 @@ public class BoardDetailActivity extends AppCompatActivity {
 
 
                     txt_view.setText(String.valueOf(commentcount));
+                    Qna qna=new Qna(name, personid, title, content, date, commentcount, likecount, qid,likepeoplelist);
+                    update_like(qna);
+
 
 
                 } else {

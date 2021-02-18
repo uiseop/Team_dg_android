@@ -124,6 +124,7 @@ public class ReplyTalkAdapter extends RecyclerView.Adapter<ReplyTalkAdapter.View
 
                                 comentdelete( items.get(getAdapterPosition()).getCommentid());
                                 commentpeoplelist.remove(dataManager.getUser().getUserid());
+
                                 Qna qna = new Qna(qnaname, personid, title, qcontent, qdate, commentcount, likecount, qid, likepeoplelist,commentpeoplelist);
                                 update(qna);
 
