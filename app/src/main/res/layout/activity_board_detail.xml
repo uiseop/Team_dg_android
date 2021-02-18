@@ -182,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="8dp"
-                        android:text="10"
+                        android:text="0"
                         android:textColor="#FF2C0E"
                         android:textSize="16dp" />
 
@@ -203,7 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="3dp"
-                        android:text="8"
+                        android:text="0"
                         android:textColor="#58C666"
                         android:textSize="16dp" />
                 </LinearLayout>

@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class CorrectMyInfo extends AppCompatActivity {
     private TextView id;
     private EditText correct_name, correct_email, correct_birth, correct_pw, correct_pwck;
     private Button btn, btn_pre;
+    private ImageButton imageButton;
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("http://ec2-3-139-15-252.us-east-2.compute.amazonaws.com:8080/")
@@ -44,7 +46,13 @@ public class CorrectMyInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_correctmyinfo);
-
+        imageButton = findViewById(R.id.back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         id = findViewById(R.id.textView_correctid);
         correct_birth = findViewById(R.id.editText_correctbirth);
         correct_email = findViewById(R.id.editText_correctemail);
