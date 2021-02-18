@@ -39,16 +39,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/sdsamliphopangchettfbasic" />
 
-            <TextView
-                android:id="@+id/tv_text_date"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:layout_marginTop="6dp"
-                android:layout_toLeftOf="@id/btn_r_menu"
-                android:text="47분 전"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="10.5dp" />
+
 
             <ImageButton
                 android:id="@+id/btn_r_menu"
@@ -82,6 +73,17 @@
                 android:textSize="14dp"
                 android:textColor="@color/black"
                 android:text="아냐 그렇진 않은것 같아."/>
+
+            <TextView
+                android:id="@+id/tv_text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/sdsamliphopangchettfbasic"
+                android:layout_marginTop="21dp"
+
+                android:text="47분 전"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10.5dp" />
         </RelativeLayout>
 
         <RelativeLayout
