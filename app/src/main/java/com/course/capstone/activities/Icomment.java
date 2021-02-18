@@ -84,7 +84,6 @@ public class Icomment extends AppCompatActivity {
 
                             icommentqna.add(qna.get(i));
 
-
                         }
                     }
                     icommentAdapter = new BoardAdapter(Icomment.this, icommentqna);
