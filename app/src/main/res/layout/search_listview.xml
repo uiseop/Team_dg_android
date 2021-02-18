@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:singleLine="true"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
+        android:textStyle="bold"
         android:text="subject"
         android:textColor="#000000"
         android:textSize="19sp" />
@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="3dp"
         android:singleLine="true"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:textColor="#8f8f8f"
         android:text="content"
         android:textSize="14sp" />
@@ -40,7 +39,6 @@
         android:layout_height="match_parent"
         android:text="만돌맨돌"
         android:textColor="@color/black"
-        android:fontFamily="@font/sdsamliphopangchettfbasic"
         android:textSize="10sp" />
 
 </LinearLayout>
