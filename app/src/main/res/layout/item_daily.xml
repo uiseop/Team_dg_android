@@ -24,10 +24,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:singleLine="true"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+                android:textStyle="bold"
                 android:text="subject"
                 android:textColor="#000000"
-                android:textSize="19sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/d_content"
@@ -35,10 +35,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:singleLine="true"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                 android:textColor="#8f8f8f"
                 android:text="content"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,16 +53,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:textSize="10sp"
+
+                android:textSize="12sp"
                 android:textColor="#8f8f8f"
                 android:text="42분 전"/>
             <TextView
                 android:id="@+id/d_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:textSize="10sp"
+
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 android:text="만돌맨돌"/>
         </LinearLayout>
