@@ -45,7 +45,7 @@ public class YoutubeAdapter extends RecyclerView.Adapter<YoutubeAdapter.MyViewHo
     public void onBindViewHolder(YoutubeAdapter.MyViewHolder holder, final int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.myText.setText(youtubeList.get(position).getTitle());
-        Picasso.get().load(youtubeList.get(position).getImgurl()).into(myViewHolder.myImageView);
+        Picasso.get().load(youtubeList.get(position).getImgurl()).fit().centerCrop().into(myViewHolder.myImageView);
 
         myViewHolder.myText.setOnClickListener(new View.OnClickListener() {
             @Override

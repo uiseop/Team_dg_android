@@ -36,10 +36,10 @@ public class ProductsActivity extends AppCompatActivity {
         Productsrecyclerview.setLayoutManager(PManager);
         ArrayList<EducationCard> Product = new ArrayList<>();
         Product.add(new EducationCard(R.drawable.product_1,"실적배당형","MMF라고 하며 증권사에서 취급하는 CMA와 달리 은행에서 취급하고 운용 실적에 따라 수익금을 배분받게 됩니다.\n"
-                +" 시중 금리 변동에 큰 영향을 받지 않아 비교적 수익이 안정적이며 수수료 없이 언제든 환매가 가능해 단기로 자금을 운용하는 투자자에게 적합합니다. "));
+                +"시중 금리 변동에 큰 영향을 받지 않아 비교적 수익이 안정적이며 수수료 없이 언제든 환매가 가능해 단기로 자금을 운용하는 투자자에게 적합합니다. "));
         Product.add(new EducationCard(R.drawable.product_2,"재형저축","연봉 5천만원 이하 근로자와 종합소득 3천 5백만원 이하 개인사업자에게만 가입자격이 주어졌던 만기 10년의 적립식 저축상품입니다. 이자 및 배당소득에 대해 비과세 혜택이 있어 근로자들의 대표적인 절세 상품으로 인기를 끌었었다.\n" +
                 "\n" +
-                "재형저축은 1976년 도입된 뒤 1995년 폐지됐다. 또한 2012년 재도입이 결정됐고 2013년 은행권을 통해 부활됐으나 2015년 12월 31일 일몰되었다.\n" +
+                "재형저축은 1976년 도입된 뒤 1995년 폐지됐다. 또한 2012년 재도입이 결정됐고 2013년 은행권을 통해 부활됐으나 2015년 12월 31일 일몰되었다." +
                 "\n"
         ));
         Product.add(new EducationCard(R.drawable.product_3,"회사채","주식회사가 투자자로부터 회사운영에 필요한 자금을 조달받기 위한 목적으로 발행하는 채권입니다.\n" +
@@ -54,20 +54,20 @@ public class ProductsActivity extends AppCompatActivity {
         ));
         Product.add(new EducationCard(R.drawable.product_6,"환매 \n"+"조건부채권","고금리 경쟁이 심화되면서 일반인에게는 다소 생소했던 RP형이 부쩍 관심의 대상이 되고 있다. \n" +
                 "환매조건부채권 = RP  은행이나 증권사에서 일정기간이 지나면 되사는 조건으로 채권을 판 뒤  만기 때 고객에게 원금과 이자를 지급하는 방식의 상품이다.\n" +
-                " 3개월 가량 여유자금을 운용하기에 적합하다"
+                "3개월 가량 여유자금을 운용하기에 적합하다"
         ));
         Product.add(new EducationCard(R.drawable.product_7,"부동산\n"+"펀드","부동산 펀드란 펀드재산 50%를 초과하여 부동산 및 관련 자산에 투자하는 펀드를 말합니다. \n" +
                 "종류는 공개적으로 모아 유가증권시장에 상장하는 공모펀드와, 투자자를 한정적으로 모아 설정하는 사모 펀드로 나누어지게 됩니다. \n" +
                 "공모펀드가 사모펀드에 비해 초보자가 조금 더 접하기 쉽습니다."
         ));
-        Product.add(new EducationCard(R.drawable.product_8,"콜론형\n"+"특정금전신탁","기업이나 개인이 증권사 등에 돈을 맡기고 증권사는 투자자가 원하는 방식으로 운영해 수익을 내고 일정 수수료를 제외한 금액을 돌려주는 것을 의미한다. \n" +
+        Product.add(new EducationCard(R.drawable.product_8,"콜론형특정\n금전신탁","기업이나 개인이 증권사 등에 돈을 맡기고 증권사는 투자자가 원하는 방식으로 운영해 수익을 내고 일정 수수료를 제외한 금액을 돌려주는 것을 의미한다. \n" +
                 "또 MMT는 입출금이 자유롭고 시장실세금리 이상을 주기 때문에 마땅한 투자처가 없는 여유자금을 넣어두기에 적합한 투자상품이다. \n"+
                 "다만 예금자 보호는 받지 못한다는 단점이 있다."
         ));
         Product.add(new EducationCard(R.drawable.product_9,"특수채","특수채는 특별법에 의해 설립된 기관이 발행하는 채권으로, 주로 공기업이 발행하는 채권을 통칭합니다.\n " +
                 "대표적인 특수채로는 한국전력공사채권, 토지개발채권등이 있습니다."
         ));
-        Product.add(new EducationCard(R.drawable.product_10,"신노후\n"+"생활연금신탁","만 18세 이상이면 가입이 가능하고 만기가 40세 이상이거나 최저 5년 이상의 노후대비용 상품으로 판매되는 실적배당형 연금 상품이다. \n" +
+        Product.add(new EducationCard(R.drawable.product_10,"신노후생활\n연금신탁","만 18세 이상이면 가입이 가능하고 만기가 40세 이상이거나 최저 5년 이상의 노후대비용 상품으로 판매되는 실적배당형 연금 상품이다. \n" +
                 "원래 자영업자·월급쟁이들의 노후대비용 상품으로 개발한 실적배당형 연금상품이다. \n" +
                 "하지만 돈을 1년 이상만 예치하면 중도해지에 따른 불이익이 전혀 없기 때문에 단기 투자상품으로 더 관심을 끌고 있다."
         ));
@@ -75,7 +75,7 @@ public class ProductsActivity extends AppCompatActivity {
                 " 나라가 망하지 않는 한 돈을 떼는 위험이 없으므로 가장 안전한 대신 금리가 낮습니다.\n " +
                 "국채는 정부가 빚을 낸 것 이므로 언젠가는 갚아야 합니다. \n" +
                 "국채 발행량이 증가하면 미래에 세금부담이 그만큼 늘어나는 겁니다.\n"));
-        Product.add(new EducationCard(R.drawable.product_12,"배당\n"+"주펀드", "배당주펀드는 배당을 많이 주고, 또 꾸준히 주는 회사를 발굴해서 투자하는 펀드입니다.\n " +
+        Product.add(new EducationCard(R.drawable.product_12,"배당주\n펀드", "배당주펀드는 배당을 많이 주고, 또 꾸준히 주는 회사를 발굴해서 투자하는 펀드입니다.\n " +
                 "장기적으로 안정적 수익을 바라는 사람들이 투자할 수 있는 펀드입니다. \n" +
                 "은행 금리나 채권형 펀드의 수익은 너무 낮은 것 같고,\n " +
                 "그렇다고 대박 추구형 펀드는 왠지 무서워서 가까이 하기 힘들다면\n " +
@@ -93,7 +93,7 @@ public class ProductsActivity extends AppCompatActivity {
                 " 최근에는 가장이 아닌 가족구성원 중에서도 가입을 하고 있습니다."));
 
 
-        Product.add(new EducationCard(R.drawable.product_16,"수시입출금\n"+"예금금", "MMDA는 증권사의 단기금융상품인 MMF에 대응하기 위해 도임한 고금리 저축성 예금을 말하는데 통상 \n" +
+        Product.add(new EducationCard(R.drawable.product_16,"수시입출금\n"+"예금", "MMDA는 증권사의 단기금융상품인 MMF에 대응하기 위해 도임한 고금리 저축성 예금을 말하는데 통상 \n" +
                 "‘시장 금리부 수시 입, 출금식 예금’이라고 한다. \n" +
                 "일반 저축상품과 마찬가지로 각종 결제. 이체가 가능하다고 3개월마다 이자를 계산하여 지급한다.  "));
         Product.add(new EducationCard(R.drawable.product_17,"정기적금", "매달 일정한 돈을 정해진 기간 동안 저금한 뒤, 약속한 이자를 받는 저축입니다.\n" +
@@ -122,7 +122,7 @@ public class ProductsActivity extends AppCompatActivity {
                 "조합원들이 가입할 때 내는 출자금과 이후 매장이용과 주문공급 시마다 적립되는 출자금들이 모여서\n" +
                 " 생협의 운영과 직거래 사업에 필요한 건물임대, 차량구매, 매장임대, 물류센터건립 등 각종 투자금이나 고정자산 구입을 위해 사용됩니다."));
 
-        Product.add(new EducationCard(R.drawable.product_24,"저축성은행예금", "예금주가 일정기간 동안은 돈을 회수하지 않을 것을 약속하고\n" +
+        Product.add(new EducationCard(R.drawable.product_24,"저축성\n은행예금", "예금주가 일정기간 동안은 돈을 회수하지 않을 것을 약속하고\n" +
                 " 일정 금액을 은행에 예치하여, 은행은 이에 대해 이자를 지급할 것을 약속하고\n" +
                 " 증서 또는 통장을 발행, 교부하는 예금을 말한다. "));
 

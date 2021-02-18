@@ -1,69 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:weightSum="10">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="392dp"
-            android:layout_height="10dp"
+        <RelativeLayout
+            android:id="@+id/fpdl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="5.5">
+            android:layout_marginRight="10dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/replyuser" />
+                android:layout_alignParentLeft="true"
+                android:id="@+id/person"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_baseline_person_24"
+                android:backgroundTint="@color/colorGray"
+                />
 
             <TextView
                 android:id="@+id/s_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_alignRight="@+id/person"
+                android:layout_marginRight="-32dp"
+                android:layout_marginTop="11dp"
                 android:text="익명"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:fontFamily="@font/sdsamliphopangchettfbasic" />
 
             <TextView
                 android:id="@+id/tv_text_date"
-                android:layout_width="289dp"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:gravity="right"
+                android:layout_marginTop="6dp"
+                android:layout_toLeftOf="@id/btn_r_menu"
                 android:text="47분 전"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="10.5dp" />
 
             <ImageButton
                 android:id="@+id/btn_r_menu"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent"
-                android:gravity="right|center_vertical"
-                android:src="@drawable/dots" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="3dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/circle"
+                android:backgroundTint="@android:color/transparent"
+                ></ImageButton>
 
-        </LinearLayout>
-        <LinearLayout
+"
+                android:background="@android:color/transparent"
+
+                android:src="@drawable/circle"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/eot"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4.4"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fpdl"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp">
             <TextView
@@ -74,22 +82,23 @@
                 android:textSize="14dp"
                 android:textColor="@color/black"
                 android:text="아냐 그렇진 않은것 같아."/>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_weight="0.12"
-            android:gravity="bottom">
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/eot">
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="#c4c4c4" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
 
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
