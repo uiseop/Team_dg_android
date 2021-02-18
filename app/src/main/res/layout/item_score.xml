@@ -56,5 +56,36 @@
                 app:pcv_textColor="#FFFFFF" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/gostudy"
+            android:layout_width="11dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/gogame" />
+
+        <ImageButton
+            android:id="@+id/gogame"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/gostudy" />
+    </LinearLayout>
+
+
 
 </RelativeLayout>

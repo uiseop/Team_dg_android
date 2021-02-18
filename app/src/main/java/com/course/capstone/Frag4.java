@@ -80,7 +80,7 @@ public class Frag4 extends Fragment {
         recyclerView = v.findViewById(R.id.games);
         LinearLayoutManager gridLayoutManager = new LinearLayoutManager(getContext());
 //        GridLayoutManager gm = new GridLayoutManager(getContext(),2);
-        CrossAdapter crossAdapter = new CrossAdapter(crosses);
+        CrossAdapter crossAdapter = new CrossAdapter(crosses,getContext());
         recyclerView.setLayoutManager(gridLayoutManager);
 //        recyclerView.setLayoutManager(gm);
         recyclerView.setAdapter(crossAdapter);
