@@ -103,7 +103,7 @@
                         android:id="@+id/txt_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                         android:text="익명"
                         android:textColor="@color/black"
                         android:textSize="18dp"
@@ -111,9 +111,9 @@
 
                     <TextView
                         android:id="@+id/txt_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/sdsamliphopangchettfbasic"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+
                         android:text="7분전"
                         android:textColor="@color/colorGray"
                         android:textSize="10dp" />
@@ -132,20 +132,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:fontFamily="@font/sdsamliphopangchettfbasic"
                     android:text="학생 본부에 농협 atm이 있다는데..."
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txt_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:fontFamily="@font/sdsamliphopangchettfbasic"
                     android:text="정확히 어디에 있나요?ㅠㅠ \n 보이질 않네.."
                     android:textColor="@color/black"
-                    android:textSize="16dp"
+                    android:textSize="14sp"
                     android:textStyle="normal" />
 
                 <LinearLayout
@@ -279,7 +278,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="16dp"
                         android:background="@null"
-                        android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                         android:hint="댓글을 입력해 주세요."
                         android:textColor="@color/black"
                         android:textSize="20dp" />

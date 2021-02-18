@@ -26,10 +26,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:singleLine="true"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
                 android:text="subject"
                 android:textColor="#000000"
-                android:textSize="22dp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/s_content"
@@ -37,10 +37,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:singleLine="true"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
-                android:textColor="#8f8f8f"
+
                 android:text="content"
-                android:textSize="15dp" />
+                android:textColor="#8f8f8f"
+                android:textSize="12sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                 android:textSize="12dp"
                 android:textColor="#8f8f8f"
                 android:text="42분 전"/>
@@ -63,7 +63,7 @@
                 android:id="@+id/s_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                 android:textSize="12dp"
                 android:textColor="@color/black"
                 android:text="만돌맨돌"/>

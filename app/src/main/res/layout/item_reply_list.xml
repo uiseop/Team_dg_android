@@ -37,7 +37,7 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sdsamliphopangchettfbasic" />
+              />
 
 
 
@@ -69,7 +69,7 @@
                 android:id="@+id/s_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                 android:textSize="14dp"
                 android:textColor="@color/black"
                 android:text="아냐 그렇진 않은것 같아."/>
@@ -78,7 +78,7 @@
                 android:id="@+id/tv_text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:fontFamily="@font/sdsamliphopangchettfbasic"
+
                 android:layout_marginTop="21dp"
 
                 android:text="47분 전"
